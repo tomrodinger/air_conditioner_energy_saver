@@ -27,6 +27,8 @@ build/executable.hex: build/executable.elf
 
 program: build/executable.hex
 	openocd -c 'adapter driver jlink; transport select swd; source [find target/nrf52.cfg]; program build/executable.hex verify reset exit'
+	#openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program build/executable.hex verify reset exit"
+	#openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "reset_config none; program build/executable.hex verify reset exit"
 
 clean:
 	rm -f build/*
