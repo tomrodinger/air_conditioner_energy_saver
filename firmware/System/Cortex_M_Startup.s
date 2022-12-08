@@ -149,14 +149,26 @@ _vectors:
         ISR_RESERVED
         ISR_HANDLER PendSV_Handler
         ISR_HANDLER SysTick_Handler
-        //
-        // Add external interrupt vectors here.
-        // Example:
-        //   ISR_HANDLER ExternalISR0
-        //   ISR_HANDLER ExternalISR1
-        //   ISR_HANDLER ExternalISR2
-        //   ISR_HANDLER ExternalISR3
-        //
+        ISR_HANDLER RTC0_Handler1
+        ISR_HANDLER RTC0_Handler2
+        ISR_HANDLER RTC0_Handler3
+        ISR_HANDLER RTC0_Handler4
+        ISR_HANDLER RTC0_Handler5
+        ISR_HANDLER RTC0_Handler6
+        ISR_HANDLER RTC0_Handler7
+        ISR_HANDLER RTC0_Handler8
+        ISR_HANDLER RTC0_Handler9
+        ISR_HANDLER RTC0_Handler10
+        ISR_HANDLER RTC0_Handler11
+        ISR_HANDLER RTC0_Handler12
+        ISR_HANDLER RTC0_Handler13
+        ISR_HANDLER RTC0_Handler14
+        ISR_HANDLER RTC0_Handler15
+        ISR_HANDLER RTC0_Handler16
+        ISR_HANDLER RTC0_Handler17
+        ISR_HANDLER RTC0_Handler18
+        ISR_HANDLER RTC0_Handler19
+        ISR_HANDLER RTC0_Handler20
 
         .section .vectors, "a"
         .size _vectors, .-_vectors

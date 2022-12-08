@@ -40,6 +40,20 @@
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   500
 
+#define COMMUNICATION_CYCLE_TICKS 3276  // 3276 is the number of ticks in 100 ms
+//#define COMMUNICATION_CYCLE_TICKS 6400  // 6400 is the number of ticks in 100 ms
+#define MISSED_PACKET_COUNT_UNSYNC_THRESHOLD 20
+#define SLAVE_OUT_OF_SYNC_TICKS_SHIFT 33
+#define IN_SYNC_RX_WINDOW_TIME_TICKS 33
+#define OUT_OF_SYNC_RX_WINDOW_TIME_TICKS 66
+#define SLAVE_RX_WINDOW_TIME_TICKS 10
+#define PACKET_MAGIC_NUMBER1 12
+#define PACKET_MAGIC_NUMBER2 34
+#define PACKET_MAGIC_NUMBER3 56
+#define PACKET_MAGIC_NUMBER4 78
+
+int32_t timing_adjust = 0;
+
 
 static inline void red_led_on(void)
 {
@@ -83,11 +97,29 @@ static inline void IR_led_toggle(void)
 }
 
 
+void init_all_clocks(void)
+{
+	NRF_CLOCK->EVENTS_HFCLKSTARTED = 0;
+	NRF_CLOCK->TASKS_HFCLKSTART = 1;
+	while(NRF_CLOCK->EVENTS_HFCLKSTARTED == 0);
+
+//	NRF_CLOCK->LFCLKSRC = (CLOCK_LFCLKSRC_SRC_Synth << CLOCK_LFCLKSRC_SRC_Pos); // choose the synthesized 32.768 kHz clock (rather than the RC oscillator)
+	NRF_CLOCK->LFCLKSRC = (CLOCK_LFCLKSRC_SRC_Xtal << CLOCK_LFCLKSRC_SRC_Pos); // choose the 32.768 kHz crystal as the source (rather than the RC oscillator)
+	NRF_CLOCK->EVENTS_LFCLKSTARTED = 0;
+	NRF_CLOCK->TASKS_LFCLKSTART = 1; // start the 32.768kHz clock
+	while(NRF_CLOCK->EVENTS_LFCLKSTARTED == 0); // wait for the 32.768kHz clock to start. datasheet says it may be 0.25 seconds
+
+	// Enable event routing for the compare event 0
+	NRF_RTC0->EVTEN = RTC_EVTEN_COMPARE0_Msk;
+	NRF_RTC0->TASKS_START = 1; // start the Real time counter
+}
+
 static void delay_ticks(uint32_t ticks)
 {
-  NRF_RTC0->TASKS_CLEAR = 1; // clear the counter to 0
-  while(NRF_RTC0->COUNTER != 0); // the clear task will not execute right away. need to wait for the low frequency clock to have a transition for it to take effect.
-  while(NRF_RTC0->COUNTER < ticks);
+	uint32_t delay_finish_time = (NRF_RTC0->COUNTER + ticks) & 0x00FFFFFF; // 24 bit counter
+	while (NRF_RTC0->COUNTER != delay_finish_time) {
+//		__WFE();
+	}
 }
 
 
@@ -320,7 +352,7 @@ static uint16_t pwm_seq1[] = {POLARITY_NORMAL | PWM_PERIOD, 0, 0, 0};
 
 void init_pwm(void)
 {
-//	NRF_PWM0->PSEL.OUT[0] = (PIN_RED_LED << PWM_PSEL_OUT_PIN_Pos) | (PWM_PSEL_OUT_CONNECT_Connected << PWM_PSEL_OUT_CONNECT_Pos);
+//	NRF_PWM0->PSEL.OUT[0] = (PIN_BLUE_LED    << PWM_PSEL_OUT_PIN_Pos) | (PWM_PSEL_OUT_CONNECT_Connected << PWM_PSEL_OUT_CONNECT_Pos);
 	NRF_PWM0->PSEL.OUT[0] = (PIN_IR_TRANSMIT << PWM_PSEL_OUT_PIN_Pos) | (PWM_PSEL_OUT_CONNECT_Connected << PWM_PSEL_OUT_CONNECT_Pos);
 //	NRF_PWM0->PSEL.OUT[1] = (PIN_GREEN_LED << PWM_PSEL_OUT_PIN_Pos) | (PWM_PSEL_OUT_CONNECT_Connected << PWM_PSEL_OUT_CONNECT_Pos);
 	NRF_PWM0->ENABLE = (PWM_ENABLE_ENABLE_Enabled << PWM_ENABLE_ENABLE_Pos);
@@ -730,11 +762,12 @@ void test_rssi(void)
 /** 
 * Set up radio for BLE packets. Needs to be done at the beginning of every timeslot.
 */
-static __INLINE void radio_init(void) 
+static inline void radio_init(void) 
 {
   /* Set radio configuration parameters */
-  NRF_RADIO->TXPOWER = (RADIO_TXPOWER_TXPOWER_0dBm << RADIO_TXPOWER_TXPOWER_Pos);
-  NRF_RADIO->MODE 	 = (RADIO_MODE_MODE_Ble_1Mbit << RADIO_MODE_MODE_Pos);
+  NRF_RADIO->TXPOWER = (int8_t)(4);
+//  NRF_RADIO->MODE 	 = (RADIO_MODE_MODE_Ble_1Mbit << RADIO_MODE_MODE_Pos);
+  NRF_RADIO->MODE 	 = (RADIO_MODE_MODE_Ble_2Mbit << RADIO_MODE_MODE_Pos);
 
   NRF_RADIO->FREQUENCY 	 = 2;					// Frequency bin 80, 2480MHz, channel 39.
   NRF_RADIO->DATAWHITEIV = 37;					// NOTE: This value needs to correspond to the frequency being used
@@ -770,7 +803,7 @@ static __INLINE void radio_init(void)
 	
 	/* Lock interframe spacing, so that the radio won't send too soon / start RX too early */
 	NRF_RADIO->TIFS = 145;
-
+/*
 	NRF_RADIO->DACNF = (RADIO_DACNF_ENA7_Enabled << RADIO_DACNF_ENA7_Pos) |
 	                   (RADIO_DACNF_ENA6_Enabled << RADIO_DACNF_ENA6_Pos) |
 	                   (RADIO_DACNF_ENA5_Enabled << RADIO_DACNF_ENA5_Pos) |
@@ -779,6 +812,7 @@ static __INLINE void radio_init(void)
 	                   (RADIO_DACNF_ENA2_Enabled << RADIO_DACNF_ENA2_Pos) |
 	                   (RADIO_DACNF_ENA1_Enabled << RADIO_DACNF_ENA1_Pos) |
 	                   (RADIO_DACNF_ENA0_Enabled << RADIO_DACNF_ENA0_Pos);					   // Enable all 8 logical addresses
+*/
 }
 
 
@@ -829,10 +863,10 @@ void test_bluetooth_sniffer(void)
 		}
 
 		int8_t rssi = NRF_RADIO->RSSISAMPLE;
-		if((printable_character_streak >= 1) && (rssi < 100)) {
+		if((printable_character_streak >= 1) && (rssi < 100) /* && (packet[3] == 'H') */) {
 			print_debug_message("Packet: ", 0, 0, 1);
 			print_debug_message("RSSI: ", (uint16_t)rssi, 1, 1);
-			for(i = 0; i < 50; i++) {
+			for(i = 0; i < packet[1] + 3; i++) {
 				if((packet[i] >= 32) && (packet[i] <= 126)) {
 					character_plus_terminator[0] = packet[i];
 					print_debug_message(character_plus_terminator, 0, 0, 0);
@@ -888,26 +922,378 @@ void test_bluetooth_transmitter(void)
 }
 
 
+uint32_t wait_for_time(int32_t offset_ticks, int32_t time_adjust_offset)
+{
+	static uint32_t next_rx_window_time = 0;
+	static uint8_t first_time = 1;
+
+	if(first_time) {
+		first_time = 0;
+		next_rx_window_time = NRF_RTC0->COUNTER;
+	}
+//	next_rx_window_time = (next_rx_window_time + COMMUNICATION_CYCLE_TICKS);
+	next_rx_window_time = (next_rx_window_time + COMMUNICATION_CYCLE_TICKS + time_adjust_offset);
+	uint32_t wait_for_counter_value = (next_rx_window_time + offset_ticks) & 0xFFFFFF; // 0xFFFFFF is the maximum value of the 24-bit counter
+//	print_debug_message("Waiting for:", NRF_RTC0->COUNTER & 0xFFFF, 1, 1);
+	while(NRF_RTC0->COUNTER != wait_for_counter_value);
+//	print_debug_message("Done", 0, 0, 1);
+	return wait_for_counter_value;
+}
+
+
+// Interrupt service routing for the RTC0 peripheral
+void RTC0_Handler1(void)
+{
+	red_led_on();
+	while(1);
+	NVIC_DisableIRQ(RTC0_IRQn);
+	if(NRF_RTC0->EVENTS_COMPARE[0] != 0) {
+		NRF_RTC0->EVENTS_COMPARE[0] = 0;
+//		NRF_RTC0->TASKS_CLEAR = 1;
+//		NRF_RTC0->TASKS_START = 1;
+	}
+//	red_led_toggle();
+	NRF_RTC0->EVENTS_COMPARE[0] = 0;
+	NRF_RTC0->EVENTS_COMPARE[0] = 0;
+	NRF_RTC0->EVENTS_COMPARE[0] = 0;
+	NRF_RTC0->EVENTS_COMPARE[0] = 0;
+	NRF_RTC0->EVENTS_COMPARE[0] = 0;
+	NRF_RTC0->EVENTS_COMPARE[0] = 0;
+}
+
+void RTC0_Handler2(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler3(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler4(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler5(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler6(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler7(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler8(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler9(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler10(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler11(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler13(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler14(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler15(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler16(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler17(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler18(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler19(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler20(void)
+{
+	red_led_on();
+	while(1);
+}
+void RTC0_Handler21(void)
+{
+	red_led_on();
+	while(1);
+}
+
+void test_sleep_current(void)
+{
+	// Enable global interrupts
+	__enable_irq();
+	// Enable the ability to exit from __WFE() when the RTC0 interrupt occurs
+	NRF_RTC0->INTENSET = RTC_INTENSET_COMPARE0_Msk;
+	NRF_RTC0->EVTEN = RTC_EVTEN_COMPARE0_Msk;
+//	NVIC_EnableIRQ(RTC0_IRQn);
+	while(1) {
+		uint32_t counter = NRF_RTC0->COUNTER;
+		// Set the compare register to be half a second later
+		NRF_RTC0->CC[0] = (counter + (32768 >> 1)) & 0xFFFFFF;
+		NRF_POWER->TASKS_LOWPWR = 1;
+		NRF_RTC0->EVENTS_COMPARE[0] = 0;
+//		while(NRF_RTC0->EVENTS_COMPARE[0] == 0) {
+//			print_debug_message("Sleeping: ", counter & 0xFFFF, 1, 1);
+//			print_debug_message("CC                       : ", NRF_RTC0->CC[0] & 0xFFFF, 1, 1);
+//		}
+//		red_led_on();
+		__WFE();
+//		red_led_on();
+		red_led_toggle();
+	}
+}
+
+
+uint8_t master_rx(uint32_t rx_window_time_ticks)
+{
+	uint8_t packet[30];
+	uint32_t rx_window_timout_time = (NRF_RTC0->COUNTER + rx_window_time_ticks) & 0x00FFFFFF; // COUNTER is a 24-bit counter
+
+	NRF_RADIO->POWER = 1;
+	radio_init();
+	NRF_RADIO->SHORTS = (RADIO_SHORTS_DISABLED_RSSISTOP_Enabled << RADIO_SHORTS_DISABLED_RSSISTOP_Pos) | (RADIO_SHORTS_ADDRESS_RSSISTART_Enabled << RADIO_SHORTS_ADDRESS_RSSISTART_Pos);
+	memset(packet, 0, sizeof(packet));
+	NRF_RADIO->PACKETPTR = (uint32_t)packet;
+	NRF_RADIO->EVENTS_READY = 0;
+	NRF_RADIO->TASKS_RXEN = 1; // First, ramp up the receiver
+	while(NRF_RADIO->EVENTS_READY == 0); // Wait for the radio to ramp up
+	NRF_RADIO->TASKS_START = 1; // start listening for incoming packets
+	NRF_RADIO->EVENTS_END = 0;
+	while(1) {
+		if(NRF_RADIO->EVENTS_END != 0) {
+			break;
+		}
+		if(NRF_RTC0->COUNTER == rx_window_timout_time) {
+			break;
+		}
+	}
+	NRF_RADIO->TASKS_STOP = 1;
+	NRF_RADIO->TASKS_DISABLE = 1;
+
+	int8_t rssi = NRF_RADIO->RSSISAMPLE;
+	if((packet[1] == 8) && (packet[3] == PACKET_MAGIC_NUMBER1) && (packet[4] == PACKET_MAGIC_NUMBER2) && (packet[5] == PACKET_MAGIC_NUMBER3) && (packet[6] == PACKET_MAGIC_NUMBER4)) {
+		#ifdef SLAVE
+			int32_t timing_error;
+			memcpy(&timing_error, packet + 7, sizeof(timing_error));
+			timing_adjust = -timing_error;
+			if(timing_error < 0) {
+				timing_error = -timing_error;
+				print_debug_message("Timing error: -", timing_error & 0xFF, 1, 1);
+			}
+			else {
+				print_debug_message("Timing error: ", timing_error & 0xFF, 1, 1);
+			}
+		#endif
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+
+void master_tx(int32_t timing_error)
+{
+	uint8_t packet[30];
+
+	NRF_RADIO->POWER = 1;
+	radio_init();
+	NRF_RADIO->SHORTS = (RADIO_SHORTS_END_DISABLE_Enabled << RADIO_SHORTS_END_DISABLE_Pos) | (RADIO_SHORTS_READY_START_Enabled << RADIO_SHORTS_READY_START_Pos);
+//	memset(packet, 0, sizeof(packet));
+	packet[3] = PACKET_MAGIC_NUMBER1;
+	packet[4] = PACKET_MAGIC_NUMBER2;
+	packet[5] = PACKET_MAGIC_NUMBER3;
+	packet[6] = PACKET_MAGIC_NUMBER4;
+	packet[7] = timing_error & 0xFF;
+	packet[8] = (timing_error >> 8) & 0xFF;
+	packet[9] = (timing_error >> 16) & 0xFF;
+	packet[10] = (timing_error >> 24) & 0xFF;
+	packet[1] = 8; // the second byte in the packet is the length of the payload
+	NRF_RADIO->PACKETPTR = (uint32_t)packet;
+	NRF_RADIO->EVENTS_READY = 0;
+	NRF_RADIO->EVENTS_DISABLED = 0;
+	NRF_RADIO->TASKS_TXEN = 1; // First, ramp up the transmitter. The packet will transmit automatically after ramp up because of the shortcut set in the SHORTS register
+	while(NRF_RADIO->EVENTS_DISABLED == 0); // Wait for the radio to ramp up
+}
+
+
+void slave_tx(void)
+{
+	master_tx(0); // for now, we will use the same routine as the master_tx, but this may change in the future
+} 
+
+
+uint8_t slave_rx(uint32_t rx_window_time_ticks)
+{
+	return master_rx(rx_window_time_ticks); // for now, we will use the same routine as the master_rx, but this may change in the future
+}
+
+
+// The master will receive first, and if it received a packet from the slave, it will transmit a packet to the slave
+void master_rx_tx(void)
+{
+	static uint8_t missed_rx_tx_count = 0;
+	static uint32_t rx_window_time_ticks = OUT_OF_SYNC_RX_WINDOW_TIME_TICKS;
+	static uint8_t in_sync = 0;
+
+	print_debug_message("Master start", 0, 0, 1);
+
+	while(1) {
+		int32_t offset_ticks = -((int32_t)(rx_window_time_ticks / 2));
+		uint32_t current_time = wait_for_time(offset_ticks, 0);
+		//uint32_t current_time = wait_for_time(-50, 0);
+		uint8_t packet_received_flag = master_rx(rx_window_time_ticks);
+		if(packet_received_flag == 1) {
+			red_led_on();
+			int32_t timing_error = (NRF_RTC0->COUNTER - current_time - (rx_window_time_ticks >> 1)) & 0x00FFFFFF;
+			if(timing_error & 0x800000) {
+				timing_error |= 0xFF000000; // extend the sign bit from 24 bit to 32 bit
+			}
+
+			uint32_t c1 = NRF_RTC0->COUNTER; // short pause before transmitting
+			while(NRF_RTC0->COUNTER == c1);
+			c1 = NRF_RTC0->COUNTER;
+			while(NRF_RTC0->COUNTER == c1);
+
+			master_tx(timing_error);
+
+			if(timing_error < 0) {
+				timing_error = -timing_error;
+				print_debug_message("Timing error: -", timing_error & 0xFFFF, 1, 1);
+			}
+			else {
+				print_debug_message("Timing error: ", timing_error & 0xFFFF, 1, 1);
+			}
+
+			if(!in_sync) {
+				in_sync = 1;
+				print_debug_message("Sent and received a packet. In sync now.", 0, 0, 1);
+			}
+			missed_rx_tx_count = 0;
+			rx_window_time_ticks = IN_SYNC_RX_WINDOW_TIME_TICKS;
+			red_led_off();
+		}
+		else {
+			if(missed_rx_tx_count < MISSED_PACKET_COUNT_UNSYNC_THRESHOLD) {
+				missed_rx_tx_count++;
+			}
+			else {
+				if(in_sync) {
+					in_sync = 0;
+					print_debug_message("Missed a bunch of packets in a row. Will make rx window bigger.", 0, 0, 1);
+				}
+				rx_window_time_ticks = OUT_OF_SYNC_RX_WINDOW_TIME_TICKS;
+			}
+		}
+	}
+}
+
+
+// The slave will transmit first, then receive a response right after
+void slave_tx_rx(void)
+{
+	static uint8_t missed_tx_rx_count = 0;
+	static uint8_t in_sync = 0;
+
+	print_debug_message("Slave start", 0, 0, 1);
+
+	while(1) {
+		wait_for_time(0, (missed_tx_rx_count < MISSED_PACKET_COUNT_UNSYNC_THRESHOLD) ? timing_adjust : SLAVE_OUT_OF_SYNC_TICKS_SHIFT);
+		timing_adjust = 0;
+		red_led_on();
+		slave_tx();
+		red_led_off();
+//		green_led_on();
+		uint8_t packet_received_flag = slave_rx(SLAVE_RX_WINDOW_TIME_TICKS);
+//		green_led_off();
+		if(packet_received_flag == 1) {
+			red_led_on();
+			if(!in_sync) {
+				in_sync = 1;
+				print_debug_message("Sent and received a packet. In sync now.", 0, 0, 1);
+			}
+			missed_tx_rx_count = 0;
+		}
+		else {
+			red_led_off();
+			if(missed_tx_rx_count < MISSED_PACKET_COUNT_UNSYNC_THRESHOLD) {
+				missed_tx_rx_count++;
+			}
+			else {
+				if(in_sync) {
+					in_sync = 0;
+					print_debug_message("Missed a bunch of packets in a row. Will make rx window bigger.", 0, 0, 1);
+				}
+			}
+		}
+	}
+}
+
+
 int main(void) {
 	volatile uint32_t i;
 
-	NRF_CLOCK->TASKS_HFCLKSTART = 1;
-	NRF_CLOCK->LFCLKSRC= (CLOCK_LFCLKSRC_SRC_Xtal << CLOCK_LFCLKSRC_SRC_Pos); // choose the 32kHz crystal as the source (rather than the RC oscillator)
-	NRF_CLOCK->TASKS_LFCLKSTART = 1; // start the 32kHz clock
+	init_all_clocks();
 
-	NRF_P0->PIN_CNF[PIN_GREEN_LED] = 0x3;    // make this GPIO an output
-	NRF_P0->OUTSET = (1 << PIN_RED_LED);
+	// Enable the DC-DC converter to save power
+	NRF_POWER->DCDCEN = 1;
+
+	// Configure the GPIOs that we will use for various functions, like controlling the LEDs
+	NRF_P0->OUTSET = (1 << PIN_RED_LED);     // set high to turn off the LED
 	NRF_P0->PIN_CNF[PIN_RED_LED] = 0x3;      // make this GPIO an output
-	NRF_P0->PIN_CNF[PIN_IR_RECEIVE] = 0x0;   // make this GPIO an input
-	NRF_P0->PIN_CNF[PIN_IR_TRANSMIT] = 0x3;  // make this GPIO an output
+
+	NRF_P0->OUTSET = (1 << PIN_GREEN_LED);   // set high to turn off the LED
+	NRF_P0->PIN_CNF[PIN_GREEN_LED] = 0x3;    // make this GPIO an output
+
+	NRF_P0->OUTSET = (1 << PIN_BLUE_LED);     // set high to turn off the LED
+	NRF_P0->PIN_CNF[PIN_BLUE_LED] = 0x3;      // make this GPIO an output
+
 	NRF_P0->OUTCLR = (1 << PIN_IR_TRANSMIT); // make sure that the IR LED is off initially
-	NRF_P0->OUTSET = (1 << PIN_RED_LED);     // set high to turn off the red LED
-	NRF_P0->OUTSET = (1 << PIN_GREEN_LED);   // set high to turn off the green LED
+	NRF_P0->PIN_CNF[PIN_IR_TRANSMIT] = 0x3;  // make this GPIO an output
+
+	NRF_P0->PIN_CNF[PIN_IR_RECEIVE] = 0x0;   // make this GPIO an input
+
 	NRF_P0->PIN_CNF[PIN_SWITCH1] = 0x0;      // make this GPIO an input
 	NRF_P0->PIN_CNF[PIN_SWITCH2] = 0x0;      // make this GPIO an input
-
-	while (NRF_CLOCK->EVENTS_LFCLKSTARTED == 0); // wait for the 32kHz clock to start
-	NRF_RTC0->TASKS_START = 1; // start the Real time counter
 
 	delay_ticks(16000);
 
@@ -928,9 +1314,21 @@ int main(void) {
 //	test_print_debug_message();
 //	test_adc();
 //	test_rssi();
-	test_bluetooth_transmitter();
-	test_bluetooth_sniffer();
+//	test_bluetooth_transmitter();
+//	test_bluetooth_sniffer();
+	test_sleep_current();
 
+//	print_debug_message("LFCLKSTAT L:", NRF_CLOCK->LFCLKSTAT & 0xFFFF, 1, 1);
+//	print_debug_message("LFCLKSTAT H:", (NRF_CLOCK->LFCLKSTAT >> 16) & 0xFFFF, 1, 1);
+/*
+#ifdef MASTER
+	master_rx_tx();
+#elif defined SLAVE
+	slave_tx_rx();
+#else
+	#error "Must define either MASTER or SLAVE"
+#endif
+*/
 	init_adc();
 	init_pwm();
 
