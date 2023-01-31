@@ -1,48 +1,175 @@
-DEPENDENCY_PREFIX = toolchain_essentials/
-#DEPENDENCY_PREFIX =
-TOOLCHAIN = $(DEPENDENCY_PREFIX)toolchain_and_libraries/SES_ARM_toolchain_6.34a
-SES_INCLUDE = $(DEPENDENCY_PREFIX)toolchain_and_libraries/SES_include
-SES_LIB = $(DEPENDENCY_PREFIX)toolchain_and_libraries/SES_lib
+PROJECT_NAME     := executable
+TARGETS          := nrf52810_xxaa
+OUTPUT_DIRECTORY := build
 
-all: build/executable_master.hex build/executable_slave.hex
+PROJ_DIR := .
 
-build/main_master.o: Source/main.c
-	"$(TOOLCHAIN)/bin/segger-cc" -cc1 -disable-free -disable-llvm-verifier -fgnuc-version=4.2.1 -mrelocation-model static -mconstructor-aliases -x c -std=gnu99 -triple thumbv7em-none-eabi -target-cpu cortex-m4 -target-feature -strict-align -target-feature +soft-float -target-feature +soft-float-abi -msoft-float -target-abi aapcs -mfloat-abi soft -target-feature -fp16 -target-feature -vfp2sp -target-feature -vfp3d16sp -target-feature -vfp4d16sp -fno-signed-char -fallow-half-arguments-and-returns -mllvm -arm-global-merge=false -nostdsysteminc -nobuiltininc "-isystem$(TOOLCHAIN)/include" -I. "-I$(SES_INCLUDE)" -DMASTER -D__SIZEOF_WCHAR_T=4 -D__ARM_ARCH_7EM__ -D__SES_ARM -D__HEAP_SIZE__=2048 -D__SES_VERSION=63401 -D__SEGGER_LINKER -D_LIBCPP_HAS_NO_THREADS -D_LIBCPP_HAS_NO_OFF_T_FUNCTIONS -D__NO_AEABI_ERR__ -DDEBUG -dependency-file "build/main.d" -sys-header-deps -MT build/main_master.o -dwarf-version=4 -debug-info-kind=standalone -debug-info-macro -debugger-tuning=gdb -mllvm -generate-arange-section -exception-model=dwarf -gpubnames -fno-dwarf-directory-asm -fmath-errno -ffunction-sections -fdata-sections -fshort-enums -fno-common "Source/main.c" -emit-obj -o build/main_master.o
+HEX_APP := $(OUTPUT_DIRECTORY)/$(TARGETS).hex
+HEX_SD  := $(PROJ_DIR)/Source/nRF_SoftDevice/hex/s112_nrf52_7.2.0_softdevice.hex
 
-build/main_slave.o: Source/main.c
-	"$(TOOLCHAIN)/bin/segger-cc" -cc1 -disable-free -disable-llvm-verifier -fgnuc-version=4.2.1 -mrelocation-model static -mconstructor-aliases -x c -std=gnu99 -triple thumbv7em-none-eabi -target-cpu cortex-m4 -target-feature -strict-align -target-feature +soft-float -target-feature +soft-float-abi -msoft-float -target-abi aapcs -mfloat-abi soft -target-feature -fp16 -target-feature -vfp2sp -target-feature -vfp3d16sp -target-feature -vfp4d16sp -fno-signed-char -fallow-half-arguments-and-returns -mllvm -arm-global-merge=false -nostdsysteminc -nobuiltininc "-isystem$(TOOLCHAIN)/include" -I. "-I$(SES_INCLUDE)" -DSLAVE  -D__SIZEOF_WCHAR_T=4 -D__ARM_ARCH_7EM__ -D__SES_ARM -D__HEAP_SIZE__=2048 -D__SES_VERSION=63401 -D__SEGGER_LINKER -D_LIBCPP_HAS_NO_THREADS -D_LIBCPP_HAS_NO_OFF_T_FUNCTIONS -D__NO_AEABI_ERR__ -DDEBUG -dependency-file "build/main.d" -sys-header-deps -MT build/main_slave.o -dwarf-version=4 -debug-info-kind=standalone -debug-info-macro -debugger-tuning=gdb -mllvm -generate-arange-section -exception-model=dwarf -gpubnames -fno-dwarf-directory-asm -fmath-errno -ffunction-sections -fdata-sections -fshort-enums -fno-common "Source/main.c" -emit-obj -o build/main_slave.o
 
-build/Cortex_M_Startup.o: System/Cortex_M_Startup.s
-	"$(TOOLCHAIN)/gcc/arm-none-eabi/bin/cc1" -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=gnu99 -E -march=armv7e-m -mlittle-endian -mfloat-abi=soft -mthumb -nostdinc "-isystem$(TOOLCHAIN)/include" -I. "-I$(SES_INCLUDE)" -D__SIZEOF_WCHAR_T=4 -D__ARM_ARCH_7EM__ -D__SES_ARM -D__HEAP_SIZE__=2048 -D__SES_VERSION=63401 -D__SEGGER_LINKER -D_LIBCPP_HAS_NO_THREADS -D_LIBCPP_HAS_NO_OFF_T_FUNCTIONS -D__NO_AEABI_ERR__ -DDEBUG -MD "build/Cortex_M_Startup.d" -MQ build/Cortex_M_Startup.o -quiet -lang-asm "System/Cortex_M_Startup.s" -o "build/Cortex_M_Startup_PP.s"
-	"$(TOOLCHAIN)/gcc/arm-none-eabi/bin/as" --traditional-format -I. -march=armv7e-m -mlittle-endian -mfloat-abi=soft -mthumb "build/Cortex_M_Startup_PP.s" -o build/Cortex_M_Startup.o -g -gdwarf-4
-	"$(TOOLCHAIN)/bin/rm" -f "build/Cortex_M_Startup_PP.s"
+$(OUTPUT_DIRECTORY)/$(TARGETS).out: \
+  LINKER_SCRIPT  := linker.ld
 
-build/SEGGER_THUMB_Startup.o: System/SEGGER_THUMB_Startup.s
-	"$(TOOLCHAIN)/gcc/arm-none-eabi/bin/cc1" -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=gnu99 -E -march=armv7e-m -mlittle-endian -mfloat-abi=soft -mthumb -nostdinc "-isystem$(TOOLCHAIN)/include" -I. "-I$(SES_INCLUDE)" -D__SIZEOF_WCHAR_T=4 -D__ARM_ARCH_7EM__ -D__SES_ARM -D__HEAP_SIZE__=2048 -D__SES_VERSION=63401 -D__SEGGER_LINKER -D_LIBCPP_HAS_NO_THREADS -D_LIBCPP_HAS_NO_OFF_T_FUNCTIONS -D__NO_AEABI_ERR__ -DDEBUG -MD "build/SEGGER_THUMB_Startup.d" -MQ build/SEGGER_THUMB_Startup.o -quiet -lang-asm "System/SEGGER_THUMB_Startup.s" -o "build/SEGGER_THUMB_Startup_PP.s"
-	"$(TOOLCHAIN)/gcc/arm-none-eabi/bin/as" --traditional-format -I. -march=armv7e-m -mlittle-endian -mfloat-abi=soft -mthumb "build/SEGGER_THUMB_Startup_PP.s" -o build/SEGGER_THUMB_Startup.o -g -gdwarf-4
-	"$(TOOLCHAIN)/bin/rm" -f "build/SEGGER_THUMB_Startup_PP.s"
+# Source files common to all targets
+SRC_FILES += \
+  $(PROJ_DIR)/Source/Application/main.c \
+  $(PROJ_DIR)/Source/Application/bsp.c \
+  $(PROJ_DIR)/Source/Application/hw_tests.c \
+  $(PROJ_DIR)/Source/Application/lib_ble.c \
+  $(PROJ_DIR)/Source/nRF_BLE/ble_advdata.c \
+  $(PROJ_DIR)/Source/nRF_BLE/ble_conn_params.c \
+  $(PROJ_DIR)/Source/nRF_BLE/ble_conn_state.c \
+  $(PROJ_DIR)/Source/nRF_BLE/ble_srv_common.c \
+  $(PROJ_DIR)/Source/nRF_BLE/nrf_ble_gatt.c \
+  $(PROJ_DIR)/Source/nRF_BLE/nrf_ble_qwr.c \
+  $(PROJ_DIR)/Source/nRF_BLE_Services/ble_lbs.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/app_error.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/app_error_handler_gcc.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/app_error_weak.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/app_timer2.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/app_util_platform.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/drv_rtc.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/hardfault_implementation.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_atfifo.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_atflags.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_atomic.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_balloc.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_memobj.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_pwr_mgmt.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_ringbuf.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_section_iter.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_sortlist.c \
+  $(PROJ_DIR)/Source/nRF_Libraries/nrf_strerror.c \
+  $(PROJ_DIR)/Source/nRF_Log/nrf_log_default_backends.c \
+  $(PROJ_DIR)/Source/nRF_Log/nrf_log_frontend.c \
+  $(PROJ_DIR)/Source/nRF_SoftDevice/nrf_sdh.c \
+  $(PROJ_DIR)/Source/nRF_SoftDevice/nrf_sdh_ble.c \
+  $(PROJ_DIR)/Source/nRF_SoftDevice/nrf_sdh_soc.c \
+  $(PROJ_DIR)/Source/system/system_nrf52810.c \
+  $(PROJ_DIR)/Source/startup/gcc_startup_nrf52810.S \
 
-build/executable_master.elf: build/main_master.o build/Cortex_M_Startup.o build/SEGGER_THUMB_Startup.o Setup/SEGGER_Flash.icf $(SES_LIB)/libcxx_noexcept_v7em_t_le_eabi_balanced.a
-	"$(TOOLCHAIN)/bin/segger-ld" --add-region:FLASH1=0x00030000@0x00000000 --add-region:FLASH2=0x00001000@0x10001000 --add-region:RAM1=0x00006000@0x20000000 --defsym=__STACKSIZE__=2048 --defsym=__STACKSIZE_PROCESS__=0 --defsym=__HEAPSIZE__=2048 --full-section-headers --dedupe-code --merge-sections --merge-strings -eReset_Handler -EL -mcpu=7E-M --defsym=__SEGGER_RTL_vfprintf=__SEGGER_RTL_vfprintf_int_nwp --defsym=__SEGGER_RTL_vfscanf=__SEGGER_RTL_vfscanf_int --silent --list-all-undefineds --gc-sections -TSetup/SEGGER_Flash.icf --map-text --map-file=build/executable.map --map-standard -u_vectors -o "build/executable_master.elf" --emit-relocs "build/main_master.o" "build/Cortex_M_Startup.o" "build/SEGGER_THUMB_Startup.o" "$(SES_LIB)/libcxx_noexcept_v7em_t_le_eabi_balanced.a" "$(TOOLCHAIN)/lib/libc_v7em_t_le_eabi_balanced.a" "$(TOOLCHAIN)/lib/SEGGER_crtinit_v7em_little.o" "$(TOOLCHAIN)/lib/prinops_rtt_v7em_little.a" "$(TOOLCHAIN)/lib/heapops_basic_v7em_little.a" "$(TOOLCHAIN)/lib/heapops_disable_interrupts_locking_v7em_little.a"
+# Include folders common to all targets
+INC_FOLDERS += \
+  $(PROJ_DIR)/Source/Application \
+  $(PROJ_DIR)/Source/config \
+  $(PROJ_DIR)/Source/nRF_BLE \
+  $(PROJ_DIR)/Source/nRF_BLE_Services \
+  $(PROJ_DIR)/Source/nRF_Drivers \
+  $(PROJ_DIR)/Source/nRF_Drivers/hal \
+  $(PROJ_DIR)/Source/nRF_Libraries \
+  $(PROJ_DIR)/Source/nRF_Log \
+  $(PROJ_DIR)/Source/nRF_SoftDevice \
+  $(PROJ_DIR)/Source/nRF_SoftDevice/headers \
+  $(PROJ_DIR)/Source/system \
+  $(PROJ_DIR)/Source/startup \
+  $(PROJ_DIR)/toolchain_essentials/toolchain_and_libraries/SES_include \
 
-build/executable_slave.elf: build/main_slave.o build/Cortex_M_Startup.o build/SEGGER_THUMB_Startup.o Setup/SEGGER_Flash.icf $(SES_LIB)/libcxx_noexcept_v7em_t_le_eabi_balanced.a
-	"$(TOOLCHAIN)/bin/segger-ld" --add-region:FLASH1=0x00030000@0x00000000 --add-region:FLASH2=0x00001000@0x10001000 --add-region:RAM1=0x00006000@0x20000000 --defsym=__STACKSIZE__=2048 --defsym=__STACKSIZE_PROCESS__=0 --defsym=__HEAPSIZE__=2048 --full-section-headers --dedupe-code --merge-sections --merge-strings -eReset_Handler -EL -mcpu=7E-M --defsym=__SEGGER_RTL_vfprintf=__SEGGER_RTL_vfprintf_int_nwp --defsym=__SEGGER_RTL_vfscanf=__SEGGER_RTL_vfscanf_int --silent --list-all-undefineds --gc-sections -TSetup/SEGGER_Flash.icf --map-text --map-file=build/executable.map --map-standard -u_vectors -o "build/executable_slave.elf" --emit-relocs "build/main_slave.o" "build/Cortex_M_Startup.o" "build/SEGGER_THUMB_Startup.o" "$(SES_LIB)/libcxx_noexcept_v7em_t_le_eabi_balanced.a" "$(TOOLCHAIN)/lib/libc_v7em_t_le_eabi_balanced.a" "$(TOOLCHAIN)/lib/SEGGER_crtinit_v7em_little.o" "$(TOOLCHAIN)/lib/prinops_rtt_v7em_little.a" "$(TOOLCHAIN)/lib/heapops_basic_v7em_little.a" "$(TOOLCHAIN)/lib/heapops_disable_interrupts_locking_v7em_little.a"
+# Libraries common to all targets
+LIB_FILES += \
 
-build/executable_master.hex: build/executable_master.elf
-	"$(TOOLCHAIN)/gcc/arm-none-eabi/bin/objcopy" build/executable_master.elf "build/executable_master.hex" -Oihex
+# Optimization flags
+OPT = -Os -g3
+# Uncomment the line below to enable link time optimization
+#OPT += -flto
 
-build/executable_slave.hex: build/executable_slave.elf
-	"$(TOOLCHAIN)/gcc/arm-none-eabi/bin/objcopy" build/executable_slave.elf "build/executable_slave.hex" -Oihex
+# C flags common to all targets
+CFLAGS += $(OPT)
+CFLAGS += -DAPP_TIMER_V2
+CFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
+#CFLAGS += -DBOARD_PCA10040
+CFLAGS += -DCONFIG_GPIO_AS_PINRESET
+CFLAGS += -DDEVELOP_IN_NRF52832
+CFLAGS += -DFLOAT_ABI_SOFT
+CFLAGS += -DNRF52810_XXAA
+CFLAGS += -DNRF52_PAN_74
+CFLAGS += -DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3
+CFLAGS += -DNRF_SD_BLE_API_VERSION=7
+CFLAGS += -DS112
+CFLAGS += -DSOFTDEVICE_PRESENT
+CFLAGS += -mcpu=cortex-m4
+CFLAGS += -mthumb -mabi=aapcs
+CFLAGS += -Wall
+CFLAGS += -w
+CFLAGS += -mfloat-abi=soft
+# keep every function in a separate section, this allows linker to discard unused ones
+CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
+CFLAGS += -fno-builtin -fshort-enums
 
-program_master: build/executable_master.hex
-	openocd -c 'adapter driver jlink; transport select swd; source [find target/nrf52.cfg]; program build/executable_master.hex verify reset exit'
-	#openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program build/executable_master.hex verify reset exit"
-	#openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "reset_config none; program build/executable_master.hex verify reset exit"
+# C++ flags common to all targets
+CXXFLAGS += $(OPT)
+# Assembler flags common to all targets
+ASMFLAGS += -g3
+ASMFLAGS += -mcpu=cortex-m4
+ASMFLAGS += -mthumb -mabi=aapcs
+ASMFLAGS += -mfloat-abi=soft
+ASMFLAGS += -DAPP_TIMER_V2
+ASMFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
+#ASMFLAGS += -DBOARD_PCA10040
+ASMFLAGS += -DCONFIG_GPIO_AS_PINRESET
+ASMFLAGS += -DDEVELOP_IN_NRF52832
+ASMFLAGS += -DFLOAT_ABI_SOFT
+ASMFLAGS += -DNRF52810_XXAA
+ASMFLAGS += -DNRF52_PAN_74
+ASMFLAGS += -DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3
+ASMFLAGS += -DNRF_SD_BLE_API_VERSION=7
+ASMFLAGS += -DS112
+ASMFLAGS += -DSOFTDEVICE_PRESENT
 
-program_slave: build/executable_slave.hex
-	#openocd -c 'adapter driver jlink; transport select swd; source [find target/nrf52.cfg]; program build/executable_slave.hex verify reset exit'
-	openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program build/executable_slave.hex verify reset exit"
-	#openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "reset_config none; program build/executable_slave.hex verify reset exit"
+# Linker flags
+LDFLAGS += $(OPT)
+LDFLAGS += -mthumb -mabi=aapcs -L$(PROJ_DIR)/toolchain_essentials/toolchain_and_libraries/makefile -T$(LINKER_SCRIPT)
+LDFLAGS += -mcpu=cortex-m4
+# let linker dump unused sections
+LDFLAGS += -Wl,--gc-sections
+# use newlib in nano version
+LDFLAGS += --specs=nano.specs
 
-clean:
-	rm -f build/*
+$(TARGETS): CFLAGS += -D__HEAP_SIZE=2048
+$(TARGETS): CFLAGS += -D__STACK_SIZE=2048
+$(TARGETS): ASMFLAGS += -D__HEAP_SIZE=2048
+$(TARGETS): ASMFLAGS += -D__STACK_SIZE=2048
+
+# Add standard libraries at the very end of the linker input, after all objects
+# that may need symbols provided by these libraries.
+LIB_FILES += -lc -lnosys -lm
+
+
+.PHONY: default help
+
+# Default target - first one defined
+default: $(TARGETS)
+
+# Print all targets that can be built
+help:
+	@echo following targets are available:
+	@echo		nrf52810_xxaa
+	@echo		flash_softdevice
+	@echo		flash  - flashing the app binary
+
+TEMPLATE_PATH := $(PROJ_DIR)/toolchain_essentials/toolchain_and_libraries/makefile
+include $(TEMPLATE_PATH)/Makefile.common
+$(foreach target, $(TARGETS), $(call define_target, $(target)))
+
+.PHONY: flash flash_softdevice erase
+
+# Flash the program
+flash: default
+	@echo Flashing: $(HEX_APP)
+	nrfjprog -f nrf52 --program $(HEX_APP) --sectorerase
+	nrfjprog -f nrf52 --reset
+#	openocd -c 'adapter driver jlink; transport select swd; source [find target/nrf52.cfg]; program $(HEX_APP) verify reset exit'
+#	openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_APP) verify reset exit"
+#	openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_APP) verify reset exit"
+
+# Flash softdevice
+flash_softdevice:
+	@echo Flashing: $(HEX_SD)
+	nrfjprog -f nrf52 --program $(HEX_SD) --sectorerase
+	nrfjprog -f nrf52 --reset
+#	openocd -c 'adapter driver jlink; transport select swd; source [find target/nrf52.cfg]; program $(HEX_SD) verify reset exit'
+#	openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_SD) verify reset exit"
+#	openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_SD) verify reset exit"
+
+erase:
+	nrfjprog -f nrf52 --eraseall
