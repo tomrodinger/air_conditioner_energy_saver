@@ -136,6 +136,40 @@ static void test_rtc(void)
 }
 
 
+static void test_system_off(void)
+{
+	volatile uint32_t i;
+	// Disable all interrupts
+    __disable_irq();
+
+    // Stop the radio and clocks
+    NRF_RADIO->TASKS_DISABLE = 1;
+    NRF_CLOCK->TASKS_HFCLKSTOP = 1;
+    NRF_CLOCK->TASKS_LFCLKSTOP = 1;
+
+    // Ensure voltage regulator in bypass mode
+//    NRF_POWER->REGULATORSET = POWER_REGULATORSET_REGULATORSET_Bypass << POWER_REGULATORSET_REGULATORSET_Pos;
+	NRF_POWER->DCDCEN = 0;
+
+    // Ensure retention of RAM and registers
+//    NRF_POWER->RAMON = POWER_RAMON_ONRAM0_RAM0On << POWER_RAMON_ONRAM0_Pos |
+//                      POWER_RAMON_ONRAM1_RAM1On << POWER_RAMON_ONRAM1_Pos |
+//                       POWER_RAMON_ONRAM2_RAM2On << POWER_RAMON_ONRAM2_Pos |
+//                       POWER_RAMON_ONRAM3_RAM3On << POWER_RAMON_ONRAM3_Pos;
+//    NRF_POWER->RAMONB = POWER_RAMONB_ONRAM4_RAM4On << POWER_RAMONB_ONRAM4_Pos |
+//                        POWER_RAMONB_ONRAM5_RAM5On << POWER_RAMONB_ONRAM5_Pos;
+
+    // Request System OFF mode
+    NRF_POWER->SYSTEMOFF = 1;
+
+    // Wait for System OFF mode
+	for(i = 0; i < 10000000; i++) {
+
+	}
+	NRF_P0->OUTCLR = (1 << PIN_RED_LED);
+    while (1);
+}
+
 static void test_uart(void)
 {
 	static char hello_world[] = "Hello World!\n";
@@ -1294,6 +1328,60 @@ int main(void) {
 
 	NRF_P0->PIN_CNF[PIN_SWITCH1] = 0x0;      // make this GPIO an input
 	NRF_P0->PIN_CNF[PIN_SWITCH2] = 0x0;      // make this GPIO an input
+
+// DEBUG section below
+	NRF_P0->OUTCLR = (1 << 2);     // set low
+	NRF_P0->OUTCLR = (1 << 3);     // set low
+	NRF_P0->OUTCLR = (1 << 4);     // set low
+	NRF_P0->OUTCLR = (1 << 5);     // set low
+	NRF_P0->OUTCLR = (1 << 6);     // set low
+	NRF_P0->OUTCLR = (1 << 7);     // set low
+	NRF_P0->OUTCLR = (1 << 8);     // set low
+	NRF_P0->OUTCLR = (1 << 9);     // set low
+	NRF_P0->OUTCLR = (1 << 10);     // set low
+	NRF_P0->OUTCLR = (1 << 11);     // set low
+	NRF_P0->OUTCLR = (1 << 13);     // set low
+	NRF_P0->OUTCLR = (1 << 16);     // set low
+	NRF_P0->OUTCLR = (1 << 17);     // set low
+	NRF_P0->OUTCLR = (1 << 18);     // set low
+	NRF_P0->OUTCLR = (1 << 19);     // set low
+	NRF_P0->OUTCLR = (1 << 20);     // set low
+	NRF_P0->OUTCLR = (1 << 21);     // set low
+	NRF_P0->OUTCLR = (1 << 22);     // set low
+	NRF_P0->OUTCLR = (1 << 23);     // set low
+	NRF_P0->OUTCLR = (1 << 24);     // set low
+	NRF_P0->OUTCLR = (1 << 25);     // set low
+	NRF_P0->OUTCLR = (1 << 26);     // set low
+	NRF_P0->OUTCLR = (1 << 27);     // set low
+	NRF_P0->OUTCLR = (1 << 29);     // set low
+	NRF_P0->OUTCLR = (1 << 31);     // set low
+	NRF_P0->PIN_CNF[2] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[3] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[4] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[5] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[6] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[7] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[8] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[9] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[10] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[11] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[13] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[16] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[17] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[18] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[19] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[20] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[21] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[22] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[23] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[24] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[25] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[26] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[27] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[29] = 0x3;      // make this GPIO an output
+	NRF_P0->PIN_CNF[31] = 0x3;      // make this GPIO an output
+// END OF DEBUG
+   test_system_off(); // lowest possible power state. expecting the chip to use less than 1uA
 
 	delay_ticks(16000);
 
