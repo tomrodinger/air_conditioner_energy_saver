@@ -17,6 +17,8 @@
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
 
+#define HW_TESTS
+
 int main(void) {
 
   /* Initialize board peripherals */

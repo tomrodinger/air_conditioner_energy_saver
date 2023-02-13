@@ -35,13 +35,14 @@ void hw_tests(void)
 //	test_pwm_pulsing();
 //	test_ir_receive();
 //	test_bluetooth();
-	test_ble();
+//	test_ble();
 //	test_print_debug_message();
 //	test_adc();
 //	test_rssi();
 //	test_bluetooth_transmitter();
 //	test_bluetooth_sniffer();
 //	test_sleep_current();
+	test_system_off();
 
 //	print_debug_message("LFCLKSTAT L:", NRF_CLOCK->LFCLKSTAT & 0xFFFF, 1, 1);
 //	print_debug_message("LFCLKSTAT H:", (NRF_CLOCK->LFCLKSTAT >> 16) & 0xFFFF, 1, 1);
@@ -1245,4 +1246,19 @@ void slave_tx_rx(void)
 			}
 		}
 	}
+}
+
+// Tests the lowest possible current consumption of the system. Expected only 0.3uA consumption from the MCU
+void test_system_off(void)
+{
+    /* Put green LED on to see when the program starts */
+    green_led_on();
+
+    /* Put the chip into system off mode. NOTE: System runs together with the Softdevice */
+    ret_code_t err_code = sd_power_system_off();
+    APP_ERROR_CHECK(err_code);
+
+    /* Should never reach here */
+    red_led_on();
+    while (1);
 }
