@@ -18,66 +18,6 @@
 
 volatile uint32_t i;
 
-/**
- * @brief Run specific hardware tests
- */
-void hw_tests(void)
-{
-	/** 
-	 * Below are the various tests you can run to test the hardware.
-     * If you want to run a test, uncomment it and leave the others commented out.
-	 */
-//	test_uart();
-//	test_rtc();
-//	test_buttons_and_leds();
-//	IR_led_toggle();
-//  test_pwm();
-//	test_pwm_pulsing();
-//	test_ir_receive();
-//	test_bluetooth();
-//	test_ble();
-//	test_print_debug_message();
-//	test_adc();
-//	test_rssi();
-//	test_bluetooth_transmitter();
-//	test_bluetooth_sniffer();
-//	test_sleep_current();
-	test_system_off();
-
-//	print_debug_message("LFCLKSTAT L:", NRF_CLOCK->LFCLKSTAT & 0xFFFF, 1, 1);
-//	print_debug_message("LFCLKSTAT H:", (NRF_CLOCK->LFCLKSTAT >> 16) & 0xFFFF, 1, 1);
-/*
-#ifdef MASTER
-	master_rx_tx();
-#elif defined SLAVE
-	slave_tx_rx();
-#else
-	#error "Must define either MASTER or SLAVE"
-#endif
-*/
-	init_adc();
-	init_pwm();
-
-	enable_reset_pin();
-
-	while(1)
-	{
-		if(NRF_P0->IN & (1 << PIN_SWITCH1))
-		{
-			red_led_on();
-			record_ir_pattern();
-			red_led_off();
-		}
-
-		if(NRF_P0->IN & (1 << PIN_SWITCH2))
-		{
-			green_led_on();
-			playback_ir_pattern();
-			green_led_off();
-		}
-	}
-}
-
 void test_rtc(void)
 {
 	while(1) {
@@ -479,10 +419,6 @@ void record_ir_pattern(void)
 void playback_ir_pattern(void)
 {
 	uint32_t i;
-	uint32_t time_value;
-	uint16_t time_on = 0;
-	uint16_t time_off = 0;
-	uint32_t time_calculation;
 
 	for(i = 0; i < captured_ir_signal_transition_time_index; i += 2) {
 		NRF_PWM0->SEQ[0].REFRESH = captured_ir_signal_transition_time[i]; // set the LED on time
@@ -854,8 +790,6 @@ void test_bluetooth_sniffer(void)
 void test_bluetooth_transmitter(void)
 {
 	uint8_t packet[300];
-	char character_plus_terminator[2] = "c";
-	uint16_t i;
 
 	print_debug_message("Bluetooth broadcaster", 0, 0, 1);
 
@@ -1254,11 +1188,75 @@ void test_system_off(void)
     /* Put green LED on to see when the program starts */
     green_led_on();
 
+    /* Enable BLE configuration so that softdevice gets activated */
+    lib_ble_init();
+    lib_ble_advertising_start();
+
     /* Put the chip into system off mode. NOTE: System runs together with the Softdevice */
     ret_code_t err_code = sd_power_system_off();
-    APP_ERROR_CHECK(err_code);
+    //APP_ERROR_CHECK(err_code);
 
     /* Should never reach here */
     red_led_on();
     while (1);
+}
+
+/**
+ * @brief Run specific hardware tests
+ */
+void hw_tests(void)
+{
+	/**
+	 * Below are the various tests you can run to test the hardware.
+	 * If you want to run a test, uncomment it and leave the others commented out.
+	 */
+//	test_uart();
+//	test_rtc();
+//	test_buttons_and_leds();
+//	IR_led_toggle();
+//	test_pwm();
+//	test_pwm_pulsing();
+//	test_ir_receive();
+//	test_bluetooth();
+//	test_ble();
+//	test_print_debug_message();
+//	test_adc();
+//	test_rssi();
+//	test_bluetooth_transmitter();
+//	test_bluetooth_sniffer();
+//	test_sleep_current();
+	test_system_off();
+
+//	print_debug_message("LFCLKSTAT L:", NRF_CLOCK->LFCLKSTAT & 0xFFFF, 1, 1);
+//	print_debug_message("LFCLKSTAT H:", (NRF_CLOCK->LFCLKSTAT >> 16) & 0xFFFF, 1, 1);
+/*
+#ifdef MASTER
+	master_rx_tx();
+#elif defined SLAVE
+	slave_tx_rx();
+#else
+	#error "Must define either MASTER or SLAVE"
+#endif
+*/
+	init_adc();
+	init_pwm();
+
+	enable_reset_pin();
+
+	while(1)
+	{
+		if(NRF_P0->IN & (1 << PIN_SWITCH1))
+		{
+			red_led_on();
+			record_ir_pattern();
+			red_led_off();
+		}
+
+		if(NRF_P0->IN & (1 << PIN_SWITCH2))
+		{
+			green_led_on();
+			playback_ir_pattern();
+			green_led_off();
+		}
+	}
 }
