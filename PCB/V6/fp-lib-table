@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "Motion_sense")(type "KiCad")(uri "${KIPRJMOD}/Motion_sense.pretty")(options "")(descr ""))
+)
