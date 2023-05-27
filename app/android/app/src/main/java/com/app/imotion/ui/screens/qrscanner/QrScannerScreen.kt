@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import com.app.imotion.R
 import com.app.imotion.ui.components.Header
 import com.app.imotion.ui.components.MotionButton
+import com.app.imotion.ui.components.ScreenTemplate
 import com.app.imotion.ui.components.VerticalSpacer
-import com.app.imotion.ui.screens.ScreenTemplate
 import com.app.imotion.ui.theme.MotionGrey
 import com.app.imotion.ui.theme.PreviewTheme
 import com.google.accompanist.permissions.*

@@ -1,4 +1,4 @@
-package com.app.imotion.ui.screens
+package com.app.imotion.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,8 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.app.imotion.ui.components.Header
-import com.app.imotion.ui.components.IMotionSurface
 import com.app.imotion.ui.theme.PreviewTheme
 
 /**

@@ -76,7 +76,7 @@ fun AllDevicesScreen(
                         text = "Add Device",
                         icon = R.drawable.add,
                         onClick = {
-                            onAddDevice
+                            onAddDevice()
                         }
                     )
                 }
