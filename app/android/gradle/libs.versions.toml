@@ -8,9 +8,10 @@ androidx-compose-ui = "1.5.0-beta01"
 androidx-compose-foundation = "1.5.0-beta01"
 androidx-compose-material = "1.5.0-beta01"
 
+androidx-lifecycle = "2.6.1"
+
 activity-compose = "1.6.1"
 kotlinx-coroutines = "1.6.4"
-lifecycle-viewmodel-compose = "2.6.0"
 navigation-compose = "2.5.3"
 accompanist-permissions = "0.31.2-alpha"
 
@@ -29,7 +30,9 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-viewmodel-compose" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist-permissions" }
 
