@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.app.imotion.R
 import com.app.imotion.ui.theme.PreviewTheme
 
 /**
@@ -45,6 +46,23 @@ fun ScreenTemplate(
     }
 }
 
+@Composable
+fun SimpleScreenTemplate(
+    title: String,
+    onBack: () -> Unit,
+    content: @Composable () -> Unit,
+) {
+    ScreenTemplate(
+        headerContent = {
+            Header(
+                title = title,
+                onBack = onBack,
+            )
+        },
+        modalContent = content,
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun ScreenTemplatePreview() {
@@ -53,10 +71,28 @@ private fun ScreenTemplatePreview() {
             headerContent = {
                 Header(
                     title = "Scan Code",
+                    iconAction1 = HeaderIconAction(
+                        iconRes = R.drawable.refresh,
+                        action = {}
+                    ),
                     onBack = {}
                 )
             },
             modalContent = {
+                Text("Content", color = Color.Red)
+            }
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SimpleScreenTemplatePreview() {
+    PreviewTheme {
+        SimpleScreenTemplate(
+            title = "Simple Screen",
+            onBack = {},
+            content = {
                 Text("Content", color = Color.Red)
             }
         )
