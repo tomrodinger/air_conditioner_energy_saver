@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 /**
- * Created by hani.fakhouri@verisure.com on 2023-05-29.
+ * Created by hani@fakhouri.eu on 2023-05-29.
  */
 class IrCodeSetupScreenVM : ViewModel() {
 

@@ -33,7 +33,7 @@ import com.app.imotion.ui.theme.MotionGrey
 import com.app.imotion.ui.theme.PreviewTheme
 
 /**
- * Created by hani.fakhouri@verisure.com on 2023-05-27.
+ * Created by hani@fakhouri.eu on 2023-05-27.
  */
 
 @Composable
