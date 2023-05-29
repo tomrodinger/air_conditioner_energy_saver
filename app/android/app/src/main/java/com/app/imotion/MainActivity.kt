@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.app.imotion.model.Device
+import com.app.imotion.model.IMotionDevice
 import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.ui.components.IMotionSurface
 import com.app.imotion.ui.components.MainPageHeader
@@ -32,25 +32,25 @@ class MainActivity : ComponentActivity() {
                         Box(modifier = Modifier.fillMaxWidth()) {
                             AllDevicesScreen(
                                 devices = listOf(
-                                    Device(
+                                    IMotionDevice(
                                         "Device 1",
                                         "Living Room",
                                         true,
                                         DeviceSerialNumber("QWEDSA")
                                     ),
-                                    Device(
+                                    IMotionDevice(
                                         "Device 2",
                                         "Kitchen Room",
                                         false,
                                         DeviceSerialNumber("QerDSA")
                                     ),
-                                    Device(
+                                    IMotionDevice(
                                         "Device Three",
                                         "Bedroom",
                                         true,
                                         DeviceSerialNumber("CCWRRDSA")
                                     ),
-                                    Device(
+                                    IMotionDevice(
                                         "Device Four",
                                         "Living Room",
                                         true,

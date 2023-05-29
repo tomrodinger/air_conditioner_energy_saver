@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.app.imotion.R
+import com.app.imotion.model.IMotionDevice
 import com.app.imotion.ui.components.HorizontalSpacer
 import com.app.imotion.ui.components.MotionButton
 import com.app.imotion.ui.components.SimpleScreenTemplate
@@ -33,7 +34,6 @@ import com.app.imotion.ui.components.VerticalSpacer
 import com.app.imotion.ui.theme.MotionGrey
 import com.app.imotion.ui.theme.PreviewTheme
 import com.app.imotion.ui.utils.ComposeUtils.pxToDp
-import kotlinx.coroutines.delay
 
 /**
  * Created by hani.fakhouri@verisure.com on 2023-05-28.
@@ -82,13 +82,17 @@ private fun getSteps() = listOf(
 @Composable
 fun IrCodeSetupScreen(
     vm: IrCodeSetupScreenVM = viewModel(),
+    onSetupDeviceControls: () -> Unit,
     onBack: () -> Unit,
 ) {
     SimpleScreenTemplate(
         title = "Learn IR code & Connect",
         onBack = onBack,
         content = {
-            AllStepsUi(vm = vm)
+            AllStepsUi(
+                vm = vm,
+                onSetupDeviceControls = onSetupDeviceControls,
+            )
         }
     )
 }
@@ -96,6 +100,7 @@ fun IrCodeSetupScreen(
 @Composable
 private fun AllStepsUi(
     vm: IrCodeSetupScreenVM = viewModel(),
+    onSetupDeviceControls: () -> Unit,
 ) {
 
     val syncState by vm.state.collectAsStateWithLifecycle()
@@ -165,10 +170,12 @@ private fun AllStepsUi(
                     }
                 }
                 3 -> {
-                    MotionButton(text = "Set Controls") {
-                        // TODO
-                        currentStepIndex = 0
-                    }
+                    MotionButton(
+                        text = "Set Controls",
+                        onClick = {
+                            vm.navigateToSetupDeviceControls()
+                        },
+                    )
                 }
             }
         }
@@ -372,6 +379,7 @@ private fun LearIrCodeScreenPreview() {
     PreviewTheme {
         IrCodeSetupScreen(
             onBack = {},
+            onSetupDeviceControls = {},
         )
     }
 }
