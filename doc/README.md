@@ -12,7 +12,7 @@
 10. [ Requirement 1.10: The App will support QR code reading to connect to the Device](#req1.10)
 
 ## Requirement 1.1 <a name="req1.1"></a>
-The Device should be able to learn the IR control signals (learning mode)
+**The Device should be able to learn the IR control signals (learning mode)**
 
 ### BLE Protocol
 
@@ -154,7 +154,6 @@ Properties | NOTIFY, READ
 Type | uint16
 
 ### Comments
-TODO
 
 ### Questions
 - Why is a custom characteristic needed? Isn’t it enough with the Battery service?
@@ -169,7 +168,6 @@ N/A
 - Completely handled by the App
 
 ### Questions
-TODO
 
 ## Requirement 1.9 <a name="req1.9"></a>
 **The App will allow turning on the air conditioner when motion is sensed**
@@ -181,7 +179,6 @@ TDB
 - The BLE protocol for this is missing
 
 ### Questions
-TODO
 
 ## Requirement 1.10 <a name="req1.10"></a>
 **The App will support QR code reading to connect to the Device**
@@ -189,7 +186,6 @@ TODO
 ### BLE Protocol
 
 ### Comments
-TODO
 
 ### Questions
 - More information needed about the information that will be handled by the QR code.
