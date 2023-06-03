@@ -1,9 +1,16 @@
 # Requirements Specification
 
-1. [ Requirement 1.1: The Device should be able to learn the IR control signals (learning mode) ](#ref1)
-2. [ Requirement 1.2: The Device should be able to emit IR control signals ](#ref2)
+1. [ Requirement 1.1: The Device should be able to learn the IR control signals (learning mode) ](#req1.1)
+2. [ Requirement 1.2: The Device should be able to emit IR control signals ](#req1.2)
+3. [ Requirement 1.3: The App will allow the user to set schedules to turn on and off an air conditioner_](#req1.3)
+4. [ Requirement 1.4: _](#req1.4)
+5. [ Requirement 1.5: _](#req1.5)
+6. [ Requirement 1.6: _](#req1.6)
+7. [ Requirement 1.7: _](#req1.7)
+8. [ Requirement 1.8: _](#req1.8)
+9. [ Requirement 1.9: _](#req1.9)
 
-## Requirement 1.1 <a name="ref1"></a>
+## Requirement 1.1 <a name="req1.1"></a>
 The Device should be able to learn the IR control signals (learning mode)
 
 ### BLE Protocol
@@ -25,7 +32,7 @@ Type | ???
 - Will the App get confirmation from the Device that the code has been successfully learned?
 - User needs to input to the App what signal is being learned (e.g. turn on air conditioner). No UI design for that today. Will there be design?
 
-## Requirement 1.2 <a name="ref2"></a>
+## Requirement 1.2 <a name="req1.2"></a>
 **The Device should be able to emit IR control signals**
 
 ## BLE Protocol
@@ -43,7 +50,7 @@ Type | ???
 ### Questions
 - Will the App get confirmation from the Device that the code has been successfully emitted?
 
-## Requirement 1.3
+## Requirement 1.3 <a name="req1.3"></a>
 **The App will allow the user to set schedules to turn on and off an air conditioner**
 
 ## BLE Protocol
@@ -72,7 +79,23 @@ Where the first char is “0”(On) or “1”(Off). Remaining chars are the sch
 - Include days of week?
 - UTC time?
 
+## Requirement 1.1
+**The Device should be able to learn the IR control signals (learning mode)**
 
+## BLE Protocol
+
+Custom characteristic | -
+--- | ---
+Name | IR Codes learn
+UUID | TBD
+Properties | WRITE, WRITE NO RESPONSE
+Type | ???
+
+### Comments
+TODO
+
+### Questions
+TODO
 
 
 
