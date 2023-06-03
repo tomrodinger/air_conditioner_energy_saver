@@ -1,10 +1,7 @@
 # Requirements Specification
 
-1. [ Description. ](#ref1)
-2. [ Usage tips. ](#ref2)
-3. [Purpose](https://github.com/tomrodinger/air_conditioner_energy_saver/new/main/doc)
-
-https://github.com/tomrodinger/air_conditioner_energy_saver/blob/main/doc/README.md/#ref2
+1. [ Requirement 1.1: The Device should be able to learn the IR control signals (learning mode) ](#ref1)
+2. [ Requirement 1.2: The Device should be able to emit IR control signals ](#ref2)
 
 <a name="ref1"></a>
 ## Requirement 1.1
