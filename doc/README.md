@@ -3,9 +3,9 @@
 1. [ Requirement 1.1: The Device should be able to learn the IR control signals (learning mode) ](#ref1)
 2. [ Requirement 1.2: The Device should be able to emit IR control signals ](#ref2)
 
-<a name="ref1"></a>
 ## Requirement 1.1
 The Device should be able to learn the IR control signals (learning mode)
+<a name="ref1"></a>
 
 ### BLE Protocol
 
@@ -26,9 +26,9 @@ Type | ???
 - Will the App get confirmation from the Device that the code has been successfully learned?
 - User needs to input to the App what signal is being learned (e.g. turn on air conditioner). No UI design for that today. Will there be design?
 
-<a name="ref2"></a>
 ## Requirement 1.2
 **The Device should be able to emit IR control signals**
+<a name="ref2"></a>
 
 ## BLE Protocol
 
