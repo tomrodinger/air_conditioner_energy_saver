@@ -1,0 +1,66 @@
+Device information service.
+UUID: 0x180A
+	Hardware Revision characteristic.
+	Name: Hardware Revision string
+	UUID: 0x2A27
+	Properties: READ
+	Type: UTF-8 String Ex:("1.0.0")
+
+	Firmware Revision characteristic.
+	Name: Firmware Revision string
+	UUID: 0x2A26
+	Properties: READ
+	Type: UTF-8 String Ex:("1.0.0")
+
+Battery service.
+UUID: 0x180F
+	Battery level characteristic.
+	Name: Battery level
+	UUID: 0x2A19
+	Properties: NOTIFY, READ
+	Type: uint8
+
+Custom service.
+UUID: TBD
+	Custom characteristic.
+	Name: RTC Set
+	UUID: TBD
+	Properties: WRITE, WRITE NO RESPONSE
+	Type: uint32
+
+	Custom characteristic.
+	Name: Motion sensor sensitivity
+	UUID: TBD
+	Properties: WRITE, WRITE NO RESPONSE
+	Type: uint32
+
+	Custom characteristic.
+	Name: Motion sensor timeout
+	UUID: TBD
+	Properties: WRITE, WRITE NO RESPONSE
+	Type: uint32
+
+	Custom characteristic.
+	Name: Set schedule
+	UUID: TBD
+	Properties: WRITE, WRITE NO RESPONSE
+	Type: ???
+
+	Custom characteristic.
+	Name: Battery voltage
+	UUID: TBD
+	Properties: NOTIFY, READ
+	Type: uint16
+
+	Custom characteristic.
+	Name: IR Codes learn
+	UUID: TBD
+	Properties: WRITE, WRITE NO RESPONSE
+	Type: ???
+
+	Custom characteristic.
+	Name: IR Codes emmit
+	UUID: TBD
+	Properties: WRITE, WRITE NO RESPONSE
+	Type: ???
+
