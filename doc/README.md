@@ -193,4 +193,3 @@ TODO
 
 ### Questions
 - More information needed about the information that will be handled by the QR code.
-- 
