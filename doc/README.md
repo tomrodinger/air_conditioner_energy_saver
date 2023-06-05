@@ -24,14 +24,10 @@ Properties | WRITE, WRITE NO RESPONSE
 Type | ???
 
 ### Comments
-- The App tells the Device to enter learning mode.
-- The App tells the Device what IR control signal is to be learned.
-- The App needs to map each IR control signal to a unique signal code.
-- The app needs to store the signal code for later usage.
+- The App tells the Device what IR code is to be learned.
 
 ### Questions
 - Will the App get confirmation from the Device that the code has been successfully learned?
-- User needs to input to the App what signal is being learned (e.g. turn on air conditioner). No UI design for that today. Will there be design?
 
 ## Requirement 1.2 <a name="req1.2"></a>
 **The Device should be able to emit IR control signals**
@@ -65,20 +61,15 @@ Type | ???
 
 ### Comments
 
-- Not clear yet if days of week should be included
 - We need a command to disable/erase a schedule.
+- Supports time and days of week
+- Example: Turn on air conditioner every weekday on 7:00 am.
 
 The App tells the Device:
-- On or Off
-- When to trigger
-
-Proposed type: UTF-8 String
-
-Where the first char is “0”(On) or “1”(Off). Remaining chars are the scheduling data.
+- What IR code to trigger
+- When to trigger it
 
 ### Questions
-- Include days of week?
-- UTC time?
 
 ## Requirement 1.4 <a name="req1.4"></a>
 **The App will allow the motion sensor sensitivity to be set**
@@ -112,14 +103,9 @@ Type | uint32
 ### Comments
 - We need a command to disable/erase a schedule.
 - The App tells the Device the timeout value.
-
-Proposed timeout value: Timeout in seconds.
-
-Example: Turn off air conditioner if no motion is sensed for 10 minutes: App sends: 600
+- The App tells the Device what IR code to emit when timeout value is reached.
 
 ### Questions
-- Include days of week?
-- UTC time?
 
 ## Requirement 1.6 <a name="req1.6"></a>
 **The App will allow the air conditioner to be controlled manually using buttons in the App (for testing purposes mainly)**
@@ -188,4 +174,4 @@ TDB
 ### Comments
 
 ### Questions
-- More information needed about the information that will be handled by the QR code.
+- More information needed about the information that will be provided by the QR code.
