@@ -12,7 +12,7 @@
 10. [ Requirement 1.10: The App will support QR code reading to connect to the Device](#req1.10)
 11. [ Requirement 1.11: The App will synchronize time with the Device](#req1.11)
 12. [ Requirement 1.12: The App will display Device information](#req1.12)
-13. [ Requirement 1.13: The App will allow time windowed scheduling](#req1.13)
+13. [ Requirement 1.13: The App will allow time windowed scheduling of IR code triggering](#req1.13)
 
 ## Requirement 1.1 <a name="req1.1"></a>
 **The Device should be able to learn the IR control signals (learning mode)**
@@ -219,7 +219,7 @@ Type | UTF-8 String Ex:("1.0.0")
 ### Questions
 
 ## Requirement 1.13 <a name="req1.13"></a>
-**The App will allow time windowed scheduling**
+**The App will allow time windowed scheduling of IR code triggering**
 
 ### BLE Protocol
 TBD
