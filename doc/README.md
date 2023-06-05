@@ -2,7 +2,7 @@
 
 1. [ Requirement 1.1: The Device should be able to learn the IR control signals](#req1.1)
 2. [ Requirement 1.2: The Device should be able to emit IR control signals](#req1.2)
-3. [ Requirement 1.3: The App will allow the user to set schedules to turn on and off an air conditioner](#req1.3)
+3. [ Requirement 1.3: The App will allow time based scheduling of IR code triggering](#req1.3)
 4. [ Requirement 1.4: The App will allow the motion sensor sensitivity to be set](#req1.4)
 5. [ Requirement 1.5: The App will allow a timeout to be set](#req1.5)
 6. [ Requirement 1.6: The App will allow manual control of the air conditioner](#req1.6)
@@ -10,6 +10,9 @@
 8. [ Requirement 1.8: The App will display a notification when the battery is getting low](#req1.8)
 9. [ Requirement 1.9: The App will allow turning on the air conditioner when motion is sensed](#req1.9)
 10. [ Requirement 1.10: The App will support QR code reading to connect to the Device](#req1.10)
+11. [ Requirement 1.11: The App will synchronize time with the Device](#req1.11)
+12. [ Requirement 1.12: The App will display Device information](#req1.12)
+13. [ Requirement 1.13: The App will allow time windowed scheduling](#req1.13)
 
 ## Requirement 1.1 <a name="req1.1"></a>
 **The Device should be able to learn the IR control signals (learning mode)**
@@ -27,7 +30,6 @@ Type | ???
 - The App tells the Device what IR code is to be learned.
 
 ### Questions
-- Will the App get confirmation from the Device that the code has been successfully learned?
 
 ## Requirement 1.2 <a name="req1.2"></a>
 **The Device should be able to emit IR control signals**
@@ -45,10 +47,9 @@ Type | ???
 - The App tells the Device what IR control signal to send.
 
 ### Questions
-- Will the App get confirmation from the Device that the code has been successfully emitted?
 
 ## Requirement 1.3 <a name="req1.3"></a>
-**The App will allow the user to set schedules to turn on and off an air conditioner**
+**The App will allow time based scheduling of IR code triggering**
 
 ### BLE Protocol
 
@@ -115,6 +116,7 @@ N/A
 
 ### Comments
 - Completely handled by the App. Given that IR control signals have been learned.
+- Dependent on 1.2.
 - Double check if UI design is present for this requirement.
 
 ### Questions
@@ -175,3 +177,54 @@ TDB
 
 ### Questions
 - More information needed about the information that will be provided by the QR code.
+
+## Requirement 1.11 <a name="req1.11"></a>
+**The App will synchronize time with the Device**
+
+### BLE Protocol
+
+Custom characteristic | -
+--- | ---
+Name | Motion sensor timeout
+UUID | TBD
+Properties | WRITE, WRITE NO RESPONSE
+Type | uint32
+
+### Comments
+- RTC: Real Time Clock. The App will send epoch time in order to syncronize the time on the Device.
+
+### Questions
+
+## Requirement 1.12 <a name="req1.12"></a>
+**The App will display Device informatione**
+
+### BLE Protocol
+
+Device information service. | UUID: 0x180F
+--- | ---
+Hardware Revision characteristic | -
+Name | Hardware Revision string
+UUID | 0x2A27
+Properties | READ
+Type | UTF-8 String Ex:("1.0.0")
+---- | ----  
+Firmware Revision characteristic. | -
+Name | Firmware Revision string
+UUID | 0x2A26
+Properties | READ
+Type | UTF-8 String Ex:("1.0.0")
+
+### Comments
+
+### Questions
+
+## Requirement 1.13 <a name="req1.13"></a>
+**The App will allow time windowed scheduling**
+
+### BLE Protocol
+TBD
+
+### Comments
+The logic here is that if motion is detected and it is sufficiently strong to pass the threshold of the sensitivity setting and the time at which the motion occurs is within the time window (between the begin time and end time) then the IR code will be triggered. For example, I want to set up this device to turn on my air conditioner in the office during the weekdays Monday to Friday during office hours 9am to 5pm (the time window) and only if a person walks directly onto the room and not a person walking outside the office (hence sensitivity adjustmemt).
+
+### Questions
