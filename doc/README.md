@@ -62,9 +62,9 @@ Type | ???
 
 ### Comments
 
-- We need a command to disable/erase a schedule.
-- Supports time and days of week
+- Supports time and days of week.
 - Example: Turn on air conditioner every weekday on 7:00 am.
+- We need a command to disable/erase a schedule.
 
 The App tells the Device:
 - What IR code to trigger
