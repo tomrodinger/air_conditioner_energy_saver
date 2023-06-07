@@ -1,4 +1,4 @@
-package com.app.imotion.ui.screens.ircode
+package com.app.imotion.ui.screens.ircode.setup
 
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.Crossfade

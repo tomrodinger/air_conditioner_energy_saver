@@ -1,4 +1,4 @@
-package com.app.imotion.ui.screens.ircode
+package com.app.imotion.ui.screens.ircode.setup
 
 /**
  * Created by hani@fakhouri.eu on 2023-05-29.
