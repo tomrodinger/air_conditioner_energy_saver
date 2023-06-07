@@ -11,11 +11,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.app.imotion.extensions.applyIf
 import com.app.imotion.ui.theme.MotionBackground
 
 /**
@@ -27,17 +29,24 @@ fun MotionButton(
     text: String,
     @DrawableRes icon: Int? = null,
     color: Color = MaterialTheme.colors.primary,
+    enabled: Boolean = true,
     onClick: () -> Unit,
 ) {
+    val alpha = if (enabled) 1.0F else 0.3F
     Box(
         modifier = Modifier
+            .alpha(alpha)
             .fillMaxWidth()
             .clip(CircleShape)
             .background(
                 color = color,
                 shape = CircleShape
             )
-            .clickable { onClick() }
+            .applyIf(enabled) {
+                this.clickable {
+                    onClick()
+                }
+            }
             .padding(vertical = 8.dp, horizontal = 8.dp),
         contentAlignment = Alignment.Center,
     ) {

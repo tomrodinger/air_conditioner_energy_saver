@@ -1,27 +1,18 @@
 package com.app.imotion.ui.screens.controls
 
-import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -29,12 +20,8 @@ import com.app.imotion.R
 import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.model.IMotionDevice
 import com.app.imotion.model.TimerValue
-import com.app.imotion.model.prefixZero
-import com.app.imotion.ui.components.HorizontalSpacer
-import com.app.imotion.ui.components.SimpleScreenTemplate
-import com.app.imotion.ui.components.VerticalSpacer
+import com.app.imotion.ui.components.*
 import com.app.imotion.ui.theme.PreviewTheme
-import kotlinx.coroutines.delay
 
 /**
  * Created by hani.fakhouri on 2023-05-31.
@@ -98,8 +85,6 @@ private fun ControlsUi(
         )
     }
 }
-
-private typealias onSelected = () -> Unit
 
 @Composable
 private fun MotionDetectionController(
@@ -307,145 +292,15 @@ private fun TimerUi(
         HorizontalSpacer(space = 8.dp)
 
         Row {
-            Text(
-                text = value.hours.prefixZero(),
-                color = MaterialTheme.colors.onBackground,
-                fontWeight = FontWeight.W500,
-                style = MaterialTheme.typography.h4,
-                textAlign = TextAlign.Center,
-            )
-            Text(
-                modifier = Modifier
-                    .align(Alignment.Bottom)
-                    .padding(bottom = 4.dp),
-                text = "hr",
-                color = MaterialTheme.colors.onBackground,
-            )
-            Text(
-                modifier = Modifier.padding(horizontal = 8.dp),
-                text = ":",
-                color = MaterialTheme.colors.onBackground,
-                fontWeight = FontWeight.W500,
-                style = MaterialTheme.typography.h4,
-                textAlign = TextAlign.Center,
-            )
-            Text(
-                text = value.minutes.prefixZero(),
-                color = MaterialTheme.colors.onBackground,
-                fontWeight = FontWeight.W500,
-                style = MaterialTheme.typography.h4,
-                textAlign = TextAlign.Center,
-            )
-            Text(
-                modifier = Modifier
-                    .align(Alignment.Bottom)
-                    .padding(bottom = 4.dp),
-                text = "min",
-                color = MaterialTheme.colors.onBackground,
-            )
+            TimeComponent(value.hours, "hr")
+            Colon()
+            TimeComponent(value.minutes, "min")
         }
 
         HorizontalSpacer(space = 8.dp)
         ValueController(
             icon = R.drawable.timer_plus,
             onClick = onAddOneMinute
-        )
-    }
-}
-
-@Composable
-private fun ValueController(
-    @DrawableRes icon: Int,
-    iconSize: Dp = 28.dp,
-    onClick: onSelected,
-) {
-    ValueController(
-        imageContent = {
-            Image(
-                modifier = Modifier.size(iconSize),
-                painter = painterResource(icon),
-                colorFilter = ColorFilter.tint(color = MaterialTheme.colors.primary),
-                contentDescription = null
-            )
-        },
-        onClick = onClick,
-    )
-}
-
-@Composable
-private fun ValueController(
-    icon: ImageVector,
-    onClick: onSelected,
-) {
-    ValueController(
-        imageContent = {
-            Image(
-                colorFilter = ColorFilter.tint(color = MaterialTheme.colors.primary),
-                imageVector = icon,
-                contentDescription = null
-            )
-        },
-        onClick = onClick,
-    )
-}
-
-@Composable
-private fun ValueController(
-    imageContent: @Composable () -> Unit,
-    onClick: onSelected,
-) {
-    val interactionSource = remember { MutableInteractionSource() }
-    var isPressed by remember { mutableStateOf(false) }
-    LaunchedEffect(interactionSource) {
-        interactionSource.interactions.collect { interaction ->
-            isPressed = interaction is PressInteraction.Press
-        }
-    }
-    LaunchedEffect(isPressed) {
-        while (isPressed) {
-            delay(500)
-            onClick()
-        }
-    }
-    Box(
-        modifier = Modifier
-            .clickable(
-                interactionSource = interactionSource,
-                indication = null,
-                onClick = onClick,
-            )
-            .padding(8.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        imageContent()
-    }
-}
-
-@Composable
-private fun SwitchWithText(
-    text: String,
-    checked: Boolean,
-    onCheckChange: (Boolean) -> Unit,
-) {
-    Box(
-        modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            modifier = Modifier.align(Alignment.CenterStart),
-            text = text,
-            color = MaterialTheme.colors.onBackground,
-            fontWeight = FontWeight.W700,
-            style = MaterialTheme.typography.body1,
-            textAlign = TextAlign.Center,
-        )
-        Switch(
-            modifier = Modifier.align(Alignment.CenterEnd),
-            checked = checked,
-            onCheckedChange = onCheckChange,
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colors.primary,
-            )
         )
     }
 }

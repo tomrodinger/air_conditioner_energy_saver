@@ -7,10 +7,15 @@ android {
     compileSdk = 33
     defaultConfig {
         applicationId = "com.app.imotion"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
+
+
+        val versionMajor = 1
+        val versionMinor = 0
         versionCode = 1
-        versionName = "1.0"
+
+        versionName = "$versionMajor.$versionMinor.$versionCode"
     }
     buildTypes {
         getByName("release") {
@@ -58,4 +63,7 @@ dependencies {
 
     // Permissions via Compose
     implementation(libs.accompanist.permissions)
+
+    // Date time
+    implementation(libs.kotlinx.datetime)
 }
