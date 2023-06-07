@@ -15,6 +15,9 @@ class IrCodeSetupScreenVM : ViewModel() {
     private val _state = MutableStateFlow<IrCodeSyncState>(IrCodeSyncState.Idle)
     val state: StateFlow<IrCodeSyncState> = _state
 
+    private val _isTesting = MutableStateFlow(false)
+    val isTesting: StateFlow<Boolean> = _isTesting
+
     private val _events = MutableSharedFlow<IrCodeSetupScreenVMEvent>()
     val events: SharedFlow<IrCodeSetupScreenVMEvent> = _events
 
@@ -24,11 +27,23 @@ class IrCodeSetupScreenVM : ViewModel() {
         this.device = device
     }
 
+    fun onDone(irCodeName: String) {
+
+    }
+
     fun startSync() {
         _state.update { IrCodeSyncState.InProgress }
         viewModelScope.launch {
-            delay(5_000)
+            delay(500)
             _state.update { IrCodeSyncState.Idle }
+        }
+    }
+
+    fun testIrCode() {
+        _isTesting.update { true }
+        viewModelScope.launch {
+            delay(3_000)
+            _isTesting.update { false }
         }
     }
 

@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
@@ -26,11 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.app.imotion.R
-import com.app.imotion.ui.components.HorizontalSpacer
-import com.app.imotion.ui.components.MotionButton
-import com.app.imotion.ui.components.SimpleScreenTemplate
-import com.app.imotion.ui.components.VerticalSpacer
+import com.app.imotion.ui.components.*
 import com.app.imotion.ui.theme.MotionGrey
+import com.app.imotion.ui.theme.MotionRed
 import com.app.imotion.ui.theme.PreviewTheme
 import com.app.imotion.ui.utils.ComposeUtils.pxToDp
 
@@ -50,38 +49,29 @@ private data class StepData(
 private fun getSteps() = listOf(
     StepData(
         icon = R.drawable.ir_code_how_it_works,
-        iconText = "How it works?",
+        iconText = "How to connect?",
         title = "Mobile uses infrared to communicate with motion sensor",
+        secondaryImage = R.drawable.hand_with_phone,
         description = "Aim the remote control into the top of the device and press the sync button of the function to connect the device",
     ),
     StepData(
         icon = R.drawable.ir_code_sync,
         iconText = "Synchronize",
         primaryImage = R.drawable.device_signal,
-        secondaryImage = R.drawable.hand_with_phone,
-        title = "Please Wait",
-        description = "Fetching Remote Codes For Your Mobile"
+        title = "Please Aim",
+        description = "your remote control into the device and press the button on the remote control for the function that you want this device to learn."
     ),
     StepData(
         icon = R.drawable.ir_code_confirmation,
-        iconText = "Confirmation",
+        iconText = "Successfully Learned!",
         primaryImage = R.drawable.glowing_light_bulb,
         secondaryImage = R.drawable.hand_with_phone,
-        title = "Did you hear device blink was light turned on?",
-    ),
-    StepData(
-        icon = R.drawable.ir_code_success,
-        iconText = "Success",
-        primaryImage = R.drawable.round_green_check,
-        secondaryImage = R.drawable.hand_with_phone,
-        title = "Your device has been connected successfully",
     ),
 )
 
 @Composable
 fun IrCodeSetupScreen(
     vm: IrCodeSetupScreenVM = viewModel(),
-    onSetupDeviceControls: () -> Unit,
     onBack: () -> Unit,
 ) {
     SimpleScreenTemplate(
@@ -90,7 +80,6 @@ fun IrCodeSetupScreen(
         content = {
             AllStepsUi(
                 vm = vm,
-                onSetupDeviceControls = onSetupDeviceControls,
             )
         }
     )
@@ -99,15 +88,48 @@ fun IrCodeSetupScreen(
 @Composable
 private fun AllStepsUi(
     vm: IrCodeSetupScreenVM = viewModel(),
-    onSetupDeviceControls: () -> Unit,
 ) {
 
     val syncState by vm.state.collectAsStateWithLifecycle()
+    val isTestingIrCode by vm.isTesting.collectAsStateWithLifecycle()
     val steps = getSteps()
     val totalSteps = steps.size
 
+    var irCodeName by remember { mutableStateOf("") }
+
     var currentStepIndex by remember { mutableStateOf(0) }
     val stepData = steps[currentStepIndex]
+
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.CenterEnd,
+    ) {
+        if (isTestingIrCode) {
+            val animatedScale = remember { Animatable(1.0F) }
+            LaunchedEffect(Unit) {
+                animatedScale.animateTo(
+                    targetValue = 1.5f,
+                    animationSpec = infiniteRepeatable(
+                        animation = tween(500, easing = FastOutSlowInEasing),
+                        repeatMode = RepeatMode.Reverse
+                    )
+                )
+            }
+            Box(contentAlignment = Alignment.Center) {
+                Box(
+                    modifier = Modifier
+                        .size(18.dp)
+                        .scale(animatedScale.value)
+                        .background(color = MotionRed.copy(alpha = 0.3F), shape = CircleShape)
+                )
+                Box(
+                    modifier = Modifier
+                        .size(16.dp)
+                        .background(color = MotionRed, shape = CircleShape)
+                )
+            }
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -143,27 +165,41 @@ private fun AllStepsUi(
                     }
                 }
                 2 -> {
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .weight(1.0F)
-                        ) {
-                            MotionButton(
-                                text = "No",
-                                color = MaterialTheme.colors.onBackground,
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        TextInputUi(
+                            title = "IR Code Name",
+                            hint = "",
+                            userInput = irCodeName,
+                            isInFocus = false,
+                            onInputChange = { irCodeName = it },
+                            onDoneClick = { }
+                        )
+                        VerticalSpacer(space = 16.dp)
+                        Row(modifier = Modifier.fillMaxWidth()) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .weight(1.0F)
                             ) {
-                                currentStepIndex = 0
+                                MotionButton(
+                                    text = "Test it",
+                                    color = MaterialTheme.colors.onBackground,
+                                ) {
+                                    vm.testIrCode()
+                                }
                             }
-                        }
-                        HorizontalSpacer(space = 16.dp)
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .weight(1.0F)
-                        ) {
-                            MotionButton(text = "Yes") {
-                                currentStepIndex++
+                            HorizontalSpacer(space = 16.dp)
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .weight(1.0F)
+                            ) {
+                                MotionButton(
+                                    text = "Done",
+                                    enabled = irCodeName.isNotEmpty(),
+                                ) {
+                                    vm.onDone(irCodeName)
+                                }
                             }
                         }
                     }
@@ -378,7 +414,6 @@ private fun LearIrCodeScreenPreview() {
     PreviewTheme {
         IrCodeSetupScreen(
             onBack = {},
-            onSetupDeviceControls = {},
         )
     }
 }
