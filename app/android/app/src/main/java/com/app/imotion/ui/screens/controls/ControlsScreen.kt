@@ -314,7 +314,7 @@ private fun ControlsScreenPreview() {
                 name = "Device name",
                 area = "Kitchen",
                 isActive = true,
-                serialNumber = DeviceSerialNumber("ABCD")
+                serialNumber = DeviceSerialNumber.of("ABCD")
             ),
             onBack = {},
         )

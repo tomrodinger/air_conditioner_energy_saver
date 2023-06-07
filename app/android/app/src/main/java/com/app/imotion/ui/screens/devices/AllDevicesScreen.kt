@@ -158,7 +158,7 @@ private fun DeviceCard(
                         color = MaterialTheme.colors.primary,
                     )
                     Text(
-                        text = device.serialNumber.sn.uppercase(),
+                        text = device.serialNumber.value.uppercase(),
                         fontSize = 10.sp,
                         fontWeight = FontWeight.W600,
                         color = MaterialTheme.colors.onSecondary,
@@ -175,10 +175,10 @@ private fun AllDevicesScreenPreview() {
     PreviewTheme {
         AllDevicesScreen(
             devices = listOf(
-                MotionDeviceListEntry("Device 1", "Living Room", true, DeviceSerialNumber("QWEDSA")),
-                MotionDeviceListEntry("Device 2", "Kitchen Room", false, DeviceSerialNumber("QerDSA")),
-                MotionDeviceListEntry("Device Three", "Bedroom", true, DeviceSerialNumber("CCWRRDSA")),
-                MotionDeviceListEntry("Device Four", "Living Room", true, DeviceSerialNumber("TFWEDSA")),
+                MotionDeviceListEntry("Device 1", "Living Room", true, DeviceSerialNumber.of("QWEDSA")),
+                MotionDeviceListEntry("Device 2", "Kitchen Room", false, DeviceSerialNumber.of("QerDSA")),
+                MotionDeviceListEntry("Device Three", "Bedroom", true, DeviceSerialNumber.of("CCWRRDSA")),
+                MotionDeviceListEntry("Device Four", "Living Room", true, DeviceSerialNumber.of("TFWEDSA")),
             ),
             onAddDevice = {}
         )
