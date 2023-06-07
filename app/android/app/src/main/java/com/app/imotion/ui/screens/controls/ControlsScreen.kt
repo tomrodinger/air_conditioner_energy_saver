@@ -18,7 +18,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.app.imotion.R
 import com.app.imotion.model.DeviceSerialNumber
-import com.app.imotion.model.IMotionDevice
+import com.app.imotion.model.MotionDeviceListEntry
 import com.app.imotion.model.TimerValue
 import com.app.imotion.ui.components.*
 import com.app.imotion.ui.theme.PreviewTheme
@@ -30,7 +30,7 @@ import com.app.imotion.ui.theme.PreviewTheme
 @Composable
 fun ControlsScreen(
     vm: ControlsScreenVm = viewModel(),
-    device: IMotionDevice,
+    device: MotionDeviceListEntry,
     onBack: () -> Unit,
 ) {
     SimpleScreenTemplate(
@@ -310,7 +310,7 @@ private fun TimerUi(
 private fun ControlsScreenPreview() {
     PreviewTheme {
         ControlsScreen(
-            device = IMotionDevice(
+            device = MotionDeviceListEntry(
                 name = "Device name",
                 area = "Kitchen",
                 isActive = true,

@@ -2,7 +2,7 @@ package com.app.imotion.ui.screens.ircode
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.imotion.model.IMotionDevice
+import com.app.imotion.model.MotionDeviceListEntry
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -18,9 +18,9 @@ class IrCodeSetupScreenVM : ViewModel() {
     private val _events = MutableSharedFlow<IrCodeSetupScreenVMEvent>()
     val events: SharedFlow<IrCodeSetupScreenVMEvent> = _events
 
-    private lateinit var device: IMotionDevice
+    private lateinit var device: MotionDeviceListEntry
 
-    fun setDevice(device: IMotionDevice) {
+    fun setDevice(device: MotionDeviceListEntry) {
         this.device = device
     }
 

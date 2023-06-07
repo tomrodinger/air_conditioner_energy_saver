@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.app.imotion.R
-import com.app.imotion.model.IMotionDevice
+import com.app.imotion.model.MotionDeviceListEntry
 import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.ui.components.MotionButton
 import com.app.imotion.ui.components.VerticalSpacer
@@ -34,7 +34,7 @@ import com.app.imotion.ui.theme.PreviewTheme
 
 @Composable
 fun AllDevicesScreen(
-    devices: List<IMotionDevice>,
+    devices: List<MotionDeviceListEntry>,
     onAddDevice: () -> Unit,
 ) {
     Box {
@@ -87,7 +87,7 @@ fun AllDevicesScreen(
 
 @Composable
 private fun DeviceCard(
-    device: IMotionDevice,
+    device: MotionDeviceListEntry,
     onClick: (DeviceSerialNumber) -> Unit,
 ) {
     Card(
@@ -175,10 +175,10 @@ private fun AllDevicesScreenPreview() {
     PreviewTheme {
         AllDevicesScreen(
             devices = listOf(
-                IMotionDevice("Device 1", "Living Room", true, DeviceSerialNumber("QWEDSA")),
-                IMotionDevice("Device 2", "Kitchen Room", false, DeviceSerialNumber("QerDSA")),
-                IMotionDevice("Device Three", "Bedroom", true, DeviceSerialNumber("CCWRRDSA")),
-                IMotionDevice("Device Four", "Living Room", true, DeviceSerialNumber("TFWEDSA")),
+                MotionDeviceListEntry("Device 1", "Living Room", true, DeviceSerialNumber("QWEDSA")),
+                MotionDeviceListEntry("Device 2", "Kitchen Room", false, DeviceSerialNumber("QerDSA")),
+                MotionDeviceListEntry("Device Three", "Bedroom", true, DeviceSerialNumber("CCWRRDSA")),
+                MotionDeviceListEntry("Device Four", "Living Room", true, DeviceSerialNumber("TFWEDSA")),
             ),
             onAddDevice = {}
         )
