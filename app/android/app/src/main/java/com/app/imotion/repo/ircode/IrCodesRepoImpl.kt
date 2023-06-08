@@ -3,11 +3,12 @@ package com.app.imotion.repo.ircode
 import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.model.storage.IrCodeStorageModel
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
 /**
  * Created by hani.fakhouri on 2023-06-08.
  */
-class IrCodesRepoImpl(
+class IrCodesRepoImpl @Inject constructor(
     private val dataSource: IrCodesDataSource,
 ) : IrCodesRepo {
     override suspend fun addIrCode(code: IrCodeStorageModel): Result<Unit> =

@@ -3,10 +3,7 @@ package com.app.imotion
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.imotion.extensions.collectWith
 import com.app.imotion.permission.PermissionHandler
@@ -16,8 +13,13 @@ import com.app.imotion.ui.screens.PermissionRationaleScreen
 import com.app.imotion.ui.screens.onboarding.OnBoardingScreen
 import com.app.imotion.ui.screens.welcome.WelcomeScreen
 import com.app.imotion.ui.theme.IMotionTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject lateinit var settings: AppSettings
 
     private lateinit var permissionHandler: PermissionHandler
     private var bleReady by mutableStateOf(false)
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val settings = AppSettings.getInstance(this.applicationContext)
+        //val settings = AppSettings.getInstance(this.applicationContext)
         permissionHandler = PermissionHandler(this)
         // Listen to permission state changes
         permissionHandler.state.collectWith(this) {
@@ -59,6 +61,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    @Composable
+    private fun AppScreen() {
+
     }
 
     override fun onResume() {

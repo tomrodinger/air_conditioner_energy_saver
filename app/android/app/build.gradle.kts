@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -39,6 +41,11 @@ android {
     }
 }
 
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
 
     // Compose
@@ -66,4 +73,7 @@ dependencies {
 
     // Date time
     implementation(libs.kotlinx.datetime)
+
+    implementation(libs.di.hilt)
+    kapt(libs.di.hilt.compiler)
 }

@@ -17,6 +17,8 @@ accompanist-permissions = "0.31.2-alpha"
 
 kotlin-date-time = "0.4.0"
 
+di-hilt = "2.44"
+
 [libraries]
 
 plugin-android = { module = "com.android.tools.build:gradle", version.ref = "plugin-android" }
@@ -38,6 +40,9 @@ lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", v
 lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist-permissions" }
+
+di-hilt = { module = "com.google.dagger:hilt-android", version.ref = "di-hilt" }
+di-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "di-hilt" }
 
 [bundles]
 plugins = ["plugin-android", "plugin-kotlin"]

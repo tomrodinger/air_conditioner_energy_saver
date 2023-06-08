@@ -3,11 +3,12 @@ package com.app.imotion.repo.device
 import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.model.storage.DeviceStorageModel
 import kotlinx.coroutines.flow.*
+import javax.inject.Inject
 
 /**
  * Created by hani.fakhouri on 2023-06-08.
  */
-class DevicesDataSourceImpl : DevicesDataSource {
+class DevicesDataSourceImpl @Inject constructor() : DevicesDataSource {
 
     private val devices = MutableStateFlow<List<DeviceStorageModel>>(listOf())
 

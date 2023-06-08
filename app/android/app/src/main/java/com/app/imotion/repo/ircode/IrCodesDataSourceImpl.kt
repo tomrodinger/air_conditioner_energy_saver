@@ -1,15 +1,16 @@
 package com.app.imotion.repo.ircode
 
-import com.app.imotion.DataCoroutineScope
+import com.app.imotion.DataCoroutineScopeImpl
 import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.model.storage.IrCodeStorageModel
 import kotlinx.coroutines.flow.*
+import javax.inject.Inject
 
 /**
  * Created by hani.fakhouri on 2023-06-08.
  */
-class IrCodesDataSourceImpl(
-    private val scope: DataCoroutineScope
+class IrCodesDataSourceImpl @Inject constructor(
+    private val scope: DataCoroutineScopeImpl
 ) : IrCodesDataSource {
 
     private val irCodes = MutableStateFlow<List<IrCodeStorageModel>>(listOf())
