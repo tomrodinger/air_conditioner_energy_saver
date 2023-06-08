@@ -11,8 +11,8 @@ class DevicesRepoImpl(
     private val dataSource: DevicesDataSource,
 ) : DevicesRepo {
 
-    override suspend fun saveDevice(data: DeviceStorageModel): Result<Unit> =
-        dataSource.saveDevice(data)
+    override suspend fun addDevice(data: DeviceStorageModel): Result<Unit> =
+        dataSource.addDevice(data)
 
     override suspend fun deleteDevice(serialNumber: DeviceSerialNumber): Result<Unit> =
         dataSource.deleteDevice(serialNumber)

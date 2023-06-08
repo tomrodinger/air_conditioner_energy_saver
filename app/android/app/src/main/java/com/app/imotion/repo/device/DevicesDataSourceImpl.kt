@@ -11,7 +11,7 @@ class DevicesDataSourceImpl : DevicesDataSource {
 
     private val devices = MutableStateFlow<List<DeviceStorageModel>>(listOf())
 
-    override suspend fun saveDevice(data: DeviceStorageModel): Result<Unit> {
+    override suspend fun addDevice(data: DeviceStorageModel): Result<Unit> {
         val copy = mutableListOf<DeviceStorageModel>()
         copy.addAll(devices.value)
         copy.add(data)

@@ -14,7 +14,7 @@ class IrCodesDataSourceImpl(
 
     private val irCodes = MutableStateFlow<List<IrCodeStorageModel>>(listOf())
 
-    override suspend fun saveIrCode(code: IrCodeStorageModel): Result<Unit> {
+    override suspend fun addIrCode(code: IrCodeStorageModel): Result<Unit> {
         val copy = mutableListOf<IrCodeStorageModel>()
         copy.addAll(irCodes.value)
         copy.add(code)

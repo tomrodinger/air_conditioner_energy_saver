@@ -8,6 +8,7 @@ import com.app.imotion.model.DeviceSerialNumber
  */
 data class DeviceStorageModel(
     val name: String,
+    val areaName: String,
     val serialNumber: DeviceSerialNumber,
     val isActive: Boolean,
     val firmwareVersion: DeviceFirmwareVersion,
