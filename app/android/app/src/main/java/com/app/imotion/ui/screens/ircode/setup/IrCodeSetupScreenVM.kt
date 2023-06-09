@@ -18,7 +18,7 @@ import kotlin.random.Random
 @HiltViewModel
 class IrCodeSetupScreenVM @Inject constructor(
     private val irCodesRepo: IrCodesRepo
-) : StatefulViewModel<IrCodeSetupState, IrCodeSetupScreenVMEvent>(IrCodeSetupState()) {
+) : StatefulViewModel<IrCodeSetupUiState, IrCodeSetupScreenVMEvent>(IrCodeSetupUiState()) {
 
     private lateinit var deviceSerialNumber: DeviceSerialNumber
 

@@ -21,6 +21,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.imotion.R
 import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.model.IrCode
@@ -34,41 +36,47 @@ import kotlin.math.absoluteValue
  */
 
 @Composable
-fun IrCodesOverviewScreen(
+fun IrCodesOverviewRoute(
     deviceSerialNumber: DeviceSerialNumber,
-    irCodes: List<IrCode>,
     onAddNewIrCode: (DeviceSerialNumber) -> Unit,
-    openDashboard: () -> Unit,
+    onGoToDashboard: () -> Unit,
     onBack: () -> Unit,
+    vm: IrCodesOverviewVm = hiltViewModel(),
 ) {
-    ScreenTemplate(
-        headerContent = {
-            Header(
-                title = "IR Codes Management",
-                iconAction1 = HeaderIconAction(
-                    iconRes = R.drawable.add_simple,
-                    action = {
-                        onAddNewIrCode(deviceSerialNumber)
-                    }
-                ),
-                onBack = onBack,
+    val state by vm.uiState.collectAsStateWithLifecycle()
+    when {
+        state.loading ->
+            Text("Loading...")
+        else ->
+            ScreenTemplate(
+                headerContent = {
+                    Header(
+                        title = "IR Codes Management",
+                        iconAction1 = HeaderIconAction(
+                            iconRes = R.drawable.add_simple,
+                            action = {
+                                onAddNewIrCode(deviceSerialNumber)
+                            }
+                        ),
+                        onBack = onBack,
+                    )
+                },
+                modalContent = {
+                    IrCodesOverviewScreen(
+                        irCodes = state.irCodes,
+                        openDashboard = onGoToDashboard,
+                        onDeleteIrCode = vm::deleteIrCode,
+                    )
+                }
             )
-        },
-        modalContent = {
-            IrCodesOverviewUi(
-                deviceSerialNumber = deviceSerialNumber,
-                irCodes = irCodes,
-                openDashboard = openDashboard,
-            )
-        }
-    )
+    }
 }
 
 @Composable
-private fun IrCodesOverviewUi(
-    deviceSerialNumber: DeviceSerialNumber,
+private fun IrCodesOverviewScreen(
     irCodes: List<IrCode>,
     openDashboard: () -> Unit,
+    onDeleteIrCode: (String) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -82,7 +90,9 @@ private fun IrCodesOverviewUi(
                         IrCodeEntry(
                             irCode = irCode,
                             onClick = { },
-                            onDelete = { },
+                            onDelete = {
+                                onDeleteIrCode(irCode.value)
+                            },
                         )
                         Divider()
                     }
@@ -194,7 +204,6 @@ private fun IrCodeEntry(
 private fun IrCodesOverviewScreenPreview() {
     PreviewTheme {
         IrCodesOverviewScreen(
-            deviceSerialNumber = DeviceSerialNumber.of(""),
             irCodes = listOf(
                 IrCode(readableName = "IR Code 1"),
                 IrCode(readableName = "IR Code 2"),
@@ -205,9 +214,8 @@ private fun IrCodesOverviewScreenPreview() {
                 IrCode(readableName = "IR Code 7"),
                 IrCode(readableName = "IR Code 8"),
             ),
-            onAddNewIrCode = {},
             openDashboard = {},
-            onBack = {},
+            onDeleteIrCode = {},
         )
     }
 }

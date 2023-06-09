@@ -59,7 +59,7 @@ fun IrCodeSetupRoute(
 
 @Composable
 private fun IrCodeSetupScreen(
-    state: IrCodeSetupState,
+    state: IrCodeSetupUiState,
     onSaveIrCode: (String) -> Unit,
     onStartSyncingIrCode: () -> Unit,
     onTestIrCode: () -> Unit,

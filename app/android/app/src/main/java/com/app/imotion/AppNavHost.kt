@@ -12,6 +12,8 @@ import com.app.imotion.ui.screens.device.deviceOverviewScreen
 import com.app.imotion.ui.screens.device.navigateToDeviceOverview
 import com.app.imotion.ui.screens.devices.devicesOverviewScreen
 import com.app.imotion.ui.screens.devices.popToDevicesOverview
+import com.app.imotion.ui.screens.ircode.overview.irCodesOverviewScreen
+import com.app.imotion.ui.screens.ircode.overview.navigateToIrCodesOverview
 import com.app.imotion.ui.screens.ircode.setup.irCodeSetupScreen
 import com.app.imotion.ui.screens.ircode.setup.navigateToIrCodeSetup
 import com.app.imotion.ui.screens.ircode.setup.navigateToIrCodeSetupAndPopupToDashBoard
@@ -38,9 +40,7 @@ fun AppNavHost(
         deviceOverviewScreen(
             onBack = navController::popBackStack,
             onGoToDashboard = navController::popToDevicesOverview,
-            onOpenIrCodesPage = {
-
-            },
+            onOpenIrCodesPage = navController::navigateToIrCodesOverview,
             onOpenTriggerRuleSetupPage = {
 
             },
@@ -63,6 +63,12 @@ fun AppNavHost(
         irCodeSetupScreen(
             onGoToDashboard = navController::popToDevicesOverview,
             onBack = navController::popBackStack
+        )
+
+        irCodesOverviewScreen(
+            onBack = navController::popBackStack,
+            onGoToDashboard = navController::popToDevicesOverview,
+            onAddNewIrCode = navController::navigateToIrCodeSetup,
         )
     }
 }
