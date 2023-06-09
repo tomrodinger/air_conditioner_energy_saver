@@ -23,7 +23,6 @@ import com.app.imotion.ui.components.SimpleScreenTemplate
 import com.app.imotion.ui.components.VerticalSpacer
 import com.app.imotion.ui.theme.PreviewTheme
 import com.app.imotion.R
-import com.app.imotion.navigation.NavRoute
 import com.app.imotion.ui.components.MotionButton
 import com.app.imotion.ui.theme.MotionBlack
 import com.app.imotion.ui.theme.MotionBlue
@@ -32,28 +31,30 @@ import com.app.imotion.ui.theme.MotionBlue
  * Created by hani.fakhouri on 2023-06-07.
  */
 
-object DeviceOverviewScreen : NavRoute(route = "device/overview/{device-sn}") {
-    fun buildRoute(
-        deviceSerialNumber: DeviceSerialNumber
-    ) = "device/overview/${deviceSerialNumber.value}"
-}
-
 @Composable
-fun DeviceOverviewScreen(
+fun DeviceOverviewRoute(
+    onGoToDashboard: () -> Unit,
+    onOpenIrCodesPage: (DeviceSerialNumber) -> Unit,
+    onOpenTriggerRuleSetupPage: (DeviceSerialNumber) -> Unit,
+    onOpenLearnIrCode: (DeviceSerialNumber) -> Unit,
+    onBack: () -> Unit,
     vm: DeviceOverviewScreenVm = hiltViewModel(),
 ) {
-    val state by vm.state.collectAsStateWithLifecycle()
+    val state by vm.uiState.collectAsStateWithLifecycle()
     when {
         state.loading || state.data == null -> Text("Loading...")
         else -> {
             state.data?.let { device ->
                 SimpleScreenTemplate(
                     title = device.name,
-                    onBack = { vm.onUiEvent(DeviceOverviewUiEvent.Back) },
+                    onBack = onBack,
                     content = {
-                        DeviceOverviewUi(
+                        DeviceOverviewScreen(
                             device = device,
-                            eventsSink = vm::onUiEvent,
+                            onGoToDashboard = onGoToDashboard,
+                            onOpenIrCodesPage = onOpenIrCodesPage,
+                            onOpenTriggerRuleSetupPage = onOpenTriggerRuleSetupPage,
+                            onOpenLearnIrCode = onOpenLearnIrCode,
                         )
                     }
                 )
@@ -63,12 +64,14 @@ fun DeviceOverviewScreen(
 }
 
 @Composable
-private fun DeviceOverviewUi(
+private fun DeviceOverviewScreen(
     device: DeviceData,
-    eventsSink: (DeviceOverviewUiEvent) -> Unit,
+    onGoToDashboard: () -> Unit,
+    onOpenIrCodesPage: (DeviceSerialNumber) -> Unit,
+    onOpenTriggerRuleSetupPage: (DeviceSerialNumber) -> Unit,
+    onOpenLearnIrCode: (DeviceSerialNumber) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -105,12 +108,25 @@ private fun DeviceOverviewUi(
                 when (selectedTabIndex) {
                     0 -> {
                         if (!device.hasIrCodes()) {
-                            Text(
-                                color = Color.Black,
-                                text = "IR Codes not setup yet",
-                                style = MaterialTheme.typography.body1,
-                                modifier = Modifier.padding(top = 16.dp)
-                            )
+                            Column {
+                                Text(
+                                    color = Color.Black,
+                                    text = "IR Codes not setup yet",
+                                    style = MaterialTheme.typography.body1,
+                                    modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)
+                                )
+                                VerticalSpacer(space = 8.dp)
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center,
+                                ) {
+                                    MotionButton(
+                                        modifier = Modifier.padding(horizontal = 36.dp),
+                                        text = "Learn IR Code") {
+                                        onOpenLearnIrCode(device.serialNumber)
+                                    }
+                                }
+                            }
                         } else {
                             LazyColumn(
                                 modifier = Modifier.fillMaxWidth()
@@ -149,15 +165,15 @@ private fun DeviceOverviewUi(
         Column(modifier = Modifier.fillMaxWidth()) {
             VerticalSpacer(space = 12.dp)
             MotionButton(text = "IR Codes", color = MotionBlack) {
-                eventsSink(DeviceOverviewUiEvent.OpenIrCodesPage(device.serialNumber))
+                onOpenIrCodesPage(device.serialNumber)
             }
             VerticalSpacer(space = 12.dp)
             MotionButton(text = "Add Control Rule", color = MotionBlue) {
-                eventsSink(DeviceOverviewUiEvent.OpenTriggerRuleSetupPage(device.serialNumber))
+                onOpenTriggerRuleSetupPage(device.serialNumber)
             }
             VerticalSpacer(space = 12.dp)
             MotionButton(text = "Go To Dashboard") {
-                eventsSink(DeviceOverviewUiEvent.GoToDashboard)
+                onGoToDashboard()
             }
         }
     }
@@ -258,24 +274,33 @@ private fun BatteryIndicator(
 @Composable
 private fun AllDevicesScreenPreview() {
     PreviewTheme {
-        DeviceOverviewUi(
-            device = DeviceData(
-                name = "Device Name",
-                serialNumber = DeviceSerialNumber.of("1234-5678-90"),
-                batterPercentage = 75F,
-                firmwareVersion = DeviceFirmwareVersion.of("2.1.615"),
-                irCodes = listOf(
-                    IrCode(readableName = "IR Code 1"),
-                    IrCode(readableName = "IR Code 2"),
-                    IrCode(readableName = "IR Code 3"),
-                    IrCode(readableName = "IR Code 4"),
-                    IrCode(readableName = "IR Code 5"),
-                    IrCode(readableName = "IR Code 6"),
-                    IrCode(readableName = "IR Code 7"),
-                    IrCode(readableName = "IR Code 8"),
-                ),
-            ),
-            eventsSink = {},
+        SimpleScreenTemplate(
+            title = "Device Name",
+            onBack = {},
+            content = {
+                DeviceOverviewScreen(
+                    device = DeviceData(
+                        name = "Device Name",
+                        serialNumber = DeviceSerialNumber.of("1234-5678-90"),
+                        batterPercentage = 75F,
+                        firmwareVersion = DeviceFirmwareVersion.of("2.1.615"),
+                        irCodes = listOf(
+                            IrCode(readableName = "IR Code 1"),
+                            IrCode(readableName = "IR Code 2"),
+                            IrCode(readableName = "IR Code 3"),
+                            IrCode(readableName = "IR Code 4"),
+                            IrCode(readableName = "IR Code 5"),
+                            IrCode(readableName = "IR Code 6"),
+                            IrCode(readableName = "IR Code 7"),
+                            IrCode(readableName = "IR Code 8"),
+                        ),
+                    ),
+                    onGoToDashboard = {},
+                    onOpenIrCodesPage = {},
+                    onOpenTriggerRuleSetupPage = {},
+                    onOpenLearnIrCode = {},
+                )
+            }
         )
     }
 }

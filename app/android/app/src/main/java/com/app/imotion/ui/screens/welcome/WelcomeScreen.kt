@@ -32,7 +32,6 @@ import com.app.imotion.ui.theme.MotionBlack
 import com.app.imotion.ui.theme.PreviewTheme
 import com.app.imotion.R
 import com.app.imotion.ui.components.*
-import com.app.imotion.ui.screens.devices.DevicesOverviewUiEvent
 
 /**
  * Created by hani@fakhouri.eu on 2023-05-24.
@@ -40,7 +39,7 @@ import com.app.imotion.ui.screens.devices.DevicesOverviewUiEvent
 
 @Composable
 fun WelcomeScreen(
-    eventSink: (DevicesOverviewUiEvent) -> Unit
+    onAddNewDevice: () -> Unit,
 ) {
     val hasCameraHardware = hasCameraHardware(LocalContext.current)
     var showAddDeviceModal by remember { mutableStateOf(false) }
@@ -116,7 +115,7 @@ fun WelcomeScreen(
                     if (hasCameraHardware) {
                         showAddDeviceModal = true
                     } else {
-                        eventSink(DevicesOverviewUiEvent.AddNewDevice)
+                        onAddNewDevice()
                     }
                 },
             )
@@ -199,7 +198,7 @@ fun WelcomeScreen(
                                 shape = RoundedCornerShape(24.dp)
                             )
                             .clickable {
-                                eventSink(DevicesOverviewUiEvent.AddNewDevice)
+                                onAddNewDevice()
                             }
                             .padding(16.dp),
                         verticalArrangement = Arrangement.Center,
@@ -229,7 +228,7 @@ fun WelcomeScreen(
                                 shape = RoundedCornerShape(24.dp)
                             )
                             .clickable {
-                                eventSink(DevicesOverviewUiEvent.AddNewDevice)
+                                onAddNewDevice()
                             }
                             .padding(16.dp),
                         verticalArrangement = Arrangement.Center,
@@ -263,7 +262,7 @@ private fun hasCameraHardware(context: Context): Boolean =
 private fun WelcomeOverlayPreview() {
     PreviewTheme {
         IMotionSurface {
-            WelcomeScreen(eventSink = {})
+            WelcomeScreen(onAddNewDevice = {})
         }
     }
 }

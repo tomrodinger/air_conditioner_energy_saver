@@ -30,11 +30,12 @@ fun MotionButton(
     @DrawableRes icon: Int? = null,
     color: Color = MaterialTheme.colors.primary,
     enabled: Boolean = true,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
     val alpha = if (enabled) 1.0F else 0.3F
     Box(
-        modifier = Modifier
+        modifier = modifier
             .alpha(alpha)
             .fillMaxWidth()
             .clip(CircleShape)

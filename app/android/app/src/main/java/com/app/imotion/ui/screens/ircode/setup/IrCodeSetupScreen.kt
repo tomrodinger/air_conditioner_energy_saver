@@ -27,8 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.imotion.R
-import com.app.imotion.model.DeviceSerialNumber
-import com.app.imotion.navigation.NavRoute
 import com.app.imotion.ui.components.*
 import com.app.imotion.ui.theme.MotionGrey
 import com.app.imotion.ui.theme.MotionRed
@@ -39,66 +37,32 @@ import com.app.imotion.utils.ComposeUtils.pxToDp
  * Created by hani@fakhouri.eu on 2023-05-28.
  */
 
-private data class StepData(
-    @DrawableRes val icon: Int,
-    val iconText: String,
-    @DrawableRes val primaryImage: Int? = null,
-    @DrawableRes val secondaryImage: Int? = null,
-    val title: String? = null,
-    val description: String? = null,
-)
-
-private fun getSteps() = listOf(
-    StepData(
-        icon = R.drawable.ir_code_how_it_works,
-        iconText = "How to connect?",
-        title = "Mobile uses infrared to communicate with motion sensor",
-        secondaryImage = R.drawable.hand_with_phone,
-        description = "Aim the remote control into the top of the device and press the sync button of the function to connect the device",
-    ),
-    StepData(
-        icon = R.drawable.ir_code_sync,
-        iconText = "Synchronize",
-        primaryImage = R.drawable.device_signal,
-        title = "Please Aim",
-        description = "your remote control into the device and press the button on the remote control for the function that you want this device to learn."
-    ),
-    StepData(
-        icon = R.drawable.ir_code_confirmation,
-        iconText = "Successfully Learned!",
-        primaryImage = R.drawable.glowing_light_bulb,
-        secondaryImage = R.drawable.hand_with_phone,
-    ),
-)
-
-object IrCodeSetupScreen : NavRoute(route = "ircode/setup/{device-sn}") {
-    fun buildRoute(
-        deviceSerialNumber: DeviceSerialNumber
-    ) = "ircode/setup/${deviceSerialNumber.value}"
-}
-
 @Composable
-fun IrCodeSetupScreen(
-    vm: IrCodeSetupScreenVM = hiltViewModel(),
+fun IrCodeSetupRoute(
     onBack: () -> Unit,
+    vm: IrCodeSetupScreenVM = hiltViewModel(),
 ) {
-    val state by vm.state.collectAsStateWithLifecycle()
+    val state by vm.uiState.collectAsStateWithLifecycle()
     SimpleScreenTemplate(
         title = "Learn IR code & Connect",
         onBack = onBack,
         content = {
-            AllStepsUi(
+            IrCodeSetupScreen(
                 state = state,
-                eventsSink = vm::onUiEvent,
+                onSaveIrCode = vm::saveIrCode,
+                onStartSyncingIrCode = vm::startSyncingIrCode,
+                onTestIrCode = vm::testIrCode,
             )
         }
     )
 }
 
 @Composable
-private fun AllStepsUi(
+private fun IrCodeSetupScreen(
     state: IrCodeSetupState,
-    eventsSink: (IrCodeSetupScreenUiEvent) -> Unit,
+    onSaveIrCode: (String) -> Unit,
+    onStartSyncingIrCode: () -> Unit,
+    onTestIrCode: () -> Unit,
 ) {
     val steps = getSteps()
     val totalSteps = steps.size
@@ -160,7 +124,7 @@ private fun AllStepsUi(
             when (currentStepIndex) {
                 0 -> {
                     MotionButton(text = "Synchronize Now") {
-                        eventsSink(IrCodeSetupScreenUiEvent.StartSyncingIrCode)
+                        onStartSyncingIrCode()
                         currentStepIndex++
                     }
                 }
@@ -191,7 +155,7 @@ private fun AllStepsUi(
                                     text = "Test it",
                                     color = MaterialTheme.colors.onBackground,
                                 ) {
-                                    eventsSink(IrCodeSetupScreenUiEvent.TestIrCode)
+                                    onTestIrCode()
                                 }
                             }
                             HorizontalSpacer(space = 16.dp)
@@ -204,7 +168,7 @@ private fun AllStepsUi(
                                     text = "Done",
                                     enabled = irCodeName.isNotEmpty(),
                                 ) {
-                                    eventsSink(IrCodeSetupScreenUiEvent.SaveIrCode(irCodeName))
+                                    onSaveIrCode(irCodeName)
                                 }
                             }
                         }
@@ -387,6 +351,38 @@ private fun DotsUi(
     }
 }
 
+private data class StepData(
+    @DrawableRes val icon: Int,
+    val iconText: String,
+    @DrawableRes val primaryImage: Int? = null,
+    @DrawableRes val secondaryImage: Int? = null,
+    val title: String? = null,
+    val description: String? = null,
+)
+
+private fun getSteps() = listOf(
+    StepData(
+        icon = R.drawable.ir_code_how_it_works,
+        iconText = "How to connect?",
+        title = "Mobile uses infrared to communicate with motion sensor",
+        secondaryImage = R.drawable.hand_with_phone,
+        description = "Aim the remote control into the top of the device and press the sync button of the function to connect the device",
+    ),
+    StepData(
+        icon = R.drawable.ir_code_sync,
+        iconText = "Synchronize",
+        primaryImage = R.drawable.device_signal,
+        title = "Please Aim",
+        description = "your remote control into the device and press the button on the remote control for the function that you want this device to learn."
+    ),
+    StepData(
+        icon = R.drawable.ir_code_confirmation,
+        iconText = "Successfully Learned!",
+        primaryImage = R.drawable.glowing_light_bulb,
+        secondaryImage = R.drawable.hand_with_phone,
+    ),
+)
+
 @Preview(showBackground = true)
 @Composable
 private fun StepUiPreview() {
@@ -410,7 +406,7 @@ private fun StepUiPreview() {
 @Composable
 private fun LearIrCodeScreenPreview() {
     PreviewTheme {
-        IrCodeSetupScreen(
+        IrCodeSetupRoute(
             onBack = {},
         )
     }

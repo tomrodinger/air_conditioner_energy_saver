@@ -26,28 +26,29 @@ import com.app.imotion.ui.theme.PreviewTheme
  * Created by hani@fakhouri.eu on 2023-05-27.
  */
 
-object AddDeviceManuallyScreen : NavRoute(route = "device/add")
-
 @Composable
-fun AddDeviceManuallyScreen(
+fun AddDeviceManuallyRoute(
+    eventSink: (AddDeviceManuallyUiEvent) -> Unit,
     vm: AddDeviceManuallyVm = hiltViewModel(),
 ) {
-    val state by vm.state.collectAsStateWithLifecycle()
+    val state by vm.uiState.collectAsStateWithLifecycle()
     SimpleScreenTemplate(
         title = "Add Manually",
-        onBack = { vm.onUiEvent(AddDeviceManuallyUiEvent.GoBack) },
+        onBack = { eventSink(AddDeviceManuallyUiEvent.GoBack) },
         content = {
-            DeviceDataUi(
+            AddDeviceManuallyScreen(
                 state = state,
-                eventSink = vm::onUiEvent,
+                onAddNewDevice = vm::addNewDevice,
+                eventSink = eventSink,
             )
         }
     )
 }
 
 @Composable
-private fun DeviceDataUi(
+private fun AddDeviceManuallyScreen(
     state: AddDeviceManuallyState,
+    onAddNewDevice: (AddNewDeviceArgs) -> Unit,
     eventSink: (AddDeviceManuallyUiEvent) -> Unit,
 ) {
     var deviceName by remember { mutableStateOf("") }
@@ -110,8 +111,8 @@ private fun DeviceDataUi(
                     text = "Add this Device",
                     enabled = deviceName.isNotEmpty() && areaName.isNotEmpty() && serialNumber.isNotEmpty(),
                     onClick = {
-                        eventSink(
-                            AddDeviceManuallyUiEvent.AddDevice(
+                        onAddNewDevice(
+                            AddNewDeviceArgs(
                                 name = deviceName,
                                 areaName = areaName,
                                 serialNumber = DeviceSerialNumber.of(serialNumber)
@@ -159,8 +160,9 @@ private fun DeviceDataUi(
 @Composable
 private fun AddDeviceManuallyPreview() {
     PreviewTheme {
-        DeviceDataUi(
+        AddDeviceManuallyScreen(
             state = AddDeviceManuallyState(),
+            onAddNewDevice = {},
             eventSink = {},
         )
     }

@@ -2,7 +2,6 @@ package com.app.imotion.ui.screens.devices
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.model.MotionDeviceListEntry
 import com.app.imotion.model.storage.DeviceStorageModel
 import com.app.imotion.repo.device.DevicesRepo
@@ -20,11 +19,6 @@ data class DevicesOverviewState(
     val devices: List<MotionDeviceListEntry> = listOf(),
 )
 
-sealed interface DevicesOverviewUiEvent {
-    object AddNewDevice : DevicesOverviewUiEvent
-    data class OpenDeviceOverview(val serialNumber: DeviceSerialNumber) : DevicesOverviewUiEvent
-}
-
 @HiltViewModel
 class DevicesOverviewScreenVm @Inject constructor(
     private val devicesRepo: DevicesRepo,
@@ -32,9 +26,6 @@ class DevicesOverviewScreenVm @Inject constructor(
 
     private val _state = MutableStateFlow(DevicesOverviewState())
     val state: StateFlow<DevicesOverviewState> = _state
-
-    private val _uiEvents = MutableSharedFlow<DevicesOverviewUiEvent>()
-    val uiEvents: SharedFlow<DevicesOverviewUiEvent> = _uiEvents
 
     init {
         _state.update { it.copy(loading = true) }
@@ -50,21 +41,14 @@ class DevicesOverviewScreenVm @Inject constructor(
         }
     }
 
-    fun onUiEvent(event: DevicesOverviewUiEvent) {
-        viewModelScope.launch {
-            _uiEvents.emit(event)
-        }
-    }
-
     private fun mapStorageModelToViewModel(
         storageModel: DeviceStorageModel
-    ): MotionDeviceListEntry {
-        return MotionDeviceListEntry(
+    ): MotionDeviceListEntry =
+        MotionDeviceListEntry(
             name = storageModel.name,
             area = storageModel.areaName,
             isActive = storageModel.isActive,
             serialNumber = storageModel.serialNumber,
         )
-    }
 
 }

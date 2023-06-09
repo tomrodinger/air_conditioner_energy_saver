@@ -24,7 +24,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.imotion.R
 import com.app.imotion.model.MotionDeviceListEntry
 import com.app.imotion.model.DeviceSerialNumber
-import com.app.imotion.navigation.NavRoute
 import com.app.imotion.ui.components.*
 import com.app.imotion.ui.screens.welcome.WelcomeScreen
 import com.app.imotion.ui.theme.MotionBackground
@@ -36,10 +35,10 @@ import com.app.imotion.ui.theme.PreviewTheme
  * Created by hani@fakhouri.eu on 2023-05-23.
  */
 
-object DevicesOverviewScreenScreen : NavRoute(route = "devices/overview")
-
 @Composable
 fun DevicesOverviewScreen(
+    onAddNewDevice: () -> Unit,
+    onOpenDeviceOverview: (DeviceSerialNumber) -> Unit,
     vm: DevicesOverviewScreenVm = hiltViewModel()
 ) {
     IMotionSurface {
@@ -48,11 +47,12 @@ fun DevicesOverviewScreen(
             state.loading ->
                 Text("Loading...")
             state.devices.isEmpty() ->
-                WelcomeScreen(eventSink = vm::onUiEvent)
+                WelcomeScreen(onAddNewDevice)
             else -> {
                 DevicesOverviewUi(
                     devices = state.devices,
-                    eventSink = vm::onUiEvent,
+                    onAddNewDevice = onAddNewDevice,
+                    onOpenDeviceOverview = onOpenDeviceOverview,
                 )
             }
         }
@@ -62,7 +62,8 @@ fun DevicesOverviewScreen(
 @Composable
 private fun DevicesOverviewUi(
     devices: List<MotionDeviceListEntry>,
-    eventSink: (DevicesOverviewUiEvent) -> Unit,
+    onAddNewDevice: () -> Unit,
+    onOpenDeviceOverview: (DeviceSerialNumber) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -104,9 +105,7 @@ private fun DevicesOverviewUi(
                                 DeviceCard(
                                     device = device,
                                     onClick = {
-                                        eventSink(
-                                            DevicesOverviewUiEvent.OpenDeviceOverview(device.serialNumber)
-                                        )
+                                        onOpenDeviceOverview(device.serialNumber)
                                     }
                                 )
                             }
@@ -114,9 +113,7 @@ private fun DevicesOverviewUi(
                         MotionButton(
                             text = "Add Device",
                             icon = R.drawable.add,
-                            onClick = {
-                                eventSink(DevicesOverviewUiEvent.AddNewDevice)
-                            }
+                            onClick = onAddNewDevice
                         )
                     }
                 }
@@ -240,7 +237,8 @@ private fun DevicesOverviewScreenPreview() {
                     DeviceSerialNumber.of("TFWEDSA")
                 ),
             ),
-            eventSink = {},
+            onAddNewDevice = {},
+            onOpenDeviceOverview = {},
         )
     }
 }

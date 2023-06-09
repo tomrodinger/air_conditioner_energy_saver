@@ -2,35 +2,32 @@ package com.app.imotion.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 /**
  * Created by hani.fakhouri on 2023-06-09.
  */
 
-abstract class StatefulViewModel<UiState, UiEvent, VmEvent>(
+abstract class StatefulViewModel<UiState, VmEvent>(
     initUiState: UiState,
 ) : ViewModel() {
 
-    protected val _state = MutableStateFlow(initUiState)
-    val state: StateFlow<UiState> = _state
+    private val _state = MutableStateFlow(initUiState)
+    val uiState: StateFlow<UiState> = _state
 
-    private val _uiEvents = MutableSharedFlow<UiEvent>()
-    val uiEvents: SharedFlow<UiEvent> = _uiEvents
+    protected val state: UiState
+        get() = _state.value
 
     private val _vmEvents = MutableSharedFlow<VmEvent>()
     val vmEvents: SharedFlow<VmEvent> = _vmEvents
 
-    abstract fun onUiEvent(event: UiEvent)
+    protected fun updateState(f: UiState.() -> UiState) {
+        _state.update(f)
+    }
 
-    protected fun emitUiEvent(event: UiEvent) {
-        viewModelScope.launch {
-            _uiEvents.emit(event)
-        }
+    protected fun updateState(newState: UiState) {
+        _state.value = newState
     }
 
     protected fun emitVmEvent(event: VmEvent) {
