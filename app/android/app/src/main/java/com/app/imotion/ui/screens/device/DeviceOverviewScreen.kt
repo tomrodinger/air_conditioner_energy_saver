@@ -16,11 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.imotion.model.*
 import com.app.imotion.ui.components.SimpleScreenTemplate
 import com.app.imotion.ui.components.VerticalSpacer
 import com.app.imotion.ui.theme.PreviewTheme
 import com.app.imotion.R
+import com.app.imotion.navigation.NavRoute
 import com.app.imotion.ui.components.MotionButton
 import com.app.imotion.ui.theme.MotionBlack
 import com.app.imotion.ui.theme.MotionBlue
@@ -29,34 +32,40 @@ import com.app.imotion.ui.theme.MotionBlue
  * Created by hani.fakhouri on 2023-06-07.
  */
 
+object DeviceOverviewScreen : NavRoute(route = "device/overview/{device-sn}") {
+    fun buildRoute(
+        deviceSerialNumber: DeviceSerialNumber
+    ) = "device/overview/${deviceSerialNumber.value}"
+}
+
 @Composable
 fun DeviceOverviewScreen(
-    device: DeviceData,
-    openIrCodes: (DeviceSerialNumber) -> Unit,
-    openAddNewTriggerRule: (DeviceSerialNumber) -> Unit,
-    openDashboard: () -> Unit,
-    onBack: () -> Unit,
+    vm: DeviceOverviewScreenVm = hiltViewModel(),
 ) {
-    SimpleScreenTemplate(
-        title = device.name,
-        onBack = onBack,
-        content = {
-            DeviceOverviewUi(
-                device = device,
-                openIrCodes = openIrCodes,
-                openAddNewTriggerRule = openAddNewTriggerRule,
-                openDashboard = openDashboard,
-            )
+    val state by vm.state.collectAsStateWithLifecycle()
+    when {
+        state.loading || state.data == null -> Text("Loading...")
+        else -> {
+            state.data?.let { device ->
+                SimpleScreenTemplate(
+                    title = device.name,
+                    onBack = { vm.onUiEvent(DeviceOverviewUiEvent.Back) },
+                    content = {
+                        DeviceOverviewUi(
+                            device = device,
+                            eventsSink = vm::onUiEvent,
+                        )
+                    }
+                )
+            }
         }
-    )
+    }
 }
 
 @Composable
 private fun DeviceOverviewUi(
     device: DeviceData,
-    openIrCodes: (DeviceSerialNumber) -> Unit,
-    openAddNewTriggerRule: (DeviceSerialNumber) -> Unit,
-    openDashboard: () -> Unit,
+    eventsSink: (DeviceOverviewUiEvent) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
 
@@ -95,22 +104,31 @@ private fun DeviceOverviewUi(
                 }
                 when (selectedTabIndex) {
                     0 -> {
-                        LazyColumn(
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            items(device.irCodes) { irCode ->
-                                Column(modifier = Modifier
-                                    .clickable { }
-                                    .fillMaxWidth()
-                                ) {
-                                    Text(
-                                        modifier = Modifier.padding(vertical = 12.dp),
-                                        text = irCode.readableName,
-                                        color = MaterialTheme.colors.onBackground,
-                                        fontWeight = FontWeight.W400,
-                                        style = MaterialTheme.typography.body1,
-                                    )
-                                    Divider()
+                        if (!device.hasIrCodes()) {
+                            Text(
+                                color = Color.Black,
+                                text = "IR Codes not setup yet",
+                                style = MaterialTheme.typography.body1,
+                                modifier = Modifier.padding(top = 16.dp)
+                            )
+                        } else {
+                            LazyColumn(
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                items(device.irCodes) { irCode ->
+                                    Column(modifier = Modifier
+                                        .clickable { }
+                                        .fillMaxWidth()
+                                    ) {
+                                        Text(
+                                            modifier = Modifier.padding(vertical = 12.dp),
+                                            text = irCode.readableName,
+                                            color = MaterialTheme.colors.onBackground,
+                                            fontWeight = FontWeight.W400,
+                                            style = MaterialTheme.typography.body1,
+                                        )
+                                        Divider()
+                                    }
                                 }
                             }
                         }
@@ -118,7 +136,7 @@ private fun DeviceOverviewUi(
                     1 -> {
                         Text(
                             color = Color.Black,
-                            text = "TODO",
+                            text = "Trigger rules not setup yet",
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier.padding(top = 16.dp)
                         )
@@ -131,15 +149,15 @@ private fun DeviceOverviewUi(
         Column(modifier = Modifier.fillMaxWidth()) {
             VerticalSpacer(space = 12.dp)
             MotionButton(text = "IR Codes", color = MotionBlack) {
-                openIrCodes(device.serialNumber)
+                eventsSink(DeviceOverviewUiEvent.OpenIrCodesPage(device.serialNumber))
             }
             VerticalSpacer(space = 12.dp)
             MotionButton(text = "Add Control Rule", color = MotionBlue) {
-                openAddNewTriggerRule(device.serialNumber)
+                eventsSink(DeviceOverviewUiEvent.OpenTriggerRuleSetupPage(device.serialNumber))
             }
             VerticalSpacer(space = 12.dp)
             MotionButton(text = "Go To Dashboard") {
-                openDashboard()
+                eventsSink(DeviceOverviewUiEvent.GoToDashboard)
             }
         }
     }
@@ -240,7 +258,7 @@ private fun BatteryIndicator(
 @Composable
 private fun AllDevicesScreenPreview() {
     PreviewTheme {
-        DeviceOverviewScreen(
+        DeviceOverviewUi(
             device = DeviceData(
                 name = "Device Name",
                 serialNumber = DeviceSerialNumber.of("1234-5678-90"),
@@ -257,10 +275,7 @@ private fun AllDevicesScreenPreview() {
                     IrCode(readableName = "IR Code 8"),
                 ),
             ),
-            openIrCodes = {},
-            openAddNewTriggerRule = {},
-            openDashboard = {},
-            onBack = {}
+            eventsSink = {},
         )
     }
 }

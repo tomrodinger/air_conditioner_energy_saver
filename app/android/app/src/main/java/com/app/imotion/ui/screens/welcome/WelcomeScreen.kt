@@ -32,6 +32,7 @@ import com.app.imotion.ui.theme.MotionBlack
 import com.app.imotion.ui.theme.PreviewTheme
 import com.app.imotion.R
 import com.app.imotion.ui.components.*
+import com.app.imotion.ui.screens.devices.DevicesOverviewUiEvent
 
 /**
  * Created by hani@fakhouri.eu on 2023-05-24.
@@ -39,8 +40,7 @@ import com.app.imotion.ui.components.*
 
 @Composable
 fun WelcomeScreen(
-    openQrScanner: () -> Unit,
-    openManualAddDeviceModel: () -> Unit,
+    eventSink: (DevicesOverviewUiEvent) -> Unit
 ) {
     val hasCameraHardware = hasCameraHardware(LocalContext.current)
     var showAddDeviceModal by remember { mutableStateOf(false) }
@@ -116,7 +116,7 @@ fun WelcomeScreen(
                     if (hasCameraHardware) {
                         showAddDeviceModal = true
                     } else {
-                        openManualAddDeviceModel()
+                        eventSink(DevicesOverviewUiEvent.AddNewDevice)
                     }
                 },
             )
@@ -199,7 +199,7 @@ fun WelcomeScreen(
                                 shape = RoundedCornerShape(24.dp)
                             )
                             .clickable {
-                                openQrScanner()
+                                eventSink(DevicesOverviewUiEvent.AddNewDevice)
                             }
                             .padding(16.dp),
                         verticalArrangement = Arrangement.Center,
@@ -229,7 +229,7 @@ fun WelcomeScreen(
                                 shape = RoundedCornerShape(24.dp)
                             )
                             .clickable {
-                                openManualAddDeviceModel()
+                                eventSink(DevicesOverviewUiEvent.AddNewDevice)
                             }
                             .padding(16.dp),
                         verticalArrangement = Arrangement.Center,
@@ -256,17 +256,14 @@ fun WelcomeScreen(
 }
 
 private fun hasCameraHardware(context: Context): Boolean =
-    context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
+    context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
 
 @Preview(showBackground = true)
 @Composable
 private fun WelcomeOverlayPreview() {
     PreviewTheme {
         IMotionSurface {
-            WelcomeScreen(
-                openQrScanner = {},
-                openManualAddDeviceModel = {},
-            )
+            WelcomeScreen(eventSink = {})
         }
     }
 }

@@ -11,8 +11,8 @@ import javax.inject.Inject
 class IrCodesRepoImpl @Inject constructor(
     private val dataSource: IrCodesDataSource,
 ) : IrCodesRepo {
-    override suspend fun addIrCode(code: IrCodeStorageModel): Result<Unit> =
-        dataSource.addIrCode(code)
+    override suspend fun saveIrCode(code: IrCodeStorageModel): Result<Unit> =
+        dataSource.saveIrCode(code)
 
     override suspend fun deleteIrCode(
         deviceSerialNumber: DeviceSerialNumber,

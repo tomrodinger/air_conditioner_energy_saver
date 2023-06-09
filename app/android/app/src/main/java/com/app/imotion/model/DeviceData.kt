@@ -10,4 +10,6 @@ data class DeviceData(
     @androidx.annotation.FloatRange(from = 0.0, to = 100.0) val batterPercentage: Float,
     val firmwareVersion: DeviceFirmwareVersion,
     val irCodes: List<IrCode>,
-)
+) {
+    fun hasIrCodes() = irCodes.isNotEmpty()
+}

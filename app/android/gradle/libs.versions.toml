@@ -18,6 +18,7 @@ accompanist-permissions = "0.31.2-alpha"
 kotlin-date-time = "0.4.0"
 
 di-hilt = "2.44"
+hilt-navigation-compose = "1.0.0"
 
 [libraries]
 
@@ -43,6 +44,8 @@ accompanist-permissions = { module = "com.google.accompanist:accompanist-permiss
 
 di-hilt = { module = "com.google.dagger:hilt-android", version.ref = "di-hilt" }
 di-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "di-hilt" }
+
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 
 [bundles]
 plugins = ["plugin-android", "plugin-kotlin"]

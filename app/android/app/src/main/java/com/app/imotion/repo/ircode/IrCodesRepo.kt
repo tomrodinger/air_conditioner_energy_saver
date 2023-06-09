@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
  * Created by hani.fakhouri on 2023-06-08.
  */
 interface IrCodesRepo {
-    suspend fun addIrCode(code: IrCodeStorageModel): Result<Unit>
+    suspend fun saveIrCode(code: IrCodeStorageModel): Result<Unit>
     suspend fun deleteIrCode(
         deviceSerialNumber: DeviceSerialNumber,
         value: String,

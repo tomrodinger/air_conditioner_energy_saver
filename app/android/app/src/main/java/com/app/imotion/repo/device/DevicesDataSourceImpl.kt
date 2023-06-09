@@ -13,6 +13,9 @@ class DevicesDataSourceImpl @Inject constructor() : DevicesDataSource {
     private val devices = MutableStateFlow<List<DeviceStorageModel>>(listOf())
 
     override suspend fun addDevice(data: DeviceStorageModel): Result<Unit> {
+        if (devices.value.any { it.serialNumber == data.serialNumber }) {
+            return Result.success(Unit)
+        }
         val copy = mutableListOf<DeviceStorageModel>()
         copy.addAll(devices.value)
         copy.add(data)

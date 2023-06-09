@@ -26,7 +26,7 @@ import com.app.imotion.model.DeviceSerialNumber
 import com.app.imotion.model.IrCode
 import com.app.imotion.ui.components.*
 import com.app.imotion.ui.theme.PreviewTheme
-import com.app.imotion.ui.utils.AndroidUtils
+import com.app.imotion.utils.AndroidUtils
 import kotlin.math.absoluteValue
 
 /**

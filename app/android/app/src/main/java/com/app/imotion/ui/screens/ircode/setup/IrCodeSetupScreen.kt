@@ -24,14 +24,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.app.imotion.R
+import com.app.imotion.model.DeviceSerialNumber
+import com.app.imotion.navigation.NavRoute
 import com.app.imotion.ui.components.*
 import com.app.imotion.ui.theme.MotionGrey
 import com.app.imotion.ui.theme.MotionRed
 import com.app.imotion.ui.theme.PreviewTheme
-import com.app.imotion.ui.utils.ComposeUtils.pxToDp
+import com.app.imotion.utils.ComposeUtils.pxToDp
 
 /**
  * Created by hani@fakhouri.eu on 2023-05-28.
@@ -69,17 +71,25 @@ private fun getSteps() = listOf(
     ),
 )
 
+object IrCodeSetupScreen : NavRoute(route = "ircode/setup/{device-sn}") {
+    fun buildRoute(
+        deviceSerialNumber: DeviceSerialNumber
+    ) = "ircode/setup/${deviceSerialNumber.value}"
+}
+
 @Composable
 fun IrCodeSetupScreen(
-    vm: IrCodeSetupScreenVM = viewModel(),
+    vm: IrCodeSetupScreenVM = hiltViewModel(),
     onBack: () -> Unit,
 ) {
+    val state by vm.state.collectAsStateWithLifecycle()
     SimpleScreenTemplate(
         title = "Learn IR code & Connect",
         onBack = onBack,
         content = {
             AllStepsUi(
-                vm = vm,
+                state = state,
+                eventsSink = vm::onUiEvent,
             )
         }
     )
@@ -87,16 +97,12 @@ fun IrCodeSetupScreen(
 
 @Composable
 private fun AllStepsUi(
-    vm: IrCodeSetupScreenVM = viewModel(),
+    state: IrCodeSetupState,
+    eventsSink: (IrCodeSetupScreenUiEvent) -> Unit,
 ) {
-
-    val syncState by vm.state.collectAsStateWithLifecycle()
-    val isTestingIrCode by vm.isTesting.collectAsStateWithLifecycle()
     val steps = getSteps()
     val totalSteps = steps.size
-
     var irCodeName by remember { mutableStateOf("") }
-
     var currentStepIndex by remember { mutableStateOf(0) }
     val stepData = steps[currentStepIndex]
 
@@ -104,7 +110,7 @@ private fun AllStepsUi(
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.CenterEnd,
     ) {
-        if (isTestingIrCode) {
+        if (state.isTestingCode) {
             val animatedScale = remember { Animatable(1.0F) }
             LaunchedEffect(Unit) {
                 animatedScale.animateTo(
@@ -154,14 +160,14 @@ private fun AllStepsUi(
             when (currentStepIndex) {
                 0 -> {
                     MotionButton(text = "Synchronize Now") {
-                        vm.startSync()
+                        eventsSink(IrCodeSetupScreenUiEvent.StartSyncingIrCode)
                         currentStepIndex++
                     }
                 }
                 1 -> {
-                    currentStepIndex = when (syncState) {
-                        IrCodeSyncState.Idle -> 2
-                        IrCodeSyncState.InProgress -> 1
+                    currentStepIndex = when (state.isSyncInProgress) {
+                        true -> 1
+                        false -> 2
                     }
                 }
                 2 -> {
@@ -185,7 +191,7 @@ private fun AllStepsUi(
                                     text = "Test it",
                                     color = MaterialTheme.colors.onBackground,
                                 ) {
-                                    vm.testIrCode()
+                                    eventsSink(IrCodeSetupScreenUiEvent.TestIrCode)
                                 }
                             }
                             HorizontalSpacer(space = 16.dp)
@@ -198,19 +204,11 @@ private fun AllStepsUi(
                                     text = "Done",
                                     enabled = irCodeName.isNotEmpty(),
                                 ) {
-                                    vm.onDone(irCodeName)
+                                    eventsSink(IrCodeSetupScreenUiEvent.SaveIrCode(irCodeName))
                                 }
                             }
                         }
                     }
-                }
-                3 -> {
-                    MotionButton(
-                        text = "Set Controls",
-                        onClick = {
-                            vm.navigateToSetupDeviceControls()
-                        },
-                    )
                 }
             }
         }

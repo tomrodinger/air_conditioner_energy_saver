@@ -1,4 +1,4 @@
-package com.app.imotion.ui.utils
+package com.app.imotion.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalDensity

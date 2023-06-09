@@ -3,7 +3,7 @@ package com.app.imotion.ui.screens.ircode.setup
 /**
  * Created by hani@fakhouri.eu on 2023-05-29.
  */
-sealed interface IrCodeSyncState {
-    object InProgress : IrCodeSyncState
-    object Idle : IrCodeSyncState
-}
+data class IrCodeSetupState(
+    val isSyncInProgress: Boolean = false,
+    val isTestingCode: Boolean = false,
+)

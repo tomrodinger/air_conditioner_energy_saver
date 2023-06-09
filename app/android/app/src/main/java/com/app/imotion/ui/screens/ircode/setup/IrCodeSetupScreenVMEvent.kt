@@ -1,11 +1,10 @@
 package com.app.imotion.ui.screens.ircode.setup
 
-import com.app.imotion.model.MotionDeviceListEntry
+import com.app.imotion.model.DeviceSerialNumber
 
 /**
- * Created by hani@fakhouri.eu on 2023-05-29.
+ * Created by hani.fakhouri on 2023-06-09.
  */
 sealed interface IrCodeSetupScreenVMEvent {
-    data class NavigateToSetupDeviceControls(val device: MotionDeviceListEntry) :
-        IrCodeSetupScreenVMEvent
+    data class OpenDeviceOverviewPage(val deviceSerialNumber: DeviceSerialNumber) : IrCodeSetupScreenVMEvent
 }

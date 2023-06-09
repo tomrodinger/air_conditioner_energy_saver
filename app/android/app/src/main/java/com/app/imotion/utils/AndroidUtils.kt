@@ -1,4 +1,4 @@
-package com.app.imotion.ui.utils
+package com.app.imotion.utils
 
 import android.content.Context
 import android.util.DisplayMetrics
