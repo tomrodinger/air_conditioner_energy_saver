@@ -185,7 +185,7 @@ TDB
 
 Custom characteristic | -
 --- | ---
-Name | Motion sensor timeout
+Name | RTC Set
 UUID | TBD
 Properties | WRITE, WRITE NO RESPONSE
 Type | uint32
