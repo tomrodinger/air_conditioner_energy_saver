@@ -24,7 +24,10 @@ Custom characteristic | -
 Name | IR Codes learn
 UUID | TBD
 Properties | WRITE, WRITE NO RESPONSE
-Type | ???
+Type | uint32
+
+### Specification
+Ir code: 6 bits (64 possible IR codes)
 
 ### Comments
 - The App tells the Device what IR code is to be learned.
@@ -41,7 +44,10 @@ Custom characteristic | -
 Name | IR Codes emit
 UUID | TBD
 Properties | WRITE, WRITE NO RESPONSE
-Type | ???
+Type | uint32
+
+### Specification
+Ir code: 6 bits (64 possible IR codes)
 
 ### Comments
 - The App tells the Device what IR control signal to send.
@@ -58,7 +64,30 @@ Custom characteristic | -
 Name | Set schedule
 UUID | TBD
 Properties | WRITE, WRITE NO RESPONSE
-Type | ???
+Type | UTF-8 String
+
+### Specification
+"command:[schedule|delete];ircode:[numeric_code];days:[uint32(7 bits)];window1:[hhmm];window2:[hhmm|-1]"
+
+Example 1: Trigger IR code 1, every Monday and Friday, at 18:00
+
+The app would send the string:
+"command:schedule;ircode:1;days:68;window1:1800;window2:-1"
+
+Example 2: Trigger IR code 4, everyday, at 23:15
+
+The app would send the string:
+"command:schedule;ircode:4;days:127;window1:2315;window2:-1"
+
+Example 3: Trigger IR code 16, weekdays, within 09:00 to 17:00
+
+The app would send the string:
+"command:schedule;ircode:16;days:124;window1:0900;window2:1700"
+
+Example 4: Delete IR code 4, everyday, at 23:15
+
+The app would send the string:
+"command:delete;ircode:4;days:127;window1:2315;window2:-1"
 
 ### Comments
 
@@ -101,10 +130,23 @@ UUID | TBD
 Properties | WRITE, WRITE NO RESPONSE
 Type | uint32
 
+### Specification
+- Timeout duration in seconds (max value: 24 hours = 86400 seconds): 17 bits 
+- Ir code: 6 bits (64 possible IR codes)
+- Days: 7 bits
+- Total: 30 bits
+
+Example: Emit IR code X every day if no motion is sensed for 2 minutes
+- IR code X: 000001
+- Every day: 1111111
+- 2 minutes(120 seconds): 1111000
+- => The app would send: 991169
+
 ### Comments
 - We need a command to disable/erase a schedule.
 - The App tells the Device the timeout value.
 - The App tells the Device what IR code to emit when timeout value is reached.
+- The App tells at what days the timeout is valid
 
 ### Questions
 
@@ -112,12 +154,10 @@ Type | uint32
 **The App will allow the air conditioner to be controlled manually using buttons in the App (for testing purposes mainly)**
 
 ### BLE Protocol
-N/A
+Same as 1.2
 
 ### Comments
 - Completely handled by the App. Given that IR control signals have been learned.
-- Dependent on 1.2.
-- Double check if UI design is present for this requirement.
 
 ### Questions
 
@@ -161,10 +201,9 @@ N/A
 **The App will allow turning on the air conditioner when motion is sensed**
 
 ### BLE Protocol
-TDB
+See 1.3
 
 ### Comments
-- The BLE protocol for this is missing
 
 ### Questions
 
@@ -222,7 +261,7 @@ Type | UTF-8 String Ex:("1.0.0")
 **The App will allow time windowed scheduling of IR code triggering**
 
 ### BLE Protocol
-TBD
+See 1.3
 
 ### Comments
 The logic here is that if motion is detected and it is sufficiently strong to pass the threshold of the sensitivity setting and the time at which the motion occurs is within the time window (between the begin time and end time) then the IR code will be triggered. For example, I want to set up this device to turn on my air conditioner in the office during the weekdays Monday to Friday during office hours 9am to 5pm (the time window) and only if a person walks directly onto the room and not a person walking outside the office (hence sensitivity adjustmemt).
