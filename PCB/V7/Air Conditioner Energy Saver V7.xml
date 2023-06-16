@@ -1,0 +1,2349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>G:\OneDrive\Work\Upwork\TomRodinger\Air Conditioner Energy Saver V7\Air Conditioner Energy Saver V7.kicad_sch</source>
+    <date>6/16/2023 9:33:29 AM</date>
+    <tool>Eeschema 7.0.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date>11/06/2023</date>
+        <source>Air Conditioner Energy Saver V7.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="BT1">
+      <value>Battery_Cell</value>
+      <footprint>Motion_sense:AA Batt</footprint>
+      <fields>
+        <field name="Description">Battery_Cell</field>
+      </fields>
+      <libsource lib="Device" part="Battery_Cell" description="Single-cell battery"/>
+      <property name="Description" value="Battery_Cell"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Single-cell battery"/>
+      <property name="ki_keywords" value="battery cell"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5a9cc8dc-b899-4016-9873-a99ec930a962</tstamps>
+    </comp>
+    <comp ref="BT2">
+      <value>Battery_Cell</value>
+      <footprint>Motion_sense:AA Batt</footprint>
+      <fields>
+        <field name="Description">Battery_Cell</field>
+      </fields>
+      <libsource lib="Device" part="Battery_Cell" description="Single-cell battery"/>
+      <property name="Description" value="Battery_Cell"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Single-cell battery"/>
+      <property name="ki_keywords" value="battery cell"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>62572e48-123e-40e3-bbac-e4ee3d41f626</tstamps>
+    </comp>
+    <comp ref="C1">
+      <value>10nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">50V 10nF X7R ±10% 0402 Multilayer Ceramic Capacitors</field>
+        <field name="LCSC">C15195</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL05B103KB5NNNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 10nF X7R ±10% 0402 Multilayer Ceramic Capacitors"/>
+      <property name="LCSC" value="C15195"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL05B103KB5NNNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d2d40fe1-318d-421a-98b6-eedece50d648</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>4.7uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">16V 4.7uF X5R ±10% 0603 Multilayer Ceramic</field>
+        <field name="LCSC">C19666</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL10A475KO8NNNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="16V 4.7uF X5R ±10% 0603 Multilayer Ceramic"/>
+      <property name="LCSC" value="C19666"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL10A475KO8NNNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5aa1bf80-b5f3-4412-9101-4b142ad4832e</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>22uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="Description">25V 22uF X5R ±10% 1206 Multilayer Ceramic Capacitors</field>
+        <field name="LCSC">C12891</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL31A226KAHNNNE</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="25V 22uF X5R ±10% 1206 Multilayer Ceramic Capacitors"/>
+      <property name="LCSC" value="C12891"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL31A226KAHNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>744508db-93af-411f-b52a-b672e25e556a</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>10nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">50V 10nF X7R ±10% 0402 Multilayer Ceramic Capacitors</field>
+        <field name="LCSC">C15195</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL05B103KB5NNNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 10nF X7R ±10% 0402 Multilayer Ceramic Capacitors"/>
+      <property name="LCSC" value="C15195"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL05B103KB5NNNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>451f2c66-96f7-428e-baea-bb6cef27befe</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>1000uF</value>
+      <footprint>Capacitor_SMD:CP_Elec_8x10.5</footprint>
+      <fields>
+        <field name="Description">1000uF 10V ±20% SMD,D8xL10.2mm </field>
+        <field name="LCSC">C99833</field>
+        <field name="MN">ROQANG</field>
+        <field name="MPN">RVT1A102M0810</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="LCSC" value="C99833"/>
+      <property name="Description" value="1000uF 10V ±20% SMD,D8xL10.2mm "/>
+      <property name="MN" value="ROQANG"/>
+      <property name="MPN" value="RVT1A102M0810"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Polarized capacitor, small US symbol"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>136a7b63-4a86-435b-b00a-ec07b72683ca</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="Description">50V 10uF X5R ±10% 1206 Multilayer Ceramic </field>
+        <field name="LCSC">C13585</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL31A106KBHNNNE</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 10uF X5R ±10% 1206 Multilayer Ceramic "/>
+      <property name="LCSC" value="C13585"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL31A106KBHNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27a1f860-5492-45d4-bb89-ea9b4724c80c</tstamps>
+    </comp>
+    <comp ref="C12">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="Description">50V 10uF X5R ±10% 1206 Multilayer Ceramic </field>
+        <field name="LCSC">C13585</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL31A106KBHNNNE</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 10uF X5R ±10% 1206 Multilayer Ceramic "/>
+      <property name="LCSC" value="C13585"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL31A106KBHNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3dfe5c5c-4337-43b5-a5e8-decde65479d3</tstamps>
+    </comp>
+    <comp ref="C14">
+      <value>20nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">CAP CER 0.02UF 50V X7R 0603</field>
+        <field name="LCSC">C282065</field>
+        <field name="MN">YAGEO</field>
+        <field name="MPN">CC0603KRX7R9BB203</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="CAP CER 0.02UF 50V X7R 0603"/>
+      <property name="LCSC" value="C282065"/>
+      <property name="MN" value="YAGEO"/>
+      <property name="MPN" value="CC0603KRX7R9BB203"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>51a21121-36a5-42d9-8c76-ec3db9bd238d</tstamps>
+    </comp>
+    <comp ref="C15">
+      <value>4.7uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Description">25V 4.7uF X5R ±10% 0805 Multilayer Ceramic</field>
+        <field name="LCSC">C1779</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL21A475KAQNNNE</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="25V 4.7uF X5R ±10% 0805 Multilayer Ceramic"/>
+      <property name="LCSC" value="C1779"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL21A475KAQNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>def305ba-8127-4e50-b53a-35e990b2f4fe</tstamps>
+    </comp>
+    <comp ref="C16">
+      <value>1uF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">50V 1uF X5R ±10% 0603 Multilayer Ceramic Capacitors</field>
+        <field name="LCSC">C15849</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL10A105KB8NNNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 1uF X5R ±10% 0603 Multilayer Ceramic Capacitors"/>
+      <property name="LCSC" value="C15849"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL10A105KB8NNNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>572fd832-043a-4479-ba66-950e4cf186a4</tstamps>
+    </comp>
+    <comp ref="C18">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors</field>
+        <field name="LCSC">C307331</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL05B104KB54PNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors"/>
+      <property name="LCSC" value="C307331"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL05B104KB54PNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>92113227-d3fb-4833-9abd-fc33985f8ca9</tstamps>
+    </comp>
+    <comp ref="C19">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors</field>
+        <field name="LCSC">C307331</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL05B104KB54PNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors"/>
+      <property name="LCSC" value="C307331"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL05B104KB54PNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0846d9db-a71d-466f-9d9b-d2fc856fb3fd</tstamps>
+    </comp>
+    <comp ref="C21">
+      <value>10uF</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="Description">50V 10uF X5R ±10% 1206 Multilayer Ceramic </field>
+        <field name="LCSC">C13585</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL31A106KBHNNNE</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 10uF X5R ±10% 1206 Multilayer Ceramic "/>
+      <property name="LCSC" value="C13585"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL31A106KBHNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7548ab1b-4e74-4324-941c-9912bc2a1ae8</tstamps>
+    </comp>
+    <comp ref="C23">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors</field>
+        <field name="LCSC">C307331</field>
+        <field name="MN">Samsung Electro-Mechanics</field>
+        <field name="MPN">CL05B104KB54PNC</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Description" value="50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors"/>
+      <property name="LCSC" value="C307331"/>
+      <property name="MN" value="Samsung Electro-Mechanics"/>
+      <property name="MPN" value="CL05B104KB54PNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00622fd7-a50f-47ae-bce5-62424100e5f2</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>IR333-A</value>
+      <footprint>LED_THT:LED_D5.0mm_Horizontal_O3.81mm_Z3.0mm</footprint>
+      <fields>
+        <field name="Description">EMITTER IR 940NM 100MA RADIAL</field>
+        <field name="LCSC">C264290</field>
+        <field name="MN">Everlight Elec</field>
+        <field name="MPN">IR333-A</field>
+      </fields>
+      <libsource lib="Device" part="LED_Small" description="Light emitting diode, small symbol"/>
+      <property name="LCSC" value="C264290"/>
+      <property name="Description" value="EMITTER IR 940NM 100MA RADIAL"/>
+      <property name="MN" value="Everlight Elec"/>
+      <property name="MPN" value="IR333-A"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Light emitting diode, small symbol"/>
+      <property name="ki_keywords" value="LED diode light-emitting-diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8d9a3ecc-539f-41da-8099-d37cea9c28e7</tstamps>
+    </comp>
+    <comp ref="D3">
+      <value>LED_RGBA</value>
+      <footprint>Motion_sense:FM-B2020RGBA-HG</footprint>
+      <fields>
+        <field name="Description">RGB SMD,2.1x2.1mm Light Emitting Diodes "</field>
+        <field name="LCSC">C108793</field>
+        <field name="LCSC PN">C108793</field>
+        <field name="MN">Foshan NationStar Optoelectronics</field>
+        <field name="MPN">FM-B2020RGBA-HG</field>
+      </fields>
+      <libsource lib="Device" part="LED_RGBA" description="RGB LED, red/green/blue/anode"/>
+      <property name="LCSC PN" value="C108793"/>
+      <property name="Description" value="RGB SMD,2.1x2.1mm Light Emitting Diodes &quot;"/>
+      <property name="LCSC" value="C108793"/>
+      <property name="MN" value="Foshan NationStar Optoelectronics"/>
+      <property name="MPN" value="FM-B2020RGBA-HG"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="RGB LED, red/green/blue/anode"/>
+      <property name="ki_keywords" value="LED RGB diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>abc614b9-dbe9-47fe-82f6-90df51f1f762</tstamps>
+    </comp>
+    <comp ref="H1">
+      <value>MountingHole</value>
+      <footprint>Motion_sense:Mounting Hole 2.3mm</footprint>
+      <fields>
+        <field name="Description">MountingHole</field>
+      </fields>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Description" value="MountingHole"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Mounting Hole without connection"/>
+      <property name="ki_keywords" value="mounting hole"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bf82b730-dfb1-4309-a9ea-8a1724cd9d51</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_01x05_Male</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Description">2.54mm Plugin Black Brass 1x5P Plugin</field>
+        <field name="LCSC">C492404</field>
+        <field name="MN">XFCN</field>
+        <field name="MPN">PZ254V-11-05P</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_01x05_Male" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Description" value="2.54mm Plugin Black Brass 1x5P Plugin"/>
+      <property name="LCSC" value="C492404"/>
+      <property name="MN" value="XFCN"/>
+      <property name="MPN" value="PZ254V-11-05P"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>28b9179c-4704-4301-bdc9-ad03674d962a</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_01x06_Male</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Description">2.54mm Plugin Black Brass 1x6P Plugin</field>
+        <field name="LCSC">C492405</field>
+        <field name="MN">XFCN</field>
+        <field name="MPN">PZ254V-11-06P</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_01x06_Male" description="Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Description" value="2.54mm Plugin Black Brass 1x6P Plugin"/>
+      <property name="LCSC" value="C492405"/>
+      <property name="MN" value="XFCN"/>
+      <property name="MPN" value="PZ254V-11-06P"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27231fdc-82dd-470d-a2b7-9ed7ee308d2b</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>Conn_01x04_Male</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Description">2.54mm Plugin Black 1x4P Plugin</field>
+        <field name="LCSC">C2691448</field>
+        <field name="MN">XFCN</field>
+        <field name="MPN">PZ254V-11-04P</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_01x04_Male" description="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Description" value="2.54mm Plugin Black 1x4P Plugin"/>
+      <property name="LCSC" value="C2691448"/>
+      <property name="MN" value="XFCN"/>
+      <property name="MPN" value="PZ254V-11-04P"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e3fba06a-c2b9-4362-885a-c83948946191</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>Conn_01x04_Male</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Description">2.54mm Plugin Black 1x4P Plugin</field>
+        <field name="LCSC">C2691448</field>
+        <field name="MN">XFCN</field>
+        <field name="MPN">PZ254V-11-04P</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_01x04_Male" description="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Description" value="2.54mm Plugin Black 1x4P Plugin"/>
+      <property name="LCSC" value="C2691448"/>
+      <property name="MN" value="XFCN"/>
+      <property name="MPN" value="PZ254V-11-04P"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e77c19b6-db3d-4b9e-a098-b8ca8297a370</tstamps>
+    </comp>
+    <comp ref="JP1">
+      <value>Jumper_3_Bridged12</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Description">2.54mm Plugin Black 1x3P Plugin</field>
+        <field name="LCSC">C2937625</field>
+        <field name="MN">XFCN</field>
+        <field name="MPN">PZ254V-11-03P</field>
+      </fields>
+      <libsource lib="Jumper" part="Jumper_3_Bridged12" description="Jumper, 3-pole, pins 1+2 closed/bridged"/>
+      <property name="Description" value="2.54mm Plugin Black 1x3P Plugin"/>
+      <property name="LCSC" value="C2937625"/>
+      <property name="MN" value="XFCN"/>
+      <property name="MPN" value="PZ254V-11-03P"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Jumper, 3-pole, pins 1+2 closed/bridged"/>
+      <property name="ki_keywords" value="Jumper SPDT"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>42f91f74-e2a0-4b26-ae70-d83777eb405b</tstamps>
+    </comp>
+    <comp ref="JP2">
+      <value>Jumper_2_Open</value>
+      <footprint>TestPoint:TestPoint_2Pads_Pitch2.54mm_Drill0.8mm</footprint>
+      <libsource lib="Jumper" part="Jumper_2_Open" description="Jumper, 2-pole, open"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Jumper, 2-pole, open"/>
+      <property name="ki_keywords" value="Jumper SPST"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d370559b-8633-439e-a63c-463ce266de36</tstamps>
+    </comp>
+    <comp ref="L2">
+      <value>15nH</value>
+      <footprint>Inductor_SMD:L_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">300mA 15nH ±5% 500mΩ 0402 Inductors (SMD) ROHS</field>
+        <field name="LCSC">C27143</field>
+        <field name="MN">Sunlord</field>
+        <field name="MPN">SDCL1005C15NJTDF</field>
+      </fields>
+      <libsource lib="Device" part="L_Small" description="Inductor, small symbol"/>
+      <property name="Description" value="300mA 15nH ±5% 500mΩ 0402 Inductors (SMD) ROHS"/>
+      <property name="LCSC" value="C27143"/>
+      <property name="MN" value="Sunlord"/>
+      <property name="MPN" value="SDCL1005C15NJTDF"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Inductor, small symbol"/>
+      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8160287d-5bb9-4693-8c54-1487325caca9</tstamps>
+    </comp>
+    <comp ref="L3">
+      <value>10uH</value>
+      <footprint>Inductor_SMD:L_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">3mA 10uH ±10% 1.85Ω 0603 Inductors (SMD) ROHS</field>
+        <field name="LCSC">C1035</field>
+        <field name="MN">Sunlord</field>
+        <field name="MPN">SDFL1608S100KTF</field>
+      </fields>
+      <libsource lib="Device" part="L_Small" description="Inductor, small symbol"/>
+      <property name="Description" value="3mA 10uH ±10% 1.85Ω 0603 Inductors (SMD) ROHS"/>
+      <property name="LCSC" value="C1035"/>
+      <property name="MN" value="Sunlord"/>
+      <property name="MPN" value="SDFL1608S100KTF"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Inductor, small symbol"/>
+      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>61fe5f8a-94d3-4f23-a116-2eecfa515055</tstamps>
+    </comp>
+    <comp ref="P2">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4110e71c-ac60-4e49-a67d-42ff60f3a0ba</tstamps>
+    </comp>
+    <comp ref="P3">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>074938e6-7b7f-46d1-8bfe-693d43cb596f</tstamps>
+    </comp>
+    <comp ref="P13">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4da02c8d-67b2-4f7e-8943-7e5e38de96f6</tstamps>
+    </comp>
+    <comp ref="P16">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>59d32b0e-fd67-4f3f-92cb-02347a9ead15</tstamps>
+    </comp>
+    <comp ref="P17">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>99259dcc-cbc7-402d-975a-bcb5d85ebd09</tstamps>
+    </comp>
+    <comp ref="P22">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1b732dd9-114d-443b-92a8-16b656d82dec</tstamps>
+    </comp>
+    <comp ref="P23">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>704d3b8c-0fba-476f-b1db-3bd2c3b20eb7</tstamps>
+    </comp>
+    <comp ref="P24">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0ca05371-aa99-427d-b585-c9ca43f566c9</tstamps>
+    </comp>
+    <comp ref="P25">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e669f50f-c0c7-47dc-bb2a-e91d60de4d9c</tstamps>
+    </comp>
+    <comp ref="P26">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>31a8ba14-c84f-4a28-b759-06fbdb564728</tstamps>
+    </comp>
+    <comp ref="P27">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9bb52bb6-ba05-49ba-bcb1-b76ece7e2459</tstamps>
+    </comp>
+    <comp ref="P29">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4e443f35-4e24-402e-8626-3841a14370d9</tstamps>
+    </comp>
+    <comp ref="P31">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_1.5x1.5mm</footprint>
+      <fields>
+        <field name="Description">TestPoint</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Description" value="TestPoint"/>
+      <property name="MN" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cf19c741-6056-4add-8109-1af8d0a3a7d3</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>BC817-40</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/BC818-D.pdf</datasheet>
+      <fields>
+        <field name="Description">45V 250mW 500mA NPN SOT-23 </field>
+        <field name="LCSC">C85078</field>
+        <field name="LCSC PN">C85078</field>
+        <field name="MN">ST(Semtech)</field>
+        <field name="MPN">BC817-40</field>
+      </fields>
+      <libsource lib="Transistor_BJT" part="BC817" description="0.8A Ic, 45V Vce, NPN Transistor, SOT-23"/>
+      <property name="LCSC PN" value="C85078"/>
+      <property name="Description" value="45V 250mW 500mA NPN SOT-23 "/>
+      <property name="LCSC" value="C85078"/>
+      <property name="MN" value="ST(Semtech)"/>
+      <property name="MPN" value="BC817-40"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="0.8A Ic, 45V Vce, NPN Transistor, SOT-23"/>
+      <property name="ki_keywords" value="NPN Transistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>594e6540-6208-46c1-b5d4-dcb0989d0555</tstamps>
+    </comp>
+    <comp ref="Q2">
+      <value>AO3401A</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf</datasheet>
+      <fields>
+        <field name="Description">30V 4A 44mΩ@10V,4.3A 1.4W P Channel SOT-23</field>
+        <field name="LCSC">C15127</field>
+        <field name="LCSC PN">C15127</field>
+        <field name="MN">Alpha &amp; Omega Semicon</field>
+        <field name="MPN">AO3401A</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="AO3401A" description="-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23"/>
+      <property name="LCSC PN" value="C15127"/>
+      <property name="Description" value="30V 4A 44mΩ@10V,4.3A 1.4W P Channel SOT-23"/>
+      <property name="LCSC" value="C15127"/>
+      <property name="MN" value="Alpha &amp; Omega Semicon"/>
+      <property name="MPN" value="AO3401A"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23"/>
+      <property name="ki_keywords" value="P-Channel MOSFET"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b18ced28-c385-4541-9d7f-5c20bcd7b0f0</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>4.7K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±1% 4.7kΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C25900</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF4701TCE</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±1% 4.7kΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C25900"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF4701TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small symbol"/>
+      <property name="ki_keywords" value="R resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>490f92c7-0a50-4fa9-a961-7282288b1830</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>4.7K</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">100mW Thick Film Resistors ±1% 4.7kΩ 0603  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C23162</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0603WAF4701T5E</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="100mW Thick Film Resistors ±1% 4.7kΩ 0603  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C23162"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0603WAF4701T5E"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small symbol"/>
+      <property name="ki_keywords" value="R resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>301ddb52-7aa7-4d21-829d-3b0604718d7b</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">Resistors ±100ppm/℃ ±1% 1kΩ 0402</field>
+        <field name="LCSC">C11702</field>
+        <field name="LCSC PN">C11702</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1001TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value="C11702"/>
+      <property name="Description" value="Resistors ±100ppm/℃ ±1% 1kΩ 0402"/>
+      <property name="LCSC" value="C11702"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1001TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>965c0623-2775-4b49-bc5f-8f5f9a7f7d2b</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">Resistors ±100ppm/℃ ±1% 1kΩ 0402</field>
+        <field name="LCSC">C11702</field>
+        <field name="LCSC PN">C11702</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1001TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value="C11702"/>
+      <property name="Description" value="Resistors ±100ppm/℃ ±1% 1kΩ 0402"/>
+      <property name="LCSC" value="C11702"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1001TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>39dae387-1220-44b9-ab57-19e61866295f</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">Resistors ±100ppm/℃ ±1% 1kΩ 0402</field>
+        <field name="LCSC">C11702</field>
+        <field name="LCSC PN">C11702</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1001TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value="C11702"/>
+      <property name="Description" value="Resistors ±100ppm/℃ ±1% 1kΩ 0402"/>
+      <property name="LCSC" value="C11702"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1001TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>06053d52-2c5a-46bb-93e1-27853fa2e222</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>13K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">Resistors ±100ppm/℃ ±5% 13kΩ 0402</field>
+        <field name="LCSC">C25537</field>
+        <field name="LCSC PN">C25537</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGJ0133TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value="C25537"/>
+      <property name="Description" value="Resistors ±100ppm/℃ ±5% 13kΩ 0402"/>
+      <property name="LCSC" value="C25537"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGJ0133TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b37b3529-c9bd-4174-9407-e2806fae6dc4</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>47K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±1% 47kΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C25792</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF4702TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±1% 47kΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C25792"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF4702TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e753ade1-8a03-4b0e-a63a-84f230e1c77f</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C25744</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1002TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C25744"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1002TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1c125c5d-c12e-4041-b71b-87c4e728489c</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>2.1M</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">Resistors ±100ppm/℃ ±1% 2.1MΩ 0603</field>
+        <field name="LCSC">C482785</field>
+        <field name="MN">YAGEO</field>
+        <field name="MPN">RC0603FR-072M1L</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="Resistors ±100ppm/℃ ±1% 2.1MΩ 0603"/>
+      <property name="LCSC" value="C482785"/>
+      <property name="MN" value="YAGEO"/>
+      <property name="MPN" value="RC0603FR-072M1L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1f15a70a-cbcb-4cb2-8ce7-86040b1ef7d1</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>30K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">RES 30K OHM 1% 1/16W 0402</field>
+        <field name="LCSC">C138008</field>
+        <field name="MN">YAGEO</field>
+        <field name="MPN">RC0402FR-0730KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="RES 30K OHM 1% 1/16W 0402"/>
+      <property name="LCSC" value="C138008"/>
+      <property name="MN" value="YAGEO"/>
+      <property name="MPN" value="RC0402FR-0730KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f58609cd-526d-45de-b593-81ea581475eb</tstamps>
+    </comp>
+    <comp ref="R11">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C25744</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1002TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C25744"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1002TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bf980e14-0d01-41aa-9087-ecac2f9f3ee2</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>470K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">Resistors ±100ppm/℃ ±1% 470kΩ 0402</field>
+        <field name="LCSC">C25790</field>
+        <field name="LCSC PN">C25790</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF4703TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value="C25790"/>
+      <property name="Description" value="Resistors ±100ppm/℃ ±1% 470kΩ 0402"/>
+      <property name="LCSC" value="C25790"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF4703TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b44c005a-e5c9-4fa5-8e85-6dcba67f5b1b</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>300K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">Resistors ±100ppm/℃ ±1% 470kΩ 0402</field>
+        <field name="LCSC">C25774</field>
+        <field name="LCSC PN">C25774</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF3003TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value="C25774"/>
+      <property name="Description" value="Resistors ±100ppm/℃ ±1% 470kΩ 0402"/>
+      <property name="LCSC" value="C25774"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF3003TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>eb6bee78-2d05-4db5-8074-db51d83986fb</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>1M</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±100ppm/℃ ±1% 1MΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C26083</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1004TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±100ppm/℃ ±1% 1MΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C26083"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1004TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f7569a81-fc02-4ba7-b001-210ba72d38d1</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>22R</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Description">100mW Thick Film Resistors ±1% 22Ω 0603  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C23345</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0603WAF220JT5E</field>
+      </fields>
+      <libsource lib="Device" part="R_Small" description="Resistor, small symbol"/>
+      <property name="Description" value="100mW Thick Film Resistors ±1% 22Ω 0603  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C23345"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0603WAF220JT5E"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small symbol"/>
+      <property name="ki_keywords" value="R resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d8c1a698-58d2-49bf-8533-bdd31641e2bb</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>47K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±1% 47kΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C25792</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF4702TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±1% 47kΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C25792"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF4702TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c7d71ae4-ee2f-4847-9ece-16a418fcdb38</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>0R</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±800ppm/℃ ±1% 0Ω 0402 Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C17168</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF0000TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±800ppm/℃ ±1% 0Ω 0402 Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C17168"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF0000TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>baf16d18-4110-4112-b97d-b8e3f8830305</tstamps>
+    </comp>
+    <comp ref="R22">
+      <value>0R</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±800ppm/℃ ±1% 0Ω 0402 Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C17168</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF0000TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±800ppm/℃ ±1% 0Ω 0402 Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C17168"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF0000TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3c917136-79aa-4ef2-9130-e5d58533c050</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C25744</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1002TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C25744"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1002TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4f122230-c25e-4538-b969-3bf6036d60bb</tstamps>
+    </comp>
+    <comp ref="R24">
+      <value>10K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Description">62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS</field>
+        <field name="LCSC">C25744</field>
+        <field name="MN">UNI-ROYAL(Uniroyal Elec)</field>
+        <field name="MPN">0402WGF1002TCE</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="LCSC PN" value=""/>
+      <property name="Description" value="62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS"/>
+      <property name="LCSC" value="C25744"/>
+      <property name="MN" value="UNI-ROYAL(Uniroyal Elec)"/>
+      <property name="MPN" value="0402WGF1002TCE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>673c2f4a-5211-403f-b5b6-b12b466a3de0</tstamps>
+    </comp>
+    <comp ref="RST1">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_EVQPE1</footprint>
+      <fields>
+        <field name="Description">SPST SMD Tactile Switches</field>
+        <field name="LCSC">C720477</field>
+        <field name="LCSC PN">C720477</field>
+        <field name="MN">XUNPU</field>
+        <field name="MPN">TS-1088-AR02016</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="LCSC PN" value="C720477"/>
+      <property name="Description" value="SPST SMD Tactile Switches"/>
+      <property name="LCSC" value="C720477"/>
+      <property name="MN" value="XUNPU"/>
+      <property name="MPN" value="TS-1088-AR02016"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e21d28be-d341-412a-96c4-e9d855adcb6b</tstamps>
+    </comp>
+    <comp ref="RST2">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_EVQPE1</footprint>
+      <fields>
+        <field name="Description">SPST SMD Tactile Switches</field>
+        <field name="LCSC">C720477</field>
+        <field name="LCSC PN">C720477</field>
+        <field name="MN">XUNPU</field>
+        <field name="MPN">TS-1088-AR02016</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="LCSC PN" value="C720477"/>
+      <property name="Description" value="SPST SMD Tactile Switches"/>
+      <property name="LCSC" value="C720477"/>
+      <property name="MN" value="XUNPU"/>
+      <property name="MPN" value="TS-1088-AR02016"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>12ba87fc-263d-4ac0-bca7-d20560ec5549</tstamps>
+    </comp>
+    <comp ref="SW1">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_EVQPE1</footprint>
+      <fields>
+        <field name="Description">SPST SMD Tactile Switches</field>
+        <field name="LCSC">C720477</field>
+        <field name="LCSC PN">C720477</field>
+        <field name="MN">XUNPU</field>
+        <field name="MPN">TS-1088-AR02016</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="LCSC PN" value="C720477"/>
+      <property name="Description" value="SPST SMD Tactile Switches"/>
+      <property name="LCSC" value="C720477"/>
+      <property name="MN" value="XUNPU"/>
+      <property name="MPN" value="TS-1088-AR02016"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>72905c2a-ae59-44f6-8ee2-983a561477e8</tstamps>
+    </comp>
+    <comp ref="SW2">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_EVQPE1</footprint>
+      <fields>
+        <field name="Description">SPST SMD Tactile Switches</field>
+        <field name="LCSC">C720477</field>
+        <field name="LCSC PN">C720477</field>
+        <field name="MN">XUNPU</field>
+        <field name="MPN">TS-1088-AR02016</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="LCSC PN" value="C720477"/>
+      <property name="Description" value="SPST SMD Tactile Switches"/>
+      <property name="LCSC" value="C720477"/>
+      <property name="MN" value="XUNPU"/>
+      <property name="MPN" value="TS-1088-AR02016"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2e105e11-1ea0-4b99-9764-eba3d60a2cc1</tstamps>
+    </comp>
+    <comp ref="SW11">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_EVQPE1</footprint>
+      <fields>
+        <field name="Description">SPST SMD Tactile Switches</field>
+        <field name="LCSC">C720477</field>
+        <field name="LCSC PN">C720477</field>
+        <field name="MN">XUNPU</field>
+        <field name="MPN">TS-1088-AR02016</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="LCSC PN" value="C720477"/>
+      <property name="Description" value="SPST SMD Tactile Switches"/>
+      <property name="LCSC" value="C720477"/>
+      <property name="MN" value="XUNPU"/>
+      <property name="MPN" value="TS-1088-AR02016"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>42ae4225-22a4-4ed9-91c8-e6ae8b776626</tstamps>
+    </comp>
+    <comp ref="SW22">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_EVQPE1</footprint>
+      <fields>
+        <field name="Description">SPST SMD Tactile Switches</field>
+        <field name="LCSC">C720477</field>
+        <field name="LCSC PN">C720477</field>
+        <field name="MN">XUNPU</field>
+        <field name="MPN">TS-1088-AR02016</field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="LCSC PN" value="C720477"/>
+      <property name="Description" value="SPST SMD Tactile Switches"/>
+      <property name="LCSC" value="C720477"/>
+      <property name="MN" value="XUNPU"/>
+      <property name="MPN" value="TS-1088-AR02016"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>01c53c87-1c62-4a09-8fb5-2d5b64a56582</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>IRM-H638T/TR2</value>
+      <footprint>Motion_sense:IRM-H638</footprint>
+      <fields>
+        <field name="Description">SENSOR REMOTE REC 38.0KHZ 8M</field>
+        <field name="LCSC">C91447</field>
+        <field name="MN">Everlight Elec</field>
+        <field name="MPN">IRM-H638T/TR2</field>
+      </fields>
+      <libsource lib="Interface_Optical" part="TSOP23xx" description="IR Receiver Modules for Remote Control Systems"/>
+      <property name="LCSC" value="C91447"/>
+      <property name="Description" value="SENSOR REMOTE REC 38.0KHZ 8M"/>
+      <property name="MN" value="Everlight Elec"/>
+      <property name="MPN" value="IRM-H638T/TR2"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="IR Receiver Modules for Remote Control Systems"/>
+      <property name="ki_keywords" value="opto IR receiver"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b594cf00-c46f-44a2-bd88-8d9301ac717c</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>PIR203A-S0</value>
+      <footprint>Package_TO_SOT_THT:TO-39-3</footprint>
+      <fields>
+        <field name="Description">TO-52-3 Human Body Sensing Sensor</field>
+        <field name="LCSC">C2887899</field>
+        <field name="MN">NEWOPTO</field>
+        <field name="MPN">PIR203A-S0</field>
+      </fields>
+      <libsource lib="Sensor_Magnetic" part="A1101ELHL" description="Hall effect switch, unipolar, Bop=100G, Brp=45G, -40C to +85C, SOT-23W"/>
+      <property name="LCSC" value="C2887899"/>
+      <property name="Description" value="TO-52-3 Human Body Sensing Sensor"/>
+      <property name="MN" value="NEWOPTO"/>
+      <property name="MPN" value="PIR203A-S0"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Hall effect switch, unipolar, Bop=100G, Brp=45G, -40C to +85C, SOT-23W"/>
+      <property name="ki_keywords" value="hall switch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27fed33c-6ca4-4011-b095-3480c9948a81</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>RS8032XK</value>
+      <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
+      <fields>
+        <field name="Description">SOP-8 Operational Amplifier</field>
+        <field name="LCSC">C237005</field>
+        <field name="LCSC ">C237005</field>
+        <field name="MN">Jiangsu RUNIC Tech</field>
+        <field name="MPN">RS8032XK</field>
+      </fields>
+      <libsource lib="Amplifier_Operational" part="LM358" description="Low-Power, Dual Operational Amplifiers, DIP-8/SOIC-8/TO-99-8"/>
+      <property name="LCSC" value="C237005"/>
+      <property name="Description" value="SOP-8 Operational Amplifier"/>
+      <property name="MN" value="Jiangsu RUNIC Tech"/>
+      <property name="MPN" value="RS8032XK"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="Low-Power, Dual Operational Amplifiers, DIP-8/SOIC-8/TO-99-8"/>
+      <property name="ki_keywords" value="dual opamp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d596ca3f-8193-44ec-afb7-82516d3d0ba0 b792f683-579e-4b93-a65c-f661b517855a 645f17a1-1521-46bd-9bec-eeffd090963c</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>E73-2G4M04S1A</value>
+      <footprint>RF_Module:E73-2G4M04S</footprint>
+      <datasheet>http://www.cdebyte.com/en/downpdf.aspx?id=243</datasheet>
+      <fields>
+        <field name="Description">Bluetooth Modules</field>
+        <field name="LCSC">C411305</field>
+        <field name="MN">Chengdu Ebyte Elec Tech</field>
+        <field name="MPN">E73-2G4M04S1B</field>
+      </fields>
+      <libsource lib="RF_Module" part="E73-2G4M04S-52810" description="nRF52810 BLE5 Module"/>
+      <property name="Description" value="Bluetooth Modules"/>
+      <property name="LCSC" value="C411305"/>
+      <property name="MN" value="Chengdu Ebyte Elec Tech"/>
+      <property name="MPN" value="E73-2G4M04S1B"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="nRF52810 BLE5 Module"/>
+      <property name="ki_keywords" value="BLE5, BLE, nRF52810"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bc8ebed5-88e8-4050-987e-4358ede4b80f</tstamps>
+    </comp>
+    <comp ref="U5">
+      <value>HT7218</value>
+      <footprint>Package_TO_SOT_SMD:SOT-89-3</footprint>
+      <fields>
+        <field name="Description">300mA Fixed 1.8V~1.8V Positive 8V SOT-89-3</field>
+        <field name="LCSC">C259233</field>
+        <field name="MN">Holtek Semicon</field>
+        <field name="MPN">HT7218</field>
+      </fields>
+      <libsource lib="Regulator_Linear" part="HT75xx-1-SOT89" description="100mA Low Dropout Voltage Regulator, Fixed Output, SOT89"/>
+      <property name="LCSC" value="C259233"/>
+      <property name="Description" value="300mA Fixed 1.8V~1.8V Positive 8V SOT-89-3"/>
+      <property name="MN" value="Holtek Semicon"/>
+      <property name="MPN" value="HT7218"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Air Conditioner Energy Saver V7.kicad_sch"/>
+      <property name="ki_description" value="100mA Low Dropout Voltage Regulator, Fixed Output, SOT89"/>
+      <property name="ki_keywords" value="100mA LDO Regulator Fixed Positive"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6ae637ec-7362-4a65-97c0-20e6d5770fa2</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Amplifier_Operational" part="LM358">
+      <description>Low-Power, Dual Operational Amplifiers, DIP-8/SOIC-8/TO-99-8</description>
+      <docs>http://www.ti.com/lit/ds/symlink/lm2904-n.pdf</docs>
+      <footprints>
+        <fp>SOIC*3.9x4.9mm*P1.27mm*</fp>
+        <fp>DIP*W7.62mm*</fp>
+        <fp>TO*99*</fp>
+        <fp>OnSemi*Micro8*</fp>
+        <fp>TSSOP*3x3mm*P0.65mm*</fp>
+        <fp>TSSOP*4.4x3mm*P0.65mm*</fp>
+        <fp>MSOP*3x3mm*P0.65mm*</fp>
+        <fp>SSOP*3.9x4.9mm*P0.635mm*</fp>
+        <fp>LFCSP*2x2mm*P0.5mm*</fp>
+        <fp>*SIP*</fp>
+        <fp>SOIC*5.3x6.2mm*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM358</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/lm2904-n.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="output"/>
+        <pin num="2" name="-" type="input"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="V-" type="power_in"/>
+        <pin num="5" name="+" type="input"/>
+        <pin num="6" name="-" type="input"/>
+        <pin num="7" name="" type="output"/>
+        <pin num="8" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x04_Male">
+      <description>Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x04_Male</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x05_Male">
+      <description>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x05_Male</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x06_Male">
+      <description>Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x06_Male</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Battery_Cell">
+      <description>Single-cell battery</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">BT</field>
+        <field name="Value">Battery_Cell</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+" type="passive"/>
+        <pin num="2" name="-" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Polarized_Small_US">
+      <description>Polarized capacitor, small US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Polarized_Small_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED_RGBA">
+      <description>RGB LED, red/green/blue/anode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D1</field>
+        <field name="Value">LED_RGBA</field>
+        <field name="Footprint">USB A SMD PAD:FM-B2020RGBA-HG</field>
+        <field name="Datasheet">~</field>
+        <field name="LCSC PN">C108793</field>
+      </fields>
+      <pins>
+        <pin num="1" name="RK" type="passive"/>
+        <pin num="2" name="BK" type="passive"/>
+        <pin num="3" name="A" type="passive"/>
+        <pin num="4" name="GK" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED_Small">
+      <description>Light emitting diode, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L_Small">
+      <description>Inductor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_Small">
+      <description>Resistor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Interface_Optical" part="TSOP23xx">
+      <description>IR Receiver Modules for Remote Control Systems</description>
+      <footprints>
+        <fp>Vishay*MOLD*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U?</field>
+        <field name="Value">IRM-H638T/TR2</field>
+        <field name="Footprint">OptoDevice:Everlight_ITR1201SR10AR</field>
+        <field name="LCSC">C91447</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="OUT" type="output"/>
+        <pin num="4" name="Vs" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Jumper" part="Jumper_2_Open">
+      <description>Jumper, 2-pole, open</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Jumper*</fp>
+        <fp>TestPoint*2Pads*</fp>
+        <fp>TestPoint*Bridge*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">Jumper_2_Open</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="B" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Jumper" part="Jumper_3_Bridged12">
+      <description>Jumper, 3-pole, pins 1+2 closed/bridged</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Jumper*</fp>
+        <fp>TestPoint*3Pads*</fp>
+        <fp>TestPoint*Bridge*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">Jumper_3_Bridged12</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="C" type="input"/>
+        <pin num="3" name="B" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="RF_Module" part="E73-2G4M04S-52810">
+      <description>nRF52810 BLE5 Module</description>
+      <docs>http://www.cdebyte.com/en/downpdf.aspx?id=243</docs>
+      <footprints>
+        <fp>E73*2G4M04S*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">E73-2G4M04S-52810</field>
+        <field name="Footprint">RF_Module:E73-2G4M04S</field>
+        <field name="Datasheet">http://www.cdebyte.com/en/downpdf.aspx?id=243</field>
+      </fields>
+      <pins>
+        <pin num="0" name="GND" type="power_in"/>
+        <pin num="1" name="GND" type="passive"/>
+        <pin num="2" name="GND" type="passive"/>
+        <pin num="3" name="DEC2" type="passive"/>
+        <pin num="4" name="DEC3" type="passive"/>
+        <pin num="5" name="P0.25" type="bidirectional"/>
+        <pin num="6" name="P0.26" type="bidirectional"/>
+        <pin num="7" name="P0.27" type="bidirectional"/>
+        <pin num="8" name="AIN4/P0.28" type="bidirectional"/>
+        <pin num="9" name="AIN5/P0.29" type="bidirectional"/>
+        <pin num="10" name="AIN6/P0.30" type="bidirectional"/>
+        <pin num="11" name="AIN7/P0.31" type="bidirectional"/>
+        <pin num="12" name="DEC4" type="passive"/>
+        <pin num="13" name="DCC" type="power_out"/>
+        <pin num="14" name="DEC1" type="passive"/>
+        <pin num="15" name="GND" type="passive"/>
+        <pin num="16" name="VCC" type="power_in"/>
+        <pin num="17" name="AIN0/P0.02" type="bidirectional"/>
+        <pin num="18" name="AIN1/P0.03" type="bidirectional"/>
+        <pin num="19" name="AIN2/P0.04" type="bidirectional"/>
+        <pin num="20" name="AIN3/P0.05" type="bidirectional"/>
+        <pin num="21" name="P0.06" type="bidirectional"/>
+        <pin num="22" name="P0.07" type="bidirectional"/>
+        <pin num="23" name="P0.08" type="bidirectional"/>
+        <pin num="24" name="NFC1/P0.09" type="bidirectional"/>
+        <pin num="25" name="NFC2/P0.10" type="bidirectional"/>
+        <pin num="26" name="P0.11" type="bidirectional"/>
+        <pin num="27" name="P0.12" type="bidirectional"/>
+        <pin num="28" name="P0.13" type="bidirectional"/>
+        <pin num="29" name="P0.14" type="bidirectional"/>
+        <pin num="30" name="P0.15" type="bidirectional"/>
+        <pin num="31" name="P0.16" type="bidirectional"/>
+        <pin num="32" name="P0.17" type="bidirectional"/>
+        <pin num="33" name="SWO/P0.18" type="bidirectional"/>
+        <pin num="34" name="P0.19" type="bidirectional"/>
+        <pin num="35" name="P0.20" type="bidirectional"/>
+        <pin num="36" name="P0.21/~{RESET}" type="bidirectional"/>
+        <pin num="37" name="SWDCLK" type="input"/>
+        <pin num="38" name="SWDIO" type="bidirectional"/>
+        <pin num="39" name="P0.22" type="bidirectional"/>
+        <pin num="40" name="P0.23" type="bidirectional"/>
+        <pin num="41" name="P0.24" type="bidirectional"/>
+        <pin num="42" name="GND" type="passive"/>
+        <pin num="43" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="HT75xx-1-SOT89">
+      <description>100mA Low Dropout Voltage Regulator, Fixed Output, SOT89</description>
+      <docs>https://www.holtek.com/documents/10179/116711/HT75xx-1v250.pdf</docs>
+      <footprints>
+        <fp>SOT?89*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">HT75xx-1-SOT89</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-89-3</field>
+        <field name="Datasheet">https://www.holtek.com/documents/10179/116711/HT75xx-1v250.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VIN" type="power_in"/>
+        <pin num="3" name="VOUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Sensor_Magnetic" part="A1101ELHL">
+      <description>Hall effect switch, unipolar, Bop=100G, Brp=45G, -40C to +85C, SOT-23W</description>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U?</field>
+        <field name="Value">PIR203A-S0</field>
+        <field name="Footprint">Package_TO_SOT_THT:TO-52-3</field>
+      </fields>
+      <pins>
+        <pin num="1" name="D" type="passive"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="G" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_BJT" part="BC817">
+      <description>0.8A Ic, 45V Vce, NPN Transistor, SOT-23</description>
+      <docs>https://www.onsemi.com/pub/Collateral/BC818-D.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BC817</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/BC818-D.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="AO3401A">
+      <description>-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23</description>
+      <docs>http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">AO3401A</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Amplifier_Operational">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Amplifier_Operational.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="Interface_Optical">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Interface_Optical.kicad_sym</uri>
+    </library>
+    <library logical="Jumper">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Jumper.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="RF_Module">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/RF_Module.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Regulator_Linear.kicad_sym</uri>
+    </library>
+    <library logical="Sensor_Magnetic">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Sensor_Magnetic.kicad_sym</uri>
+    </library>
+    <library logical="Switch">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Switch.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_BJT">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_BJT.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+1V8">
+      <node ref="C23" pin="1" pintype="passive"/>
+      <node ref="JP1" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="U5" pin="3" pinfunction="VOUT" pintype="power_out"/>
+    </net>
+    <net code="2" name="+3V0">
+      <node ref="BT1" pin="1" pinfunction="+" pintype="passive"/>
+      <node ref="C15" pin="1" pintype="passive"/>
+      <node ref="C18" pin="1" pintype="passive"/>
+      <node ref="C21" pin="2" pintype="passive"/>
+      <node ref="D3" pin="3" pinfunction="A" pintype="passive"/>
+      <node ref="J1" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J5" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="JP2" pin="1" pinfunction="A" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="R15" pin="2" pintype="passive"/>
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="R22" pin="2" pintype="passive"/>
+      <node ref="U4" pin="16" pinfunction="VCC" pintype="power_in"/>
+    </net>
+    <net code="3" name="/DEC4">
+      <node ref="C16" pin="1" pintype="passive"/>
+      <node ref="JP1" pin="3" pinfunction="B" pintype="passive"/>
+      <node ref="L2" pin="1" pintype="passive"/>
+      <node ref="U4" pin="12" pinfunction="DEC4" pintype="passive"/>
+    </net>
+    <net code="4" name="/DRV_IR">
+      <node ref="P2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="Q2" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="U4" pin="17" pinfunction="AIN0/P0.02" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="/IR1">
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="U4" pin="21" pinfunction="P0.06" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/IR_IN">
+      <node ref="U1" pin="3" pinfunction="OUT" pintype="output"/>
+      <node ref="U4" pin="19" pinfunction="AIN2/P0.04" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="/LED_B">
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="U4" pin="27" pinfunction="P0.12" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="/LED_G">
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="U4" pin="29" pinfunction="P0.14" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="/LED_R">
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="U4" pin="30" pinfunction="P0.15" pintype="bidirectional"/>
+    </net>
+    <net code="10" name="/OP_VCC">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="D" pintype="passive"/>
+      <node ref="U3" pin="8" pinfunction="V+" pintype="power_in"/>
+    </net>
+    <net code="11" name="/PIR">
+      <node ref="C14" pin="2" pintype="passive"/>
+      <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="U3" pin="7" pintype="output"/>
+      <node ref="U4" pin="20" pinfunction="AIN3/P0.05" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="/RESET">
+      <node ref="J1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="RST1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="RST2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U4" pin="36" pinfunction="P0.21/~{RESET}" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="/RX">
+      <node ref="J5" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U4" pin="33" pinfunction="SWO/P0.18" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="/SW1">
+      <node ref="R24" pin="2" pintype="passive"/>
+      <node ref="SW1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW11" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="8" pinfunction="AIN4/P0.28" pintype="bidirectional"/>
+    </net>
+    <net code="15" name="/SW2">
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="SW2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW22" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="10" pinfunction="AIN6/P0.30" pintype="bidirectional"/>
+    </net>
+    <net code="16" name="/SWCLK">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="U4" pin="37" pinfunction="SWDCLK" pintype="input"/>
+    </net>
+    <net code="17" name="/SWDIO">
+      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U4" pin="38" pinfunction="SWDIO" pintype="bidirectional"/>
+    </net>
+    <net code="18" name="/TX">
+      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="U4" pin="35" pinfunction="P0.20" pintype="bidirectional"/>
+    </net>
+    <net code="19" name="GND">
+      <node ref="BT2" pin="2" pinfunction="-" pintype="passive"/>
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C12" pin="1" pintype="passive"/>
+      <node ref="C15" pin="2" pintype="passive"/>
+      <node ref="C16" pin="2" pintype="passive"/>
+      <node ref="C18" pin="2" pintype="passive"/>
+      <node ref="C19" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C21" pin="1" pintype="passive"/>
+      <node ref="C23" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J4" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J4" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="R23" pin="1" pintype="passive"/>
+      <node ref="R24" pin="1" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="RST1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="RST2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="U1" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="3" pinfunction="G" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="V-" pintype="power_in"/>
+      <node ref="U4" pin="0" pinfunction="GND" pintype="power_in"/>
+      <node ref="U4" pin="1" pinfunction="GND" pintype="passive"/>
+      <node ref="U4" pin="15" pinfunction="GND" pintype="passive"/>
+      <node ref="U4" pin="2" pinfunction="GND" pintype="passive"/>
+      <node ref="U4" pin="42" pinfunction="GND" pintype="passive"/>
+      <node ref="U4" pin="43" pinfunction="GND" pintype="passive"/>
+      <node ref="U5" pin="1" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="20" name="Net-(#FLG01-pwr)">
+      <node ref="C19" pin="1" pintype="passive"/>
+      <node ref="JP2" pin="2" pinfunction="B" pintype="passive"/>
+      <node ref="U5" pin="2" pinfunction="VIN" pintype="power_in"/>
+    </net>
+    <net code="21" name="Net-(#FLG04-pwr)">
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="Q2" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="Vs" pintype="power_in"/>
+    </net>
+    <net code="22" name="Net-(BT1--)">
+      <node ref="BT1" pin="2" pinfunction="-" pintype="passive"/>
+      <node ref="BT2" pin="1" pinfunction="+" pintype="passive"/>
+    </net>
+    <net code="23" name="Net-(C3-Pad1)">
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+    </net>
+    <net code="24" name="Net-(C4-Pad2)">
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="U3" pin="1" pintype="output"/>
+    </net>
+    <net code="25" name="Net-(C9-Pad1)">
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+    </net>
+    <net code="26" name="Net-(D1-A)">
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R15" pin="1" pintype="passive"/>
+    </net>
+    <net code="27" name="Net-(D1-K)">
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="28" name="Net-(D3-BK)">
+      <node ref="D3" pin="2" pinfunction="BK" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+    </net>
+    <net code="29" name="Net-(D3-GK)">
+      <node ref="D3" pin="4" pinfunction="GK" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+    </net>
+    <net code="30" name="Net-(D3-RK)">
+      <node ref="D3" pin="1" pinfunction="RK" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+    </net>
+    <net code="31" name="Net-(J2-Pin_2)">
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="U4" pin="26" pinfunction="P0.11" pintype="bidirectional"/>
+    </net>
+    <net code="32" name="Net-(J2-Pin_3)">
+      <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U4" pin="25" pinfunction="NFC2/P0.10" pintype="bidirectional"/>
+    </net>
+    <net code="33" name="Net-(J2-Pin_4)">
+      <node ref="J2" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="U4" pin="24" pinfunction="NFC1/P0.09" pintype="bidirectional"/>
+    </net>
+    <net code="34" name="Net-(J2-Pin_5)">
+      <node ref="J2" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="U4" pin="23" pinfunction="P0.08" pintype="bidirectional"/>
+    </net>
+    <net code="35" name="Net-(J2-Pin_6)">
+      <node ref="J2" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="U4" pin="22" pinfunction="P0.07" pintype="bidirectional"/>
+    </net>
+    <net code="36" name="Net-(JP1-C)">
+      <node ref="JP1" pin="2" pinfunction="C" pintype="input"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+    </net>
+    <net code="37" name="Net-(L2-Pad2)">
+      <node ref="L2" pin="2" pintype="passive"/>
+      <node ref="L3" pin="1" pintype="passive"/>
+    </net>
+    <net code="38" name="Net-(Q1-B)">
+      <node ref="Q1" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+    </net>
+    <net code="39" name="Net-(R13-Pad2)">
+      <node ref="R13" pin="2" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+    </net>
+    <net code="40" name="Net-(R19-Pad1)">
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="SW2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="SW22" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="41" name="Net-(R22-Pad1)">
+      <node ref="R22" pin="1" pintype="passive"/>
+      <node ref="SW1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="SW11" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="42" name="Net-(U2-S)">
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="43" name="Net-(U3A--)">
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="U3" pin="2" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="44" name="Net-(U3B-+)">
+      <node ref="C12" pin="2" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="U3" pin="5" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="45" name="Net-(U3B--)">
+      <node ref="C14" pin="1" pintype="passive"/>
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="U3" pin="6" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="46" name="Net-(U4-AIN1{slash}P0.03)">
+      <node ref="P3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="18" pinfunction="AIN1/P0.03" pintype="bidirectional"/>
+    </net>
+    <net code="47" name="Net-(U4-AIN5{slash}P0.29)">
+      <node ref="P29" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="9" pinfunction="AIN5/P0.29" pintype="bidirectional"/>
+    </net>
+    <net code="48" name="Net-(U4-AIN7{slash}P0.31)">
+      <node ref="P31" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="11" pinfunction="AIN7/P0.31" pintype="bidirectional"/>
+    </net>
+    <net code="49" name="Net-(U4-DCC)">
+      <node ref="L3" pin="2" pintype="passive"/>
+      <node ref="U4" pin="13" pinfunction="DCC" pintype="power_out"/>
+    </net>
+    <net code="50" name="Net-(U4-P0.13)">
+      <node ref="P13" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="28" pinfunction="P0.13" pintype="bidirectional"/>
+    </net>
+    <net code="51" name="Net-(U4-P0.16)">
+      <node ref="P16" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="31" pinfunction="P0.16" pintype="bidirectional"/>
+    </net>
+    <net code="52" name="Net-(U4-P0.17)">
+      <node ref="P17" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="32" pinfunction="P0.17" pintype="bidirectional"/>
+    </net>
+    <net code="53" name="Net-(U4-P0.22)">
+      <node ref="P22" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="39" pinfunction="P0.22" pintype="bidirectional"/>
+    </net>
+    <net code="54" name="Net-(U4-P0.23)">
+      <node ref="P23" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="40" pinfunction="P0.23" pintype="bidirectional"/>
+    </net>
+    <net code="55" name="Net-(U4-P0.24)">
+      <node ref="P24" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="41" pinfunction="P0.24" pintype="bidirectional"/>
+    </net>
+    <net code="56" name="Net-(U4-P0.25)">
+      <node ref="P25" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="5" pinfunction="P0.25" pintype="bidirectional"/>
+    </net>
+    <net code="57" name="Net-(U4-P0.26)">
+      <node ref="P26" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="6" pinfunction="P0.26" pintype="bidirectional"/>
+    </net>
+    <net code="58" name="Net-(U4-P0.27)">
+      <node ref="P27" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="7" pinfunction="P0.27" pintype="bidirectional"/>
+    </net>
+    <net code="59" name="unconnected-(U4-DEC1-Pad14)">
+      <node ref="U4" pin="14" pinfunction="DEC1" pintype="passive+no_connect"/>
+    </net>
+    <net code="60" name="unconnected-(U4-DEC2-Pad3)">
+      <node ref="U4" pin="3" pinfunction="DEC2" pintype="passive+no_connect"/>
+    </net>
+    <net code="61" name="unconnected-(U4-DEC3-Pad4)">
+      <node ref="U4" pin="4" pinfunction="DEC3" pintype="passive+no_connect"/>
+    </net>
+    <net code="62" name="unconnected-(U4-P0.19-Pad34)">
+      <node ref="U4" pin="34" pinfunction="P0.19" pintype="bidirectional+no_connect"/>
+    </net>
+  </nets>
+</export>

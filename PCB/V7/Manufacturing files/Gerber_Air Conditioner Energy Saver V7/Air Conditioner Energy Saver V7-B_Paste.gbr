@@ -1,0 +1,29 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,7.0.1*%
+%TF.CreationDate,2023-06-12T22:14:20+07:00*%
+%TF.ProjectId,Air Conditioner Energy Saver V7,41697220-436f-46e6-9469-74696f6e6572,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Paste,Bot*%
+%TF.FilePolarity,Positive*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 7.0.1) date 2023-06-12 22:14:20*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%ADD10R,1.600000X2.000000*%
+G04 APERTURE END LIST*
+D10*
+%TO.C,SW1*%
+X146113000Y-81567000D03*
+X146113000Y-76167000D03*
+%TD*%
+%TO.C,SW2*%
+X136313000Y-81567000D03*
+X136313000Y-76167000D03*
+%TD*%
+%TO.C,RST2*%
+X163020000Y-79977000D03*
+X163020000Y-85377000D03*
+%TD*%
+M02*

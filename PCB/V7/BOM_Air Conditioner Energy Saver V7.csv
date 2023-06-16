@@ -1,0 +1,51 @@
+Source:,G:\OneDrive\Work\Upwork\TomRodinger\Air Conditioner Energy Saver V7\Air Conditioner Energy Saver V7.kicad_sch,,,,,,,,,,,,
+Date:,6/16/2023 9:33,,,,,,,,,,,,
+Tool:,Eeschema 7.0.1,,,,,,,,,,,,
+Generator:,C:\Program Files\KiCad\7.0\bin\scripting\plugins/bom_csv_grouped_by_value.py,,,,,,,,,,,,
+Component Count:,73,,,,,,,,,,,,
+,,,,,,,,,,,,,
+Collated Components:,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+Item,Qty,Reference(s),Value,LibPart,Footprint,Datasheet,DNP,Description,LCSC,LCSC ,LCSC PN,MN,MPN
+1,2,"BT1, BT2",Battery_Cell,Device:Battery_Cell,Motion_sense:AA Batt,~,,Battery_Cell,,,,,
+2,2,"C1, C4",10nF,Device:C_Small,Capacitor_SMD:C_0402_1005Metric,~,,50V 10nF X7R ±10% 0402 Multilayer Ceramic Capacitors,C15195,,,Samsung Electro-Mechanics,CL05B103KB5NNNC
+3,1,C2,4.7uF,Device:C_Small,Capacitor_SMD:C_0603_1608Metric,~,,16V 4.7uF X5R ±10% 0603 Multilayer Ceramic,C19666,,,Samsung Electro-Mechanics,CL10A475KO8NNNC
+4,1,C3,22uF,Device:C_Small,Capacitor_SMD:C_1206_3216Metric,~,,25V 22uF X5R ±10% 1206 Multilayer Ceramic Capacitors,C12891,,,Samsung Electro-Mechanics,CL31A226KAHNNNE
+5,1,C5,1000uF,Device:C_Polarized_Small_US,Capacitor_SMD:CP_Elec_8x10.5,~,,"1000uF 10V ±20% SMD,D8xL10.2mm ",C99833,,,ROQANG,RVT1A102M0810
+6,3,"C9, C12, C21",10uF,Device:C_Small,Capacitor_SMD:C_1206_3216Metric,~,,50V 10uF X5R ±10% 1206 Multilayer Ceramic ,C13585,,,Samsung Electro-Mechanics,CL31A106KBHNNNE
+7,1,C14,20nF,Device:C_Small,Capacitor_SMD:C_0603_1608Metric,~,,CAP CER 0.02UF 50V X7R 0603,C282065,,,YAGEO,CC0603KRX7R9BB203
+8,1,C15,4.7uF,Device:C_Small,Capacitor_SMD:C_0805_2012Metric,~,,25V 4.7uF X5R ±10% 0805 Multilayer Ceramic,C1779,,,Samsung Electro-Mechanics,CL21A475KAQNNNE
+9,1,C16,1uF,Device:C_Small,Capacitor_SMD:C_0603_1608Metric,~,,50V 1uF X5R ±10% 0603 Multilayer Ceramic Capacitors,C15849,,,Samsung Electro-Mechanics,CL10A105KB8NNNC
+10,3,"C18, C19, C23",100nF,Device:C_Small,Capacitor_SMD:C_0402_1005Metric,~,,50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors,C307331,,,Samsung Electro-Mechanics,CL05B104KB54PNC
+11,1,D1,IR333-A,Device:LED_Small,LED_THT:LED_D5.0mm_Horizontal_O3.81mm_Z3.0mm,~,,EMITTER IR 940NM 100MA RADIAL,C264290,,,Everlight Elec,IR333-A
+12,1,D3,LED_RGBA,Device:LED_RGBA,Motion_sense:FM-B2020RGBA-HG,~,,"RGB SMD,2.1x2.1mm Light Emitting Diodes """,C108793,,C108793,Foshan NationStar Optoelectronics,FM-B2020RGBA-HG
+13,1,H1,MountingHole,Mechanical:MountingHole,Motion_sense:Mounting Hole 2.3mm,~,,MountingHole,,,,,
+14,1,J1,Conn_01x05_Male,Connector:Conn_01x05_Male,Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical,~,,2.54mm Plugin Black Brass 1x5P Plugin,C492404,,,XFCN,PZ254V-11-05P
+15,1,J2,Conn_01x06_Male,Connector:Conn_01x06_Male,Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical,~,,2.54mm Plugin Black Brass 1x6P Plugin,C492405,,,XFCN,PZ254V-11-06P
+16,2,"J4, J5",Conn_01x04_Male,Connector:Conn_01x04_Male,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,~,,2.54mm Plugin Black 1x4P Plugin,C2691448,,,XFCN,PZ254V-11-04P
+17,1,JP1,Jumper_3_Bridged12,Jumper:Jumper_3_Bridged12,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,~,,2.54mm Plugin Black 1x3P Plugin,C2937625,,,XFCN,PZ254V-11-03P
+18,1,JP2,Jumper_2_Open,Jumper:Jumper_2_Open,TestPoint:TestPoint_2Pads_Pitch2.54mm_Drill0.8mm,~,,,,,,,
+19,1,L2,15nH,Device:L_Small,Inductor_SMD:L_0402_1005Metric,~,,300mA 15nH ±5% 500mΩ 0402 Inductors (SMD) ROHS,C27143,,,Sunlord,SDCL1005C15NJTDF
+20,1,L3,10uH,Device:L_Small,Inductor_SMD:L_0603_1608Metric,~,,3mA 10uH ±10% 1.85Ω 0603 Inductors (SMD) ROHS,C1035,,,Sunlord,SDFL1608S100KTF
+21,13,"P2, P3, P13, P16, P17, P22, P23, P24, P25, P26, P27, P29, P31",TestPoint,Connector:TestPoint,TestPoint:TestPoint_Pad_1.5x1.5mm,~,,TestPoint,,,,,
+22,1,Q1,BC817-40,Transistor_BJT:BC817,Package_TO_SOT_SMD:SOT-23,https://www.onsemi.com/pub/Collateral/BC818-D.pdf,,45V 250mW 500mA NPN SOT-23 ,C85078,,C85078,ST(Semtech),BC817-40
+23,1,Q2,AO3401A,Transistor_FET:AO3401A,Package_TO_SOT_SMD:SOT-23,http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf,,"30V 4A 44mΩ@10V,4.3A 1.4W P Channel SOT-23",C15127,,C15127,Alpha & Omega Semicon,AO3401A
+24,1,R1,4.7K,Device:R_Small,Resistor_SMD:R_0402_1005Metric,~,,62.5mW Thick Film Resistors ±1% 4.7kΩ 0402  Chip Resistor - Surface Mount ROHS,C25900,,,UNI-ROYAL(Uniroyal Elec),0402WGF4701TCE
+25,1,R2,4.7K,Device:R_Small,Resistor_SMD:R_0603_1608Metric,~,,100mW Thick Film Resistors ±1% 4.7kΩ 0603  Chip Resistor - Surface Mount ROHS,C23162,,,UNI-ROYAL(Uniroyal Elec),0603WAF4701T5E
+26,3,"R3, R4, R5",1K,Device:R,Resistor_SMD:R_0402_1005Metric,~,,Resistors ±100ppm/℃ ±1% 1kΩ 0402,C11702,,C11702,UNI-ROYAL(Uniroyal Elec),0402WGF1001TCE
+27,1,R6,13K,Device:R,Resistor_SMD:R_0402_1005Metric,~,,Resistors ±100ppm/℃ ±5% 13kΩ 0402,C25537,,C25537,UNI-ROYAL(Uniroyal Elec),0402WGJ0133TCE
+28,2,"R7, R16",47K,Device:R,Resistor_SMD:R_0402_1005Metric,~,,62.5mW Thick Film Resistors ±1% 47kΩ 0402  Chip Resistor - Surface Mount ROHS,C25792,,,UNI-ROYAL(Uniroyal Elec),0402WGF4702TCE
+29,4,"R8, R11, R23, R24",10K,Device:R,Resistor_SMD:R_0402_1005Metric,~,,62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS,C25744,,,UNI-ROYAL(Uniroyal Elec),0402WGF1002TCE
+30,1,R9,2.1M,Device:R,Resistor_SMD:R_0603_1608Metric,~,,Resistors ±100ppm/℃ ±1% 2.1MΩ 0603,C482785,,,YAGEO,RC0603FR-072M1L
+31,1,R10,30K,Device:R,Resistor_SMD:R_0402_1005Metric,~,,RES 30K OHM 1% 1/16W 0402,C138008,,,YAGEO,RC0402FR-0730KL
+32,1,R12,470K,Device:R,Resistor_SMD:R_0402_1005Metric,~,,Resistors ±100ppm/℃ ±1% 470kΩ 0402,C25790,,C25790,UNI-ROYAL(Uniroyal Elec),0402WGF4703TCE
+33,1,R13,300K,Device:R,Resistor_SMD:R_0402_1005Metric,~,,Resistors ±100ppm/℃ ±1% 470kΩ 0402,C25774,,C25774,UNI-ROYAL(Uniroyal Elec),0402WGF3003TCE
+34,1,R14,1M,Device:R,Resistor_SMD:R_0402_1005Metric,~,,62.5mW Thick Film Resistors ±100ppm/℃ ±1% 1MΩ 0402  Chip Resistor - Surface Mount ROHS,C26083,,,UNI-ROYAL(Uniroyal Elec),0402WGF1004TCE
+35,1,R15,22R,Device:R_Small,Resistor_SMD:R_0603_1608Metric,~,,100mW Thick Film Resistors ±1% 22Ω 0603  Chip Resistor - Surface Mount ROHS,C23345,,,UNI-ROYAL(Uniroyal Elec),0603WAF220JT5E
+36,2,"R19, R22",0R,Device:R,Resistor_SMD:R_0402_1005Metric,~,,62.5mW Thick Film Resistors ±800ppm/℃ ±1% 0Ω 0402 Chip Resistor - Surface Mount ROHS,C17168,,,UNI-ROYAL(Uniroyal Elec),0402WGF0000TCE
+37,6,"RST1, RST2, SW1, SW2, SW11, SW22",SW_Push,Switch:SW_Push,Button_Switch_SMD:SW_SPST_EVQPE1,~,,SPST SMD Tactile Switches,C720477,,C720477,XUNPU,TS-1088-AR02016
+38,1,U1,IRM-H638T/TR2,Interface_Optical:TSOP23xx,Motion_sense:IRM-H638,,,SENSOR REMOTE REC 38.0KHZ 8M,C91447,,,Everlight Elec,IRM-H638T/TR2
+39,1,U2,PIR203A-S0,Sensor_Magnetic:A1101ELHL,Package_TO_SOT_THT:TO-39-3,,,TO-52-3 Human Body Sensing Sensor,C2887899,,,NEWOPTO,PIR203A-S0
+40,1,U3,RS8032XK,Amplifier_Operational:LM358,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,http://www.ti.com/lit/ds/symlink/lm2904-n.pdf,,SOP-8 Operational Amplifier,C237005,C237005,,Jiangsu RUNIC Tech,RS8032XK
+41,1,U4,E73-2G4M04S1A,RF_Module:E73-2G4M04S-52810,RF_Module:E73-2G4M04S,http://www.cdebyte.com/en/downpdf.aspx?id=243,,Bluetooth Modules,C411305,,,Chengdu Ebyte Elec Tech,E73-2G4M04S1B
+42,1,U5,HT7218,Regulator_Linear:HT75xx-1-SOT89,Package_TO_SOT_SMD:SOT-89-3,https://www.holtek.com/documents/10179/116711/HT75xx-1v250.pdf,,300mA Fixed 1.8V~1.8V Positive 8V SOT-89-3,C259572,,,Holtek Semicon,HT7218

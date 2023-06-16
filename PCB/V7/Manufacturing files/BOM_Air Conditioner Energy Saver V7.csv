@@ -1,0 +1,43 @@
+Comment,Designator,Footprint,JLCPCB Part #?optional?,Qty
+Battery_Cell,"BT1, BT2",Motion_sense:AA Batt,,2
+50V 10nF X7R ±10% 0402 Multilayer Ceramic Capacitors,"C1, C4",Capacitor_SMD:C_0402_1005Metric,C15195,2
+16V 4.7uF X5R ±10% 0603 Multilayer Ceramic,C2,Capacitor_SMD:C_0603_1608Metric,C19666,1
+25V 22uF X5R ±10% 1206 Multilayer Ceramic Capacitors,C3,Capacitor_SMD:C_1206_3216Metric,C12891,1
+"1000uF 10V ±20% SMD,D8xL10.2mm ",C5,Capacitor_SMD:CP_Elec_8x10.5,C99833,1
+50V 10uF X5R ±10% 1206 Multilayer Ceramic ,"C9, C12, C21",Capacitor_SMD:C_1206_3216Metric,C13585,3
+CAP CER 0.02UF 50V X7R 0603,C14,Capacitor_SMD:C_0603_1608Metric,C282065,1
+25V 4.7uF X5R ±10% 0805 Multilayer Ceramic,C15,Capacitor_SMD:C_0805_2012Metric,C1779,1
+50V 1uF X5R ±10% 0603 Multilayer Ceramic Capacitors,C16,Capacitor_SMD:C_0603_1608Metric,C15849,1
+50V 100nF X7R ±10% 0402 Multilayer Ceramic Capacitors,"C18, C19, C23",Capacitor_SMD:C_0402_1005Metric,C307331,3
+EMITTER IR 940NM 100MA RADIAL,D1,LED_THT:LED_D5.0mm_Horizontal_O3.81mm_Z3.0mm,C264290,1
+"RGB SMD,2.1x2.1mm Light Emitting Diodes """,D3,Motion_sense:FM-B2020RGBA-HG,C108793,1
+MountingHole,H1,Motion_sense:Mounting Hole 2.3mm,,1
+2.54mm Plugin Black Brass 1x5P Plugin,J1,Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical,C492404,1
+2.54mm Plugin Black Brass 1x6P Plugin,J2,Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical,C492405,1
+2.54mm Plugin Black 1x4P Plugin,"J4, J5",Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,C2691448,2
+2.54mm Plugin Black 1x3P Plugin,JP1,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C2937625,1
+,JP2,TestPoint:TestPoint_2Pads_Pitch2.54mm_Drill0.8mm,,1
+300mA 15nH ±5% 500mΩ 0402 Inductors (SMD) ROHS,L2,Inductor_SMD:L_0402_1005Metric,C27143,1
+3mA 10uH ±10% 1.85Ω 0603 Inductors (SMD) ROHS,L3,Inductor_SMD:L_0603_1608Metric,C1035,1
+TestPoint,"P2, P3, P13, P16, P17, P22, P23, P24, P25, P26, P27, P29, P31",TestPoint:TestPoint_Pad_1.5x1.5mm,,13
+45V 250mW 500mA NPN SOT-23 ,Q1,Package_TO_SOT_SMD:SOT-23,C85078,1
+"30V 4A 44mΩ@10V,4.3A 1.4W P Channel SOT-23",Q2,Package_TO_SOT_SMD:SOT-23,C15127,1
+62.5mW Thick Film Resistors ±1% 4.7kΩ 0402  Chip Resistor - Surface Mount ROHS,R1,Resistor_SMD:R_0402_1005Metric,C25900,1
+100mW Thick Film Resistors ±1% 4.7kΩ 0603  Chip Resistor - Surface Mount ROHS,R2,Resistor_SMD:R_0603_1608Metric,C23162,1
+Resistors ±100ppm/℃ ±1% 1kΩ 0402,"R3, R4, R5",Resistor_SMD:R_0402_1005Metric,C11702,3
+Resistors ±100ppm/℃ ±5% 13kΩ 0402,R6,Resistor_SMD:R_0402_1005Metric,C25537,1
+62.5mW Thick Film Resistors ±1% 47kΩ 0402  Chip Resistor - Surface Mount ROHS,"R7, R16",Resistor_SMD:R_0402_1005Metric,C25792,2
+62.5mW Thick Film Resistors ±100ppm/℃ ±1% 10kΩ 0402  Chip Resistor - Surface Mount ROHS,"R8, R11, R23, R24",Resistor_SMD:R_0402_1005Metric,C25744,4
+Resistors ±100ppm/℃ ±1% 2.1MΩ 0603,R9,Resistor_SMD:R_0603_1608Metric,C482785,1
+RES 30K OHM 1% 1/16W 0402,R10,Resistor_SMD:R_0402_1005Metric,C138008,1
+Resistors ±100ppm/℃ ±1% 470kΩ 0402,R12,Resistor_SMD:R_0402_1005Metric,C25790,1
+Resistors ±100ppm/℃ ±1% 470kΩ 0402,R13,Resistor_SMD:R_0402_1005Metric,C25774,1
+62.5mW Thick Film Resistors ±100ppm/℃ ±1% 1MΩ 0402  Chip Resistor - Surface Mount ROHS,R14,Resistor_SMD:R_0402_1005Metric,C26083,1
+100mW Thick Film Resistors ±1% 22Ω 0603  Chip Resistor - Surface Mount ROHS,R15,Resistor_SMD:R_0603_1608Metric,C23345,1
+62.5mW Thick Film Resistors ±800ppm/℃ ±1% 0Ω 0402 Chip Resistor - Surface Mount ROHS,"R19, R22",Resistor_SMD:R_0402_1005Metric,C17168,2
+SPST SMD Tactile Switches,"RST1, RST2, SW1, SW2, SW11, SW22",Button_Switch_SMD:SW_SPST_EVQPE1,C720477,6
+SENSOR REMOTE REC 38.0KHZ 8M,U1,Motion_sense:IRM-H638,C91447,1
+TO-52-3 Human Body Sensing Sensor,U2,Package_TO_SOT_THT:TO-39-3,C2887899,1
+SOP-8 Operational Amplifier,U3,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,C237005,1
+Bluetooth Modules,U4,RF_Module:E73-2G4M04S,C411305,1
+300mA Fixed 1.8V~1.8V Positive 8V SOT-89-3,U5,Package_TO_SOT_SMD:SOT-89-3,C259572,1
