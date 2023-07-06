@@ -27,8 +27,8 @@
 #endif
 
 #define PIN_IR_TRANSMIT 6
-#define PIN_IR_TRANSMIT_SECONDARY 9
 #define PIN_IR_RECEIVE  4
+#define PIN_IR_RECEIVER_POWER_CONTROL 2
 
 /**
  * @brief Initialize device peripherals
@@ -69,6 +69,16 @@ void green_led_toggle(void);
  * @brief Toggle IR LED
  */
 void IR_led_toggle(void);
+
+/**
+ * @brief Turn on the IR receiver
+ */
+void IR_receiver_power_on(void);
+
+/**
+ * @brief Turn off IR receiver
+ */
+void IR_receiver_power_off(void);
 
 /**
  * @brief Delay function

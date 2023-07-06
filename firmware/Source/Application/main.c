@@ -32,10 +32,10 @@ int main(void) {
   /* Configure low power mode */
   ret_code_t err_code = nrf_pwr_mgmt_init();
   APP_ERROR_CHECK(err_code);
-  red_led_on();
+//  red_led_on();
   
   /* Launch specific configuration services */
-  if(0) {
+  if(1) {
     /* BLE configuration service*/
     lib_ble_init();
     lib_ble_advertising_start();

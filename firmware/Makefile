@@ -1,12 +1,33 @@
 PROJECT_NAME     := executable
 TARGETS          := nrf52810_xxaa
 OUTPUT_DIRECTORY := build
-
-PROJ_DIR := .
+PROJ_DIR         := .
+#TOOLCHAIN        := arm-gnu-toolchain-12.2.mpacbti-rel1-darwin-arm64-arm-none-eabi
+TOOLCHAIN        := arm-gnu-toolchain-12.2.mpacbti-rel1-darwin-x86_64-arm-none-eabi
 
 HEX_APP := $(OUTPUT_DIRECTORY)/$(TARGETS).hex
 HEX_SD  := $(PROJ_DIR)/Source/nRF_SoftDevice/hex/s112_nrf52_7.2.0_softdevice.hex
 
+.PHONY: help toolchain firmware
+
+# Print all targets that can be built
+help:
+	@echo following targets are available:
+	@echo "  toolchain        - uncompress the gcc toolchain (run this first or other steps will fail)"
+	@echo "  nrf52810_xxaa    - build the main firmware (make sure to run make toolchain before make nrf52810_xxaa)"
+	@echo "  flash_softdevice - flash the softdevice (which is necessary for the firmware to run)"
+	@echo "  flash            - flashing the app binary (make sure to run make nrf52810_xxaa before make flash)"
+
+toolchain: $(OUTPUT_DIRECTORY)/$(TOOLCHAIN)
+
+$(OUTPUT_DIRECTORY):
+	mkdir -p $(OUTPUT_DIRECTORY)
+
+$(OUTPUT_DIRECTORY)/$(TOOLCHAIN): $(TOOLCHAIN).tar.xz.parta $(TOOLCHAIN).tar.xz.partb $(OUTPUT_DIRECTORY)
+	cat $(TOOLCHAIN).tar.xz.parta $(TOOLCHAIN).tar.xz.partb > $(TOOLCHAIN).tar.xz 
+	tar -xf $(TOOLCHAIN).tar.xz -C $(OUTPUT_DIRECTORY)
+	rm $(TOOLCHAIN).tar.xz
+	touch $(OUTPUT_DIRECTORY)/$(TOOLCHAIN)
 
 $(OUTPUT_DIRECTORY)/$(TARGETS).out: \
   LINKER_SCRIPT  := linker.ld
@@ -134,42 +155,35 @@ $(TARGETS): ASMFLAGS += -D__STACK_SIZE=2048
 # that may need symbols provided by these libraries.
 LIB_FILES += -lc -lnosys -lm
 
-
-.PHONY: default help
-
-# Default target - first one defined
-default: $(TARGETS)
-
-# Print all targets that can be built
-help:
-	@echo following targets are available:
-	@echo		nrf52810_xxaa
-	@echo		flash_softdevice
-	@echo		flash  - flashing the app binary
-
 TEMPLATE_PATH := $(PROJ_DIR)/toolchain_essentials/toolchain_and_libraries/makefile
+
+ifeq ($(MAKECMDGOALS),nrf52810_xxaa)
 include $(TEMPLATE_PATH)/Makefile.common
 $(foreach target, $(TARGETS), $(call define_target, $(target)))
+endif
 
-.PHONY: flash flash_softdevice erase
+.PHONY: flash flash_softdevice erase clean
 
 # Flash the program
-flash: default
+flash:
 	@echo Flashing: $(HEX_APP)
-	nrfjprog -f nrf52 --program $(HEX_APP) --sectorerase
-	nrfjprog -f nrf52 --reset
+#	nrfjprog -f nrf52 --program $(HEX_APP) --sectorerase
+#	nrfjprog -f nrf52 --reset
 #	openocd -c 'adapter driver jlink; transport select swd; source [find target/nrf52.cfg]; program $(HEX_APP) verify reset exit'
-#	openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_APP) verify reset exit"
+	openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_APP) verify reset exit"
 #	openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_APP) verify reset exit"
 
 # Flash softdevice
 flash_softdevice:
 	@echo Flashing: $(HEX_SD)
-	nrfjprog -f nrf52 --program $(HEX_SD) --sectorerase
-	nrfjprog -f nrf52 --reset
+#	nrfjprog -f nrf52 --program $(HEX_SD) --sectorerase
+#	nrfjprog -f nrf52 --reset
 #	openocd -c 'adapter driver jlink; transport select swd; source [find target/nrf52.cfg]; program $(HEX_SD) verify reset exit'
-#	openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_SD) verify reset exit"
+	openocd -f interface/cmsis-dap.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_SD) verify reset exit"
 #	openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "reset_config none; program $(HEX_SD) verify reset exit"
 
 erase:
-	nrfjprog -f nrf52 --eraseall
+#	nrfjprog -f nrf52 --eraseall
+
+clean:
+	rm -rf $(OUTPUT_DIRECTORY)

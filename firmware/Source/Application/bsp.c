@@ -31,12 +31,12 @@ static void init_all_clocks(void)
 void bsp_init(void)
 {
 	//Initialize system clocks
-        init_all_clocks();
+    init_all_clocks();
 
 	//Enable the DC-DC converter to save power
 	NRF_POWER->DCDCEN = 1;
 
-	//Configure the GPIOs that we will use for various functions, like controlling the LEDs
+	// Configure the GPIOs that we will use for various functions, like controlling the LEDs
 	NRF_P0->OUTSET = (1 << PIN_RED_LED);     // set high to turn off the LED
 	NRF_P0->PIN_CNF[PIN_RED_LED] = 0x3;      // make this GPIO an output
 
@@ -46,13 +46,18 @@ void bsp_init(void)
 	NRF_P0->OUTSET = (1 << PIN_BLUE_LED);     // set high to turn off the LED
 	NRF_P0->PIN_CNF[PIN_BLUE_LED] = 0x3;      // make this GPIO an output
 
+	NRF_P0->OUTSET = (1 << PIN_IR_RECEIVER_POWER_CONTROL);  // set high to turn off the IR receiver
+	NRF_P0->PIN_CNF[PIN_IR_RECEIVER_POWER_CONTROL] = 0x3;   // make this GPIO an output
+
 	NRF_P0->OUTCLR = (1 << PIN_IR_TRANSMIT); // make sure that the IR LED is off initially
 	NRF_P0->PIN_CNF[PIN_IR_TRANSMIT] = 0x3;  // make this GPIO an output
 
-	NRF_P0->PIN_CNF[PIN_IR_RECEIVE] = 0x0;   // make this GPIO an input
+	NRF_P0->PIN_CNF[PIN_IR_RECEIVE] = 0x0;   // make this GPIO an input, for receiving the IR communication
 
-	NRF_P0->PIN_CNF[PIN_SWITCH1] = 0x0;      // make this GPIO an input
-	NRF_P0->PIN_CNF[PIN_SWITCH2] = 0x0;      // make this GPIO an input
+	NRF_P0->PIN_CNF[PIN_SWITCH1] = 0x0;      // make this GPIO an input (for the switch 1)
+	NRF_P0->PIN_CNF[PIN_SWITCH2] = 0x0;      // make this GPIO an input (for the switch 2)
+
+	init_debug_uart();
 }
 
 /**
@@ -112,7 +117,24 @@ void IR_led_toggle(void)
 }
 
 /**
- * @brief Delay function
+ * @brief Turn on the IR receiver
+ */
+void IR_receiver_power_on(void)
+{
+	NRF_P0->OUTCLR = (1 << PIN_IR_RECEIVER_POWER_CONTROL);
+}
+
+/**
+ * @brief Turn off IR receiver
+ */
+void IR_receiver_power_off(void)
+{
+	NRF_P0->OUTSET = (1 << PIN_IR_RECEIVER_POWER_CONTROL);
+}
+
+/**
+ * @brief Delay function, where one tick is 1/32768 seconds
+ * One millisecond will therefore be about 33 ticks
  */
 void delay_ticks(uint32_t ticks)
 {

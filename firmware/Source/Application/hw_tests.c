@@ -106,7 +106,7 @@ void test_buttons_and_leds(void)
 	}
 }
 
-void test_IR_led(void)
+void test_ir_LED_toggle_continuously(void)
 {
 	while(1)
 	{
@@ -330,6 +330,7 @@ void test_pwm_pulsing(void)
 
 void test_ir_receive(void)
 {
+	IR_receiver_power_on();
 	while(1) {
 		if(NRF_P0->IN & (1 << PIN_IR_RECEIVE)) {
 			NRF_P0->OUTSET = (1 << PIN_RED_LED);
@@ -529,7 +530,7 @@ void init_adc(void)
 
 
 // This will test the ADC by continuously taking readings from the PIR sensor (connected to pin 5 / AIN3) and print them out to the debug UART 
-void test_adc(void)
+void test_PIR_motion_sensor(void)
 {
 	uint16_t adc_sample;
 	#define MAX_ADC_SAMPLE_SCALED 132
@@ -538,7 +539,7 @@ void test_adc(void)
 	uint16_t adc_trigger_threshold = 1500;
 	uint32_t i;
 
-	init_debug_uart();
+//	init_debug_uart();
 	print_debug_message("Starting ADC test", 0, 0, 1);
 
 	NRF_SAADC->ENABLE = 1; // enable the ADC
@@ -1213,19 +1214,19 @@ void hw_tests(void)
 //	test_uart();
 //	test_rtc();
 //	test_buttons_and_leds();
-//	IR_led_toggle();
+//	test_ir_LED_toggle_continuously();
 //	test_pwm();
 //	test_pwm_pulsing();
 //	test_ir_receive();
 //	test_bluetooth();
 //	test_ble();
 //	test_print_debug_message();
-//	test_adc();
+//	test_PIR_motion_sensor();
 //	test_rssi();
 //	test_bluetooth_transmitter();
 //	test_bluetooth_sniffer();
 //	test_sleep_current();
-	test_system_off();
+//	test_system_off();
 
 //	print_debug_message("LFCLKSTAT L:", NRF_CLOCK->LFCLKSTAT & 0xFFFF, 1, 1);
 //	print_debug_message("LFCLKSTAT H:", (NRF_CLOCK->LFCLKSTAT >> 16) & 0xFFFF, 1, 1);
@@ -1247,9 +1248,12 @@ void hw_tests(void)
 	{
 		if(NRF_P0->IN & (1 << PIN_SWITCH1))
 		{
+			IR_receiver_power_on();
+			delay_ticks(66); // a delay of about 2ms to allow for the IR receiver to power up and make a valid signal
 			red_led_on();
 			record_ir_pattern();
 			red_led_off();
+			IR_receiver_power_off();
 		}
 
 		if(NRF_P0->IN & (1 << PIN_SWITCH2))
