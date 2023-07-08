@@ -19,10 +19,10 @@
 
 ### BLE Protocol
 
-Custom characteristic | -
+Custom characteristic | 09391532-6941-4a91-9d3a-a483fd2a1dd6
 --- | ---
 Name | IR Codes learn
-UUID | TBD
+UUID | 0x1532
 Properties | WRITE, WRITE NO RESPONSE
 Type | uint32
 
@@ -39,10 +39,10 @@ Ir code: 6 bits (64 possible IR codes)
 
 ### BLE Protocol
 
-Custom characteristic | -
+Custom characteristic | 09391533-6941-4a91-9d3a-a483fd2a1dd6
 --- | ---
 Name | IR Codes emit
-UUID | TBD
+UUID | 0x1533
 Properties | WRITE, WRITE NO RESPONSE
 Type | uint32
 
@@ -59,10 +59,10 @@ Ir code: 6 bits (64 possible IR codes)
 
 ### BLE Protocol
 
-Custom characteristic | -
+Custom characteristic | 09391527-6941-4a91-9d3a-a483fd2a1dd6
 --- | ---
 Name | Set schedule
-UUID | TBD
+UUID | 0x1527
 Properties | WRITE, WRITE NO RESPONSE
 Type | UTF-8 String
 
@@ -106,10 +106,10 @@ The App tells the Device:
 
 ### BLE Protocol
 
-Custom characteristic | -
+Custom characteristic | 09391525-6941-4a91-9d3a-a483fd2a1dd6
 --- | ---
 Name | Motion sensor sensitivity
-UUID | TBD
+UUID | 0x1525
 Properties | WRITE, WRITE NO RESPONSE
 Type | uint32
 
@@ -123,10 +123,10 @@ What are the possible values for sensor sensitivity?
 
 ### BLE Protocol
 
-Custom characteristic | -
+Custom characteristic | 09391526-6941-4a91-9d3a-a483fd2a1dd6
 --- | ---
 Name | Motion sensor timeout
-UUID | TBD
+UUID | 0x1526
 Properties | WRITE, WRITE NO RESPONSE
 Type | uint32
 
@@ -174,10 +174,10 @@ UUID | 0x2A19
 Properties | NOTIFY, READ
 Type | uint8
 
-Custom characteristic | -
+Custom characteristic | 09391529-6941-4a91-9d3a-a483fd2a1dd6
 --- | ---
 Name | Battery voltage
-UUID | TBD
+UUID | 0x1529
 Properties | NOTIFY, READ
 Type | uint16
 
@@ -222,10 +222,10 @@ See 1.3
 
 ### BLE Protocol
 
-Custom characteristic | -
+Custom characteristic | 09391524-6941-4a91-9d3a-a483fd2a1dd6
 --- | ---
 Name | RTC Set
-UUID | TBD
+UUID | 0x1524
 Properties | WRITE, WRITE NO RESPONSE
 Type | uint32
 
@@ -239,7 +239,7 @@ Type | uint32
 
 ### BLE Protocol
 
-Device information service. | UUID: 0x180F
+Device information service. | UUID: 0x180A
 --- | ---
 Hardware Revision characteristic | -
 Name | Hardware Revision string

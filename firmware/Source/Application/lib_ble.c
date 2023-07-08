@@ -13,7 +13,9 @@
 #include "nrf_sdh.h"
 #include "nrf_sdh_ble.h"
 #include "app_timer.h"
-#include "ble_lbs.h"
+#include "ble_bas.h"
+#include "ble_cus.h"
+#include "ble_dis.h"
 #include "nrf_ble_gatt.h"
 #include "nrf_ble_qwr.h"
 #include "nrf_pwr_mgmt.h"
@@ -44,7 +46,8 @@
 #define DEAD_BEEF                       0xDEADBEEF                              /**< Value used as error code on stack dump, can be used to identify stack location on stack unwind. */
 
 
-BLE_LBS_DEF(m_lbs);                                                             /**< LED Button Service instance. */
+BLE_BAS_DEF(m_bas);                                                             /**< Battery Service instance. */
+BLE_CUS_DEF(m_cus);                                                             /**< Custom Service instance. */
 NRF_BLE_GATT_DEF(m_gatt);                                                       /**< GATT module instance. */
 NRF_BLE_QWR_DEF(m_qwr);                                                         /**< Context for the Queued Write module.*/
 
@@ -120,7 +123,7 @@ static void advertising_init(void)
     ble_advdata_t advdata;
     ble_advdata_t srdata;
 
-    ble_uuid_t adv_uuids[] = {{LBS_UUID_SERVICE, m_lbs.uuid_type}};
+    ble_uuid_t adv_uuids[] = {{CUS_UUID_SERVICE, m_cus.uuid_type}};
 
     // Build and set advertising data.
     memset(&advdata, 0, sizeof(advdata));
@@ -169,34 +172,15 @@ static void nrf_qwr_error_handler(uint32_t nrf_error)
     APP_ERROR_HANDLER(nrf_error);
 }
 
-
-/**@brief Function for handling write events to the LED characteristic.
- *
- * @param[in] p_lbs     Instance of LED Button Service to which the write applies.
- * @param[in] led_state Written/desired state of the LED.
- */
-static void led_write_handler(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t led_state)
-{
-    if (led_state)
-    {
-        NRF_LOG_INFO("Received LED ON!");
-        NRF_GPIO->OUTCLR = (1 << 15);
-    }
-    else
-    {
-        NRF_LOG_INFO("Received LED OFF!");
-        NRF_GPIO->OUTSET = (1 << 15);
-    }
-}
-
-
 /**@brief Function for initializing services that will be used by the application.
  */
 static void services_init(void)
 {
     ret_code_t         err_code;
-    ble_lbs_init_t     init     = {0};
     nrf_ble_qwr_init_t qwr_init = {0};
+    ble_bas_init_t     init_bas = {0};
+    ble_dis_init_t     init_dis = {0};
+    ble_cus_init_t     init_cus = {0};
 
     // Initialize Queued Write Module.
     qwr_init.error_handler = nrf_qwr_error_handler;
@@ -204,10 +188,20 @@ static void services_init(void)
     err_code = nrf_ble_qwr_init(&m_qwr, &qwr_init);
     APP_ERROR_CHECK(err_code);
 
-    // Initialize LBS.
-    init.led_write_handler = led_write_handler;
+    err_code = ble_bas_init(&m_bas, &init_bas);
+    APP_ERROR_CHECK(err_code);
 
-    err_code = ble_lbs_init(&m_lbs, &init);
+    /* Device Information Service */
+    init_dis.fw_rev_str.p_str = "1.0.0";
+    init_dis.fw_rev_str.length = strlen("1.0.0");
+
+    init_dis.hw_rev_str.p_str = "1.0.0";
+    init_dis.hw_rev_str.length = strlen("1.0.0");
+
+    err_code = ble_dis_init(&init_dis);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = ble_cus_init(&m_cus, &init_cus);
     APP_ERROR_CHECK(err_code);
 }
 

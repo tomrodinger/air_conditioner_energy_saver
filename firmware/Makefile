@@ -44,7 +44,9 @@ SRC_FILES += \
   $(PROJ_DIR)/Source/nRF_BLE/ble_srv_common.c \
   $(PROJ_DIR)/Source/nRF_BLE/nrf_ble_gatt.c \
   $(PROJ_DIR)/Source/nRF_BLE/nrf_ble_qwr.c \
-  $(PROJ_DIR)/Source/nRF_BLE_Services/ble_lbs.c \
+  $(PROJ_DIR)/Source/nRF_BLE_Services/ble_bas.c \
+  $(PROJ_DIR)/Source/nRF_BLE_Services/ble_dis.c \
+  $(PROJ_DIR)/Source/nRF_BLE_Services/ble_cus.c \
   $(PROJ_DIR)/Source/nRF_Libraries/app_error.c \
   $(PROJ_DIR)/Source/nRF_Libraries/app_error_handler_gcc.c \
   $(PROJ_DIR)/Source/nRF_Libraries/app_error_weak.c \
