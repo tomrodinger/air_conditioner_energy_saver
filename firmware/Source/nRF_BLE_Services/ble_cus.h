@@ -34,10 +34,7 @@ NRF_SDH_BLE_OBSERVER(_name ## _obs,                                             
 #define CUS_UUID_MOT_SENS    0x1525
 #define CUS_UUID_MOT_TOUT    0x1526
 #define CUS_UUID_SCHEDULE    0x1527
-#define CUS_UUID_BATT_SOC    0x1528
 #define CUS_UUID_BATT_VOL    0x1529
-#define CUS_UUID_VERS_FW     0x1530
-#define CUS_UUID_VERS_HW     0x1531
 #define CUS_UUID_IR_LEARN    0x1532
 #define CUS_UUID_IR_EMMIT    0x1533
 

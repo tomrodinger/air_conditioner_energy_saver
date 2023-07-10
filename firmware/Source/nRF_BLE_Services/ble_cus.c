@@ -139,69 +139,9 @@ uint32_t ble_cus_init(ble_cus_t * p_cus, const ble_cus_init_t * p_cus_init)
         return err_code;
     }
 
-    // Add battery State-Of-Charge characteristic.
-    memset(&add_char_params, 0, sizeof(add_char_params));
-    add_char_params.uuid              = CUS_UUID_BATT_SOC;
-    add_char_params.uuid_type         = p_cus->uuid_type;
-    add_char_params.init_len          = sizeof(uint8_t);
-    add_char_params.max_len           = sizeof(uint8_t);
-    add_char_params.char_props.read   = 1;
-    add_char_params.char_props.notify = 1;
-
-    add_char_params.read_access       = SEC_OPEN;
-    add_char_params.cccd_write_access = SEC_OPEN;
-
-    err_code = characteristic_add(p_cus->service_handle,
-                                  &add_char_params,
-                                  &p_cus->button_char_handles);
-    if (err_code != NRF_SUCCESS)
-    {
-        return err_code;
-    }
-
     // Add battery voltage characteristic.
     memset(&add_char_params, 0, sizeof(add_char_params));
     add_char_params.uuid              = CUS_UUID_BATT_VOL;
-    add_char_params.uuid_type         = p_cus->uuid_type;
-    add_char_params.init_len          = sizeof(uint8_t);
-    add_char_params.max_len           = sizeof(uint8_t);
-    add_char_params.char_props.read   = 1;
-    add_char_params.char_props.notify = 1;
-
-    add_char_params.read_access       = SEC_OPEN;
-    add_char_params.cccd_write_access = SEC_OPEN;
-
-    err_code = characteristic_add(p_cus->service_handle,
-                                  &add_char_params,
-                                  &p_cus->button_char_handles);
-    if (err_code != NRF_SUCCESS)
-    {
-        return err_code;
-    }
-
-    // Add firmware version characteristic.
-    memset(&add_char_params, 0, sizeof(add_char_params));
-    add_char_params.uuid              = CUS_UUID_VERS_FW;
-    add_char_params.uuid_type         = p_cus->uuid_type;
-    add_char_params.init_len          = sizeof(uint8_t);
-    add_char_params.max_len           = sizeof(uint8_t);
-    add_char_params.char_props.read   = 1;
-    add_char_params.char_props.notify = 1;
-
-    add_char_params.read_access       = SEC_OPEN;
-    add_char_params.cccd_write_access = SEC_OPEN;
-
-    err_code = characteristic_add(p_cus->service_handle,
-                                  &add_char_params,
-                                  &p_cus->button_char_handles);
-    if (err_code != NRF_SUCCESS)
-    {
-        return err_code;
-    }
-
-    // Add hardware version characteristic.
-    memset(&add_char_params, 0, sizeof(add_char_params));
-    add_char_params.uuid              = CUS_UUID_VERS_HW;
     add_char_params.uuid_type         = p_cus->uuid_type;
     add_char_params.init_len          = sizeof(uint8_t);
     add_char_params.max_len           = sizeof(uint8_t);
@@ -239,7 +179,7 @@ uint32_t ble_cus_init(ble_cus_t * p_cus, const ble_cus_init_t * p_cus_init)
         return err_code;
     }
 
-    // Add IR emmiting characteristic.
+    // Add IR emitting characteristic.
     memset(&add_char_params, 0, sizeof(add_char_params));
     add_char_params.uuid             = CUS_UUID_IR_EMMIT;
     add_char_params.uuid_type        = p_cus->uuid_type;
