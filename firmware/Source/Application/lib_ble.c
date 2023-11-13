@@ -22,6 +22,7 @@
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
+#include "lib_settings.h"
 
 #define DEVICE_NAME                     "Remote_BLE"                            /**< Name of device. Will be included in the advertising data. */
 
@@ -188,15 +189,19 @@ static void services_init(void)
     err_code = nrf_ble_qwr_init(&m_qwr, &qwr_init);
     APP_ERROR_CHECK(err_code);
 
+    /* Battery Service */
+    init_bas.initial_batt_level = 74;
+    init_bas.bl_rd_sec          = SEC_OPEN;
+    init_bas.bl_cccd_wr_sec     = SEC_OPEN;
+    init_bas.bl_report_rd_sec   = SEC_OPEN;
+
     err_code = ble_bas_init(&m_bas, &init_bas);
     APP_ERROR_CHECK(err_code);
 
     /* Device Information Service */
-    init_dis.fw_rev_str.p_str = "1.0.0";
-    init_dis.fw_rev_str.length = strlen("1.0.0");
-
-    init_dis.hw_rev_str.p_str = "1.0.0";
-    init_dis.hw_rev_str.length = strlen("1.0.0");
+    ble_srv_ascii_to_utf8(&init_dis.fw_rev_str, DIS_FW_REV);
+    ble_srv_ascii_to_utf8(&init_dis.hw_rev_str, DIS_HW_REV);
+    init_dis.dis_char_rd_sec = SEC_OPEN;
 
     err_code = ble_dis_init(&init_dis);
     APP_ERROR_CHECK(err_code);
