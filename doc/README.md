@@ -1,3 +1,64 @@
+# Formats
+
+* An IR-code is represented by a hexadecimal string with max value of FF I.e. 255.
+* A trigger id is represented by a hexadecimal string with max value of FF I.e. 255.
+* Time duration is represented by a hexadecimal string with max value of 15180 I.e. 86400. That is 24 hours. Duration unit is seconds.
+  Examples:
+  - Duration 1 hour is **E10** (3600 seconds)
+  - Duration 3 hours is **2a30** (10800 seconds)
+ * Time is represented by UTF8 string and has the format: hhmm.
+   Examples:
+   - Time: 09:30 is **0930**
+   - Time: 17:45 is **1745**
+ * Days of week are represented by a hexadecimal string with max value of FF I.e. 255. The hex needs to be converted to binary representation to get what days are represented. In binary most significant bit is Monday and least significant bit is Sunday.
+   Examples:
+   - All days of the week: Hex: **7F** = Binary: 1111111
+   - Sunday and Monday: Hex: **41** = Binary: 1000001
+   - Weekdays: Hex: **7C** = Binary: 1111100
+   - Weekends: Hex: **3** = Binary: 0000011
+
+  ## Trigger command
+  General format: **[trigger-mode]-[trigger-id]**
+  * A trigger command is a UTF8 String with maximum length of 20 characters (20 bytes).
+  * A trigger command can have one of the 2 modes: _create_ or _delete_. Create is represented by the character **c**. Delete is represented by the character **d**.
+  * A trigger command starts with trigger mode followed by trigger id and separated by the character **-**.
+  * Examples:
+    - Create a trigger with id 1: **c-1**
+    - Create a trigger with id 123: **c-7b**
+    - Delete a trigger with id 15: **d-f**
+
+  ## Triggers from the app
+  This section is a quick reference with examples. For more detailed specifications please read the next chapter: Requirements Specification.
+
+  * Trigger command: Create/Delete trigger that emits an ir-code when motion is detected. (Motion sensitivity is set by the app using another Characteristic).
+    - Characteristic: 09391527-6941-4a91-9d3a-a483fd2a1dd6
+    - Format: [trigger-mode]-[trigger-id]-[ir-code]
+    - Examples:
+      - Create Create a trigger with id 122 that emits ir-code 15: **c-7a-f**
+      - Detele trigger with id 122: **d-7a**
+
+  * Trigger command: (Req.1.3) Create/Delete trigger that emits an ir-code based on a specific time and date.
+    - Characteristic: 09391527-6941-4a91-9d3a-a483fd2a1dd6
+    - Format: [trigger-mode]-[trigger-id]-[ir-code]-[days]-[time1]
+    - Example:
+      - Create a trigger with id 122 that emits ir-code 15 every day at 23:15: **c-7a-f-7f-2315**
+        - Explanation: c: create. id 122: 7a in hex. id 15: f in hex. Every day binary 111111: 7f in hex. Time 23:15 is 2315.
+  
+  * Trigger command: (Req.1.13) Create/Delete trigger that emits an ir-code based on a time window and date.
+    - Characteristic: 09391527-6941-4a91-9d3a-a483fd2a1dd6
+    - Format: [trigger-mode]-[trigger-id]-[ir-code]-[days]-[time1]-[time2]
+    - - Example:
+      - Create a trigger with id 122 that emits ir-code 15 every day between 08:00 and 23:15: **c-7a-f-7f-0800-2315**
+        - Explanation: c: create. id 122: 7a in hex. id 15: f in hex. Every day binary 111111: 7f in hex. Time 08:00 is 0800. Time 23:15 is 2315.
+
+  * Trigger command: (Req.1.5) Create/Delete trigger that emits an ir-code when motion stops for specific duration during given days.
+    - Characteristic: 09391526-6941-4a91-9d3a-a483fd2a1dd6
+    - Format: [trigger-mode]-[trigger-id]-[ir-code]-[days]-[duration]
+    - Example:
+      - Create a trigger with id 122 that emits ir-code 15 every day if no motion is sensed for 2 minutes: **c-7a-f-7f-78**
+        - Explanation: c: create. id 122: 7a in hex. id 15: f in hex. Every day binary 111111: 7f in hex. Duraion 2 minutes = 120 seconds = 78 in hex.
+  
+
 # Requirements Specification
 
 1. [ Requirement 1.1: The Device should be able to learn the IR control signals](#req1.1)
@@ -24,10 +85,10 @@ Custom characteristic | 09391532-6941-4a91-9d3a-a483fd2a1dd6
 Name | IR Codes learn
 UUID | 0x1532
 Properties | WRITE, WRITE NO RESPONSE
-Type | uint32
+Type | UTF-8 String
 
 ### Specification
-Ir code: 6 bits (64 possible IR codes)
+Ir code: hexadecimal string with max value of FF
 
 ### Comments
 - The App tells the Device what IR code is to be learned.
@@ -44,10 +105,10 @@ Custom characteristic | 09391533-6941-4a91-9d3a-a483fd2a1dd6
 Name | IR Codes emit
 UUID | 0x1533
 Properties | WRITE, WRITE NO RESPONSE
-Type | uint32
+Type | UTF-8 String
 
 ### Specification
-Ir code: 6 bits (64 possible IR codes)
+Ir code: hexadecimal string with max value of FF
 
 ### Comments
 - The App tells the Device what IR control signal to send.
@@ -67,33 +128,32 @@ Properties | WRITE, WRITE NO RESPONSE
 Type | UTF-8 String
 
 ### Specification
-"command:[schedule|delete];ircode:[numeric_code];days:[uint32(7 bits)];window1:[hhmm];window2:[hhmm|-1]"
+"[trigger-mode]-[trigger-id]-[ir-code]-[days]-[time1]-[time2]"
 
-Example 1: Trigger IR code 1, every Monday and Friday, at 18:00
-
-The app would send the string:
-"command:schedule;ircode:1;days:68;window1:1800;window2:-1"
-
-Example 2: Trigger IR code 4, everyday, at 23:15
+Example 1: Trigger id 1 with IR code 1, every Monday and Friday, at 18:00
 
 The app would send the string:
-"command:schedule;ircode:4;days:127;window1:2315;window2:-1"
+"c-1-1-44-1800"
 
-Example 3: Trigger IR code 16, weekdays, within 09:00 to 17:00
-
-The app would send the string:
-"command:schedule;ircode:16;days:124;window1:0900;window2:1700"
-
-Example 4: Delete IR code 4, everyday, at 23:15
+Example 2: Trigger id 2 with IR code 4, everyday, at 23:15
 
 The app would send the string:
-"command:delete;ircode:4;days:127;window1:2315;window2:-1"
+"c-2-4-7f-2315"
+
+Example 3: Trigger id 3 with IR code 16, weekdays, within 09:00 to 17:00
+
+The app would send the string:
+"c-3-10-7c-0900-1700"
+
+Example 4: Delete Trigger id 4
+
+The app would send the string:
+"d-4"
 
 ### Comments
 
 - Supports time and days of week.
 - Example: Turn on air conditioner every weekday on 7:00 am.
-- We need a command to disable/erase a schedule.
 
 The App tells the Device:
 - What IR code to trigger
@@ -111,12 +171,11 @@ Custom characteristic | 09391525-6941-4a91-9d3a-a483fd2a1dd6
 Name | Motion sensor sensitivity
 UUID | 0x1525
 Properties | WRITE, WRITE NO RESPONSE
-Type | uint32
+Type | UTF-8 String
 
 ### Comments
 
 ### Questions
-What are the possible values for sensor sensitivity?
 
 ## Requirement 1.5 <a name="req1.5"></a>
 **The App will allow a timeout to be set (to turn off the air conditioner if no motion is sensed for a while)**
@@ -128,22 +187,23 @@ Custom characteristic | 09391526-6941-4a91-9d3a-a483fd2a1dd6
 Name | Motion sensor timeout
 UUID | 0x1526
 Properties | WRITE, WRITE NO RESPONSE
-Type | uint32
+Type | UTF-8 String
 
 ### Specification
-- Timeout duration in seconds (max value: 24 hours = 86400 seconds): 17 bits 
-- Ir code: 6 bits (64 possible IR codes)
-- Days: 7 bits
-- Total: 30 bits
+- See the "Formats" section for more details.
+- Time duration is represented by a hexadecimal.
+- Ir code: hexadecimal string with max value of FF.
+- Days of week are represented by a hexadecimal string with max value of FF I.e. 255.
 
-Example: Emit IR code X every day if no motion is sensed for 2 minutes
-- IR code X: 000001
-- Every day: 1111111
-- 2 minutes(120 seconds): 1111000
-- => The app would send: 991169
+Example: Create a trigger with id 122 that emits ir-code 15 every day if no motion is sensed for 2 minutes:
+- Create: c
+- Trigger id: 7a
+- IR code X: f
+- Every day: 7f (binary: 1111111)
+- 2 minutes(120 seconds): 78
+- => The app would send: **c-7a-f-7f-78**
 
 ### Comments
-- We need a command to disable/erase a schedule.
 - The App tells the Device the timeout value.
 - The App tells the Device what IR code to emit when timeout value is reached.
 - The App tells at what days the timeout is valid
