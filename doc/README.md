@@ -287,10 +287,10 @@ Custom characteristic | 09391524-6941-4a91-9d3a-a483fd2a1dd6
 Name | RTC Set
 UUID | 0x1524
 Properties | WRITE, WRITE NO RESPONSE
-Type | uint32
+Type | UTF-8 String
 
 ### Comments
-- RTC: Real Time Clock. The App will send epoch time in order to syncronize the time on the Device.
+- RTC: Real Time Clock. The App will send epoch time in order to syncronize the time on the Device. Epoch time in seconds.
 
 ### Questions
 
