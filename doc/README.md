@@ -74,6 +74,7 @@
 11. [ Requirement 1.11: The App will synchronize time with the Device](#req1.11)
 12. [ Requirement 1.12: The App will display Device information](#req1.12)
 13. [ Requirement 1.13: The App will allow time windowed scheduling of IR code triggering](#req1.13)
+14. [ Requirement 1.14: The App will allow to delete an IR code](#req1.14)
 
 ## Requirement 1.1 <a name="req1.1"></a>
 **The Device should be able to learn the IR control signals (learning mode)**
@@ -325,5 +326,25 @@ See 1.3
 
 ### Comments
 The logic here is that if motion is detected and it is sufficiently strong to pass the threshold of the sensitivity setting and the time at which the motion occurs is within the time window (between the begin time and end time) then the IR code will be triggered. For example, I want to set up this device to turn on my air conditioner in the office during the weekdays Monday to Friday during office hours 9am to 5pm (the time window) and only if a person walks directly onto the room and not a person walking outside the office (hence sensitivity adjustmemt).
+
+### Questions
+
+## Requirement 1.14 <a name="req1.14"></a>
+**The App will allow to delete an IR code**
+
+### BLE Protocol
+
+Custom characteristic | 09391534-6941-4a91-9d3a-a483fd2a1dd6
+--- | ---
+Name | IR Codes emit
+UUID | 0x1534
+Properties | WRITE, WRITE NO RESPONSE
+Type | UTF-8 String
+
+### Specification
+Ir code: hexadecimal string with max value of FF
+
+### Comments
+- The App tells the Device what IR control signal to delete.
 
 ### Questions
